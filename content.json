@@ -1,0 +1,429 @@
+{
+  "blocs": [
+    {
+      "id": "bloc1",
+      "titre": "Recevoir et suivre les commandes",
+      "description": "Maîtrisez les étapes essentielles de la réception des marchandises et du suivi des commandes",
+      "icone": "📦",
+      "couleur": "#10B981",
+      "sections": [
+        {
+          "id": "bloc1-sec1",
+          "titre": "Généralités sur la réception",
+          "contenu": "La réception des marchandises est une étape cruciale de la chaîne logistique. Elle garantit que les produits reçus correspondent exactement à la commande passée, tant en quantité qu'en qualité. Le réceptionnaire est responsable de vérifier que tout est conforme avant d'accepter la livraison.",
+          "points_cles": [
+            "La réception est la première étape du processus de mise en stock",
+            "Elle requiert rigueur et attention aux détails",
+            "Le réceptionnaire doit connaître les procédures de l'entreprise",
+            "La traçabilité des produits est essentielle"
+          ]
+        },
+        {
+          "id": "bloc1-sec2",
+          "titre": "Processus de réception",
+          "contenu": "Le processus de réception suit plusieurs étapes bien définies pour assurer la conformité de la livraison.",
+          "etapes": [
+            {
+              "numero": 1,
+              "titre": "Accueil du transporteur",
+              "description": "Accueillez le livreur avec courtoisie, vérifiez son identité et celle de l'entreprise de transport."
+            },
+            {
+              "numero": 2,
+              "titre": "Vérification des documents",
+              "description": "Comparez le Bon de Livraison (BL) avec le Bon de Commande (BC). Vérifiez que les références, quantités et prix correspondent."
+            },
+            {
+              "numero": 3,
+              "titre": "Contrôle quantitatif",
+              "description": "Comptez les colis reçus et vérifiez qu'ils correspondent au nombre indiqué sur le BL. Vérifiez également le poids total si applicable."
+            },
+            {
+              "numero": 4,
+              "titre": "Contrôle qualitatif",
+              "description": "Inspectez l'état des produits : emballages intacts, dates de péremption valides, absence de dommages."
+            },
+            {
+              "numero": 5,
+              "titre": "Signature et Bon de Réception",
+              "description": "Signez le BL. Si tout est conforme, émettez un Bon de Réception (BR). Si des réserves existent, notez-les clairement."
+            },
+            {
+              "numero": 6,
+              "titre": "Rangement en stock",
+              "description": "Transportez les marchandises en réserve ou directement en rayon selon la procédure de l'entreprise."
+            }
+          ]
+        },
+        {
+          "id": "bloc1-sec3",
+          "titre": "Documents essentiels",
+          "documents": [
+            {
+              "nom": "Bon de Commande (BC)",
+              "description": "Document émis par l'acheteur (magasin) au fournisseur. Contient les références, quantités et prix des produits commandés."
+            },
+            {
+              "nom": "Bon de Livraison (BL)",
+              "description": "Document émis par le fournisseur ou le transporteur. Accompagne la livraison et liste les produits expédiés."
+            },
+            {
+              "nom": "Bon de Réception (BR)",
+              "description": "Document interne émis par le réceptionnaire après vérification. Confirme la conformité de la livraison."
+            },
+            {
+              "nom": "Facture",
+              "description": "Document commercial et fiscal émis par le fournisseur. Utilisée pour le paiement et la comptabilité."
+            }
+          ]
+        },
+        {
+          "id": "bloc1-sec4",
+          "titre": "Rangement et stockage",
+          "contenu": "Après la réception, les produits doivent être rangés correctement pour faciliter leur accès et préserver leur qualité.",
+          "principes": [
+            {
+              "titre": "Règle FIFO",
+              "description": "First In, First Out (Premier Entré, Premier Sorti). Les produits reçus en premier doivent être vendus en premier pour éviter le gaspillage et l'obsolescence."
+            },
+            {
+              "titre": "Conditions de stockage",
+              "description": "Respectez les conditions spécifiques : température, humidité, luminosité. Certains produits nécessitent une réfrigération ou une protection particulière."
+            },
+            {
+              "titre": "Étiquetage",
+              "description": "Étiquetez les produits avec la date de réception, la date de péremption (si applicable) et la localisation en réserve."
+            },
+            {
+              "titre": "Hygiène et sécurité",
+              "description": "Maintenez un espace de stockage propre et organisé. Respectez les normes d'hygiène et de sécurité alimentaire si nécessaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc2",
+      "titre": "Mettre en valeur et approvisionner",
+      "description": "Apprenez à présenter les produits de manière attrayante et à gérer efficacement l'approvisionnement des rayons",
+      "icone": "🛍️",
+      "couleur": "#059669",
+      "sections": [
+        {
+          "id": "bloc2-sec1",
+          "titre": "Principes du merchandising",
+          "contenu": "Le merchandising est l'art de présenter les produits de manière à maximiser les ventes et l'attrait du magasin. Il combine la psychologie du consommateur avec des techniques de présentation.",
+          "objectifs": [
+            "Augmenter les ventes et le chiffre d'affaires",
+            "Améliorer l'image et l'ambiance du magasin",
+            "Faciliter la recherche et l'accès aux produits",
+            "Créer une expérience d'achat agréable"
+          ]
+        },
+        {
+          "id": "bloc2-sec2",
+          "titre": "Les 5B de Kepner",
+          "contenu": "La méthode des 5B est un cadre fondamental pour le merchandising efficace.",
+          "cinq_b": [
+            {
+              "lettre": "B",
+              "mot": "Bon produit",
+              "explication": "Sélectionnez les produits appropriés pour votre clientèle et votre magasin."
+            },
+            {
+              "lettre": "B",
+              "mot": "Bon endroit",
+              "explication": "Placez les produits à des emplacements stratégiques : niveau des yeux pour les best-sellers, niveau des pieds pour les produits volumineux."
+            },
+            {
+              "lettre": "B",
+              "mot": "Bon moment",
+              "explication": "Approvisionnez les rayons au moment opportun : avant les pics de vente, en fin d'après-midi pour les produits frais."
+            },
+            {
+              "lettre": "B",
+              "mot": "Bonne quantité",
+              "explication": "Mettez en rayon une quantité suffisante pour satisfaire la demande sans surstock."
+            },
+            {
+              "lettre": "B",
+              "mot": "Bonne information",
+              "explication": "Fournissez une signalétique claire : prix, origine, composition, codes-barres."
+            }
+          ]
+        },
+        {
+          "id": "bloc2-sec3",
+          "titre": "Niveaux de présentation des produits",
+          "contenu": "La position des produits sur le rayon influence directement les ventes. Les consommateurs achètent plus facilement les produits à hauteur des yeux.",
+          "niveaux": [
+            {
+              "nom": "Niveau des yeux",
+              "hauteur": "140-170 cm",
+              "caracteristiques": "Position la plus visible et la plus vendeuse. Réservée aux produits à forte marge ou aux best-sellers.",
+              "exemple": "Produits premium, marques leaders, articles promotionnels"
+            },
+            {
+              "nom": "Niveau des mains",
+              "hauteur": "80-140 cm",
+              "caracteristiques": "Facile d'accès, bonne visibilité. Idéal pour les produits de consommation courante.",
+              "exemple": "Produits de base, articles de moyenne gamme"
+            },
+            {
+              "nom": "Niveau des pieds",
+              "hauteur": "0-80 cm",
+              "caracteristiques": "Moins visible, moins vendu. Réservé aux produits volumineux ou à bas prix.",
+              "exemple": "Produits lourds, packs, articles en promotion"
+            },
+            {
+              "nom": "Niveau du chapeau",
+              "hauteur": "170+ cm",
+              "caracteristiques": "Difficile d'accès. Utilisé pour le stockage ou la signalétique.",
+              "exemple": "Stock supplémentaire, panneaux de prix, décoration"
+            }
+          ]
+        },
+        {
+          "id": "bloc2-sec4",
+          "titre": "Approvisionnement des rayons",
+          "contenu": "L'approvisionnement efficace des rayons est essentiel pour maintenir la disponibilité des produits et l'attractivité du magasin.",
+          "etapes": [
+            {
+              "titre": "Vérification des stocks",
+              "description": "Contrôlez régulièrement les niveaux de stock en rayon et en réserve. Identifiez les produits qui manquent ou qui sont en surstock."
+            },
+            {
+              "titre": "Calcul des quantités",
+              "description": "Déterminez la quantité à mettre en rayon en fonction de la demande, de l'espace disponible et de la capacité de la réserve."
+            },
+            {
+              "titre": "Respect du FIFO",
+              "description": "Placez les produits les plus anciens en avant et les plus récents à l'arrière pour assurer une rotation correcte."
+            },
+            {
+              "titre": "Rangement et facing",
+              "description": "Organisez les produits de manière ordonnée, avec un nombre suffisant de produits visibles (facing) pour attirer l'attention."
+            }
+          ]
+        },
+        {
+          "id": "bloc2-sec5",
+          "titre": "Signalétique et communication",
+          "contenu": "Une bonne signalétique guide le client et facilite ses achats. Elle doit être claire, précise et conforme aux normes.",
+          "types": [
+            {
+              "type": "ILV (Information sur le Lieu de Vente)",
+              "description": "Étiquettes de prix, codes-barres, informations produit (composition, origine, conseils d'utilisation).",
+              "importance": "Essentielle pour l'information du client et la conformité légale"
+            },
+            {
+              "type": "PLV (Publicité sur le Lieu de Vente)",
+              "description": "Affiches, présentoirs, bannières, décoration promotionnelle.",
+              "importance": "Attire l'attention et crée une ambiance commerciale"
+            },
+            {
+              "type": "Étiquettes de prix",
+              "description": "Doivent être lisibles, correctes et bien positionnées à proximité du produit.",
+              "importance": "Légalement obligatoires et essentielles pour la transparence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc3",
+      "titre": "Conseil et accompagnement du client",
+      "description": "Maîtrisez les techniques de vente et d'accueil pour offrir un excellent service client",
+      "icone": "👥",
+      "couleur": "#047857",
+      "sections": [
+        {
+          "id": "bloc3-sec1",
+          "titre": "Accueil du client - Méthode SBAM",
+          "contenu": "L'accueil est la première impression que le client a de votre magasin. La méthode SBAM garantit un accueil professionnel et chaleureux.",
+          "sbam": [
+            {
+              "lettre": "S",
+              "mot": "Sourire",
+              "description": "Accueillez le client avec un sourire sincère. Cela crée une atmosphère positive et rassurante."
+            },
+            {
+              "lettre": "B",
+              "mot": "Bonjour",
+              "description": "Saluez le client poliment : 'Bonjour, bienvenue!' ou 'Bonjour, comment allez-vous?'. Utilisez le ton approprié."
+            },
+            {
+              "lettre": "A",
+              "mot": "Au revoir",
+              "description": "À la fin de l'interaction, dites 'Au revoir' avec chaleur. Cela crée une dernière impression positive."
+            },
+            {
+              "lettre": "M",
+              "mot": "Merci",
+              "description": "Remerciez le client pour son achat : 'Merci beaucoup!' ou 'Merci de votre visite!'. Montrez votre appréciation."
+            }
+          ],
+          "importance": "La méthode SBAM crée une relation de confiance et améliore la satisfaction client"
+        },
+        {
+          "id": "bloc3-sec2",
+          "titre": "Étapes de la vente",
+          "contenu": "La vente suit un processus structuré qui maximise les chances de conclure une transaction satisfaisante.",
+          "etapes": [
+            {
+              "numero": 1,
+              "titre": "Prise de contact",
+              "description": "Accueillez le client avec la méthode SBAM. Montrez votre disponibilité et votre intérêt pour l'aider."
+            },
+            {
+              "numero": 2,
+              "titre": "Découverte des besoins",
+              "description": "Posez des questions ouvertes ('Que cherchez-vous?', 'Quel type de produit vous intéresse?') et fermées ('Préférez-vous la couleur rouge ou bleue?') pour comprendre les besoins du client."
+            },
+            {
+              "numero": 3,
+              "titre": "Argumentation",
+              "description": "Présentez les produits en utilisant la méthode CAP : Caractéristique (ce que le produit est), Avantage (ce qu'il apporte), Preuve (démonstration, avis client)."
+            },
+            {
+              "numero": 4,
+              "titre": "Traitement des objections",
+              "description": "Écoutez les préoccupations du client, reformulez-les pour montrer votre compréhension, puis répondez avec des arguments adaptés."
+            },
+            {
+              "numero": 5,
+              "titre": "Vente additionnelle",
+              "description": "Proposez des produits complémentaires ou des améliorations : 'Voulez-vous aussi...?' ou 'Nous avons aussi...'. Soyez discret et pertinent."
+            },
+            {
+              "numero": 6,
+              "titre": "Encaissement",
+              "description": "Effectuez le paiement avec professionnalisme. Vérifiez les moyens de paiement, rendez la monnaie correctement, proposez un emballage cadeau si applicable."
+            },
+            {
+              "numero": 7,
+              "titre": "Prise de congé",
+              "description": "Remerciez le client, dites 'Au revoir' avec chaleur, invitez-le à revenir : 'À bientôt!' ou 'Merci de votre visite!'"
+            }
+          ]
+        },
+        {
+          "id": "bloc3-sec3",
+          "titre": "Méthode CAP - Argumentation",
+          "contenu": "La méthode CAP est une technique d'argumentation efficace pour présenter les produits et convaincre le client.",
+          "cap": [
+            {
+              "lettre": "C",
+              "mot": "Caractéristique",
+              "description": "Décrivez les propriétés objectives du produit : 'Ce pull est en coton 100%, taille M, couleur bleu marine.'",
+              "exemple": "Ce produit contient 500ml, il est bio et sans additifs."
+            },
+            {
+              "lettre": "A",
+              "mot": "Avantage",
+              "description": "Expliquez les bénéfices pour le client : 'Le coton est confortable et respirant, idéal pour l'été.'",
+              "exemple": "Cela signifie que vous avez un produit naturel, bon pour votre santé et l'environnement."
+            },
+            {
+              "lettre": "P",
+              "mot": "Preuve",
+              "description": "Fournissez des preuves : avis clients, certifications, démonstration : 'Nos clients adorent ce produit, regardez les avis 5 étoiles!'",
+              "exemple": "Ce produit a reçu le label bio officiel et a été testé par 1000 clients satisfaits."
+            }
+          ],
+          "conseil": "Adaptez votre argumentation au client et à ses besoins spécifiques"
+        },
+        {
+          "id": "bloc3-sec4",
+          "titre": "Gestion des objections",
+          "contenu": "Les objections du client sont normales. Voici comment les gérer efficacement.",
+          "techniques": [
+            {
+              "etape": 1,
+              "titre": "Écoute active",
+              "description": "Écoutez complètement l'objection sans interrompre. Montrez que vous comprenez."
+            },
+            {
+              "etape": 2,
+              "titre": "Reformulation",
+              "description": "Reformulez l'objection pour montrer votre compréhension : 'Si je comprends bien, vous trouvez le prix un peu élevé?'"
+            },
+            {
+              "etape": 3,
+              "titre": "Validation",
+              "description": "Validez la préoccupation du client : 'C'est une excellente question, beaucoup de clients me posent la même.'"
+            },
+            {
+              "etape": 4,
+              "titre": "Réponse adaptée",
+              "description": "Répondez avec des arguments pertinents : 'Oui, mais ce produit dure deux fois plus longtemps, donc c'est plus économique à long terme.'"
+            }
+          ]
+        },
+        {
+          "id": "bloc3-sec5",
+          "titre": "Encaissement et fidélisation",
+          "contenu": "L'encaissement est l'étape finale de la vente. C'est aussi une opportunité de fidéliser le client.",
+          "points": [
+            {
+              "titre": "Procédures de paiement",
+              "description": "Maîtrisez tous les moyens de paiement : espèces, cartes bancaires, chèques, paiements numériques. Vérifiez la validité des cartes."
+            },
+            {
+              "titre": "Rendu de monnaie",
+              "description": "Rendez la monnaie correctement et poliment. Comptez-la devant le client pour éviter les litiges."
+            },
+            {
+              "titre": "Carte de fidélité",
+              "description": "Proposez l'inscription à la carte de fidélité : 'Avez-vous une carte de fidélité? Sinon, je peux vous l'ouvrir en 2 minutes!'"
+            },
+            {
+              "titre": "Emballage et présentation",
+              "description": "Emballez les produits avec soin. Proposez un emballage cadeau si applicable. Cela améliore l'expérience client."
+            },
+            {
+              "titre": "Remerciements et invitation",
+              "description": "Remerciez le client et invitez-le à revenir : 'Merci beaucoup! À bientôt!' Cela crée une relation durable."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ressources": {
+    "glossaire": [
+      {
+        "terme": "FIFO",
+        "definition": "First In, First Out (Premier Entré, Premier Sorti). Principe de gestion des stocks où les produits reçus en premier sont vendus en premier."
+      },
+      {
+        "terme": "Facing",
+        "definition": "Nombre de produits d'une même référence visibles de face sur le rayon. Un bon facing attire l'attention du client."
+      },
+      {
+        "terme": "Gondole",
+        "definition": "Meuble de vente composé de plusieurs niveaux de rayons. C'est l'élément principal de présentation des produits en magasin."
+      },
+      {
+        "terme": "Tête de gondole",
+        "definition": "Emplacement promotionnel en bout de rayon. C'est un emplacement très visible et très vendu."
+      },
+      {
+        "terme": "ILV",
+        "definition": "Information sur le Lieu de Vente. Étiquettes, codes-barres et informations produit affichées en magasin."
+      },
+      {
+        "terme": "PLV",
+        "definition": "Publicité sur le Lieu de Vente. Affiches, présentoirs et éléments de décoration promotionnelle."
+      },
+      {
+        "terme": "Démarque inconnue",
+        "definition": "Différence entre le stock théorique (selon l'inventaire) et le stock réel. Peut être due aux vols, erreurs ou gaspillage."
+      },
+      {
+        "terme": "Omnicanal",
+        "definition": "Approche commerciale intégrant le commerce en ligne et en magasin physique pour une expérience client fluide."
+      }
+    ]
+  }
+}
