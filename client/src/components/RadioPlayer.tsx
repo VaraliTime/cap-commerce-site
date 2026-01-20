@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Radio } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Radio, AlertCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const STATIONS = [
-  { name: 'NRJ', url: 'https://scdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3' },
-  { name: 'RTL2', url: 'http://streaming.radio.rtl2.fr/rtl2-1-44-128' },
-  { name: 'Skyrock', url: 'http://icecast.skyrock.net/s/natio_mp3_128k' }
+  { name: 'NRJ', url: 'https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=fluxradios' },
+  { name: 'RTL2', url: 'https://rtl-radio.cdn-live.6play.fr/rtl2-1-44-128' },
+  { name: 'Skyrock', url: 'https://icecast.skyrock.net/s/natio_mp3_128k' }
 ];
 
 export const RadioPlayer = () => {
@@ -19,6 +19,7 @@ export const RadioPlayer = () => {
   const [currentStation, setCurrentStation] = useState(STATIONS[0]);
   const [volume, setVolume] = useState(0.5);
   const [isMuted, setIsMuted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -27,38 +28,62 @@ export const RadioPlayer = () => {
     }
   }, [volume, isMuted]);
 
+  const handlePlay = async () => {
+    if (audioRef.current) {
+      try {
+        setError(null);
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (err) {
+        console.error("Audio play error:", err);
+        setError("Erreur de lecture");
+        setIsPlaying(false);
+      }
+    }
+  };
+
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        // Re-load the stream to avoid lag from long pause
-        audioRef.current.load();
-        audioRef.current.play().catch(err => console.error("Audio play error:", err));
+        handlePlay();
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   const changeStation = (station: typeof STATIONS[0]) => {
     setCurrentStation(station);
-    setIsPlaying(true);
+    setError(null);
     if (audioRef.current) {
       audioRef.current.src = station.url;
       audioRef.current.load();
-      audioRef.current.play().catch(err => console.error("Audio play error:", err));
+      handlePlay();
     }
   };
 
   return (
     <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1 shadow-sm">
-      <audio ref={audioRef} src={currentStation.url} />
+      <audio 
+        ref={audioRef} 
+        src={currentStation.url} 
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+        onError={() => setError("Lien mort")}
+      />
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="h-8 gap-2 px-2 text-gray-700 hover:text-emerald-600">
-            <Radio size={16} className={isPlaying ? "animate-pulse text-emerald-600" : ""} />
-            <span className="text-xs font-bold hidden sm:inline">{currentStation.name}</span>
+            {error ? (
+              <AlertCircle size={16} className="text-red-500" />
+            ) : (
+              <Radio size={16} className={isPlaying ? "animate-pulse text-emerald-600" : ""} />
+            )}
+            <span className="text-xs font-bold hidden sm:inline">
+              {error ? error : currentStation.name}
+            </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-40">
