@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
+import { TrafficChart } from "@/components/TrafficChart";
 
 export default function Home() {
   const blocs = [
@@ -51,7 +52,7 @@ export default function Home() {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Préparez-vous efficacement au Certificat d'Aptitude Professionnelle Équipier Polyvalent du Commerce (CAP EPC) avec nos cours structurés, schémas et fiches de révision.
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center mb-12">
             <Link href="/bloc1">
               <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg">
                 Commencer à réviser
@@ -62,6 +63,11 @@ export default function Home() {
                 Ressources
               </Button>
             </Link>
+          </div>
+
+          {/* Traffic Chart Integration */}
+          <div className="max-w-3xl mx-auto">
+            <TrafficChart />
           </div>
         </section>
 
