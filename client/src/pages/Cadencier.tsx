@@ -330,6 +330,182 @@ export default function Cadencier() {
           </div>
         </section>
 
+        {/* Tableau de calculs du cadencier */}
+        <section className="mb-16">
+          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+            📊 Tableau de calculs du cadencier
+          </h2>
+          <div className="overflow-x-auto border border-gray-200 rounded-lg">
+            <table className="w-full text-sm">
+              <thead className="bg-emerald-600 text-white">
+                <tr>
+                  <th className="px-4 py-3 text-left font-poppins font-semibold">Produit</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Type</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Stock Min</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Stock Opt</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Stock Act</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">À commander</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Délai (j)</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Consomm/j</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Rotation (j)</th>
+                  <th className="px-4 py-3 text-center font-poppins font-semibold">Fréquence</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {/* Produits frais */}
+                <tr className="bg-blue-50 hover:bg-blue-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Tomates</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Frais</td>
+                  <td className="px-4 py-3 text-center text-gray-700">20 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">50 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">35 kg</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">15 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1</td>
+                  <td className="px-4 py-3 text-center text-gray-700">15 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">2,3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Quotidien</td>
+                </tr>
+                <tr className="bg-blue-50 hover:bg-blue-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Lait</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Frais</td>
+                  <td className="px-4 py-3 text-center text-gray-700">30 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">80 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">60 L</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">20 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1</td>
+                  <td className="px-4 py-3 text-center text-gray-700">20 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Quotidien</td>
+                </tr>
+                <tr className="bg-blue-50 hover:bg-blue-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Viande</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Frais</td>
+                  <td className="px-4 py-3 text-center text-gray-700">10 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">30 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">18 kg</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">12 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1</td>
+                  <td className="px-4 py-3 text-center text-gray-700">12 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1,5</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Quotidien</td>
+                </tr>
+                {/* Produits secs */}
+                <tr className="bg-yellow-50 hover:bg-yellow-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Pâtes</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Sec</td>
+                  <td className="px-4 py-3 text-center text-gray-700">50 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">150 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">120 kg</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">30 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">20 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">6</td>
+                  <td className="px-4 py-3 text-center text-gray-700">2x/sem</td>
+                </tr>
+                <tr className="bg-yellow-50 hover:bg-yellow-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Riz</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Sec</td>
+                  <td className="px-4 py-3 text-center text-gray-700">40 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">120 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">95 kg</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">25 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">15 kg</td>
+                  <td className="px-4 py-3 text-center text-gray-700">6,3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1x/sem</td>
+                </tr>
+                <tr className="bg-yellow-50 hover:bg-yellow-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Conserves</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Sec</td>
+                  <td className="px-4 py-3 text-center text-gray-700">100 boîtes</td>
+                  <td className="px-4 py-3 text-center text-gray-700">300 boîtes</td>
+                  <td className="px-4 py-3 text-center text-gray-700">250 boîtes</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">50 boîtes</td>
+                  <td className="px-4 py-3 text-center text-gray-700">3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">30 boîtes</td>
+                  <td className="px-4 py-3 text-center text-gray-700">8,3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1x/sem</td>
+                </tr>
+                {/* Boissons */}
+                <tr className="bg-green-50 hover:bg-green-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Eau</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Boisson</td>
+                  <td className="px-4 py-3 text-center text-gray-700">100 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">300 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">220 packs</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">80 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">2</td>
+                  <td className="px-4 py-3 text-center text-gray-700">40 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">5,5</td>
+                  <td className="px-4 py-3 text-center text-gray-700">2x/sem</td>
+                </tr>
+                <tr className="bg-green-50 hover:bg-green-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Sodas</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Boisson</td>
+                  <td className="px-4 py-3 text-center text-gray-700">80 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">250 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">180 packs</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">70 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">2</td>
+                  <td className="px-4 py-3 text-center text-gray-700">35 packs</td>
+                  <td className="px-4 py-3 text-center text-gray-700">5,1</td>
+                  <td className="px-4 py-3 text-center text-gray-700">2x/sem</td>
+                </tr>
+                <tr className="bg-green-50 hover:bg-green-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Vin</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Boisson</td>
+                  <td className="px-4 py-3 text-center text-gray-700">50 bouteilles</td>
+                  <td className="px-4 py-3 text-center text-gray-700">150 bouteilles</td>
+                  <td className="px-4 py-3 text-center text-gray-700">110 bouteilles</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">40 bouteilles</td>
+                  <td className="px-4 py-3 text-center text-gray-700">5</td>
+                  <td className="px-4 py-3 text-center text-gray-700">15 bouteilles</td>
+                  <td className="px-4 py-3 text-center text-gray-700">7,3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1x/sem</td>
+                </tr>
+                {/* Articles ménagers */}
+                <tr className="bg-purple-50 hover:bg-purple-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Papier toilette</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Ménager</td>
+                  <td className="px-4 py-3 text-center text-gray-700">200 rouleaux</td>
+                  <td className="px-4 py-3 text-center text-gray-700">600 rouleaux</td>
+                  <td className="px-4 py-3 text-center text-gray-700">480 rouleaux</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">120 rouleaux</td>
+                  <td className="px-4 py-3 text-center text-gray-700">3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">60 rouleaux</td>
+                  <td className="px-4 py-3 text-center text-gray-700">8</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1x/sem</td>
+                </tr>
+                <tr className="bg-purple-50 hover:bg-purple-100">
+                  <td className="px-4 py-3 font-poppins font-semibold text-gray-900">Détergent</td>
+                  <td className="px-4 py-3 text-center text-gray-700">Ménager</td>
+                  <td className="px-4 py-3 text-center text-gray-700">30 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">100 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">75 L</td>
+                  <td className="px-4 py-3 text-center font-semibold text-emerald-600">25 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">3</td>
+                  <td className="px-4 py-3 text-center text-gray-700">10 L</td>
+                  <td className="px-4 py-3 text-center text-gray-700">7,5</td>
+                  <td className="px-4 py-3 text-center text-gray-700">1x/sem</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 className="font-poppins font-semibold text-blue-900 mb-3">📌 Légende des calculs :</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-800">
+              <div>
+                <p><strong>À commander =</strong> Stock Opt - Stock Act</p>
+                <p><strong>Rotation (j) =</strong> Stock Opt / Consomm/j</p>
+              </div>
+              <div>
+                <p><strong>Consomm/j =</strong> Quantité vendue par jour en moyenne</p>
+                <p><strong>Délai (j) =</strong> Jours avant livraison du fournisseur</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Checklist réception */}
         <section className="mb-16 bg-gray-50 rounded-lg p-8 border border-gray-200">
           <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-6">
