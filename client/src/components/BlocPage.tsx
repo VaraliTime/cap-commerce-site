@@ -88,7 +88,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
 
         {/* Sections */}
         <div className="space-y-6 mb-12">
-          {bloc.sections.map((section: Section) => (
+          {bloc.sections.map((section: any) => (
             <Card 
               key={section.id}
               className="border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
@@ -122,7 +122,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-3">Points clés :</h4>
                       <ul className="space-y-2">
-                        {section.points_cles.map((point, idx) => (
+                        {section.points_cles.map((point: string, idx: number) => (
                           <li key={idx} className="flex gap-3 text-gray-700">
                             <span className="text-emerald-600 font-bold">✓</span>
                             <span>{point}</span>
@@ -136,7 +136,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Étapes :</h4>
                       <div className="space-y-4">
-                        {section.etapes.map((etape) => (
+                        {section.etapes.map((etape: any) => (
                           <div key={etape.numero} className="bg-white p-4 rounded border-l-4 border-emerald-600">
                             <h5 className="font-poppins font-semibold text-gray-900 mb-2">
                               Étape {etape.numero} : {etape.titre}
@@ -152,7 +152,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Documents :</h4>
                       <div className="space-y-3">
-                        {section.documents.map((doc, idx) => (
+                        {section.documents.map((doc: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {doc.nom}
@@ -168,7 +168,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Principes :</h4>
                       <div className="space-y-3">
-                        {section.principes.map((principe, idx) => (
+                        {section.principes.map((principe: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {principe.titre}
@@ -184,7 +184,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-3">Objectifs :</h4>
                       <ul className="space-y-2">
-                        {section.objectifs.map((obj, idx) => (
+                        {section.objectifs.map((obj: string, idx: number) => (
                           <li key={idx} className="flex gap-3 text-gray-700">
                             <span className="text-emerald-600 font-bold">•</span>
                             <span>{obj}</span>
@@ -198,7 +198,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Les 5B :</h4>
                       <div className="space-y-3">
-                        {section.cinq_b.map((item, idx) => (
+                        {section.cinq_b.map((item: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {item.lettre} - {item.mot}
@@ -214,7 +214,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Niveaux :</h4>
                       <div className="space-y-3">
-                        {section.niveaux.map((niveau, idx) => (
+                        {section.niveaux.map((niveau: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {niveau.nom} ({niveau.hauteur})
@@ -231,7 +231,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Types :</h4>
                       <div className="space-y-3">
-                        {section.types.map((type, idx) => (
+                        {section.types.map((type: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {type.type}
@@ -248,7 +248,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Méthode SBAM :</h4>
                       <div className="space-y-3">
-                        {section.sbam.map((item, idx) => (
+                        {section.sbam.map((item: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {item.lettre} - {item.mot}
@@ -264,7 +264,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Méthode CAP :</h4>
                       <div className="space-y-3">
-                        {section.cap.map((item, idx) => (
+                        {section.cap.map((item: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
                               {item.lettre} - {item.mot}
@@ -277,32 +277,50 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     </div>
                   )}
 
-                  {section.techniques && (
+                  {/* Bloc 4 Specific Renderers */}
+                  {section.conseils && (
                     <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Techniques :</h4>
+                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Conseils :</h4>
                       <div className="space-y-3">
-                        {section.techniques.map((tech, idx) => (
+                        {section.conseils.map((conseil: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              Étape {tech.etape} : {tech.titre}
+                              {conseil.titre}
                             </h5>
-                            <p className="text-gray-700">{tech.description}</p>
+                            <p className="text-gray-700">{conseil.description}</p>
                           </div>
                         ))}
                       </div>
                     </div>
                   )}
 
-                  {section.points && (
+                  {section.risques && (
                     <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Points importants :</h4>
+                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Risques :</h4>
                       <div className="space-y-3">
-                        {section.points.map((point, idx) => (
+                        {section.risques.map((risque: any, idx: number) => (
                           <div key={idx} className="bg-white p-4 rounded">
                             <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {point.titre}
+                              {risque.nom}
                             </h5>
-                            <p className="text-gray-700">{point.description}</p>
+                            <p className="text-gray-700 mb-2">{risque.description}</p>
+                            <p className="text-gray-600 text-sm"><strong>Prévention :</strong> {risque.prevention}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {section.regles && (
+                    <div className="mb-6">
+                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Règles :</h4>
+                      <div className="space-y-3">
+                        {section.regles.map((regle: any, idx: number) => (
+                          <div key={idx} className="bg-white p-4 rounded">
+                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
+                              {regle.titre}
+                            </h5>
+                            <p className="text-gray-700">{regle.description}</p>
                           </div>
                         ))}
                       </div>
@@ -313,44 +331,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
             </Card>
           ))}
         </div>
-
-        {/* Fiche de révision */}
-        <div className="bg-emerald-50 border-l-4 border-emerald-600 p-8 rounded mb-12">
-          <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-6">
-            📝 Fiche de révision rapide
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-poppins font-semibold text-emerald-700 mb-3">
-                Points clés du bloc
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                {bloc.sections.slice(0, 3).map((section, idx) => (
-                  <li key={idx}>• {section.titre}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-poppins font-semibold text-emerald-700 mb-3">
-                À retenir
-              </h3>
-              <p className="text-gray-700">
-                Ce bloc couvre les compétences essentielles pour maîtriser {bloc.titre.toLowerCase()}. 
-                Révisez régulièrement chaque section et testez vos connaissances.
-              </p>
-            </div>
-          </div>
-        </div>
       </main>
-
-      {/* Footer */}
-      <footer className="w-full bg-gray-900 text-white py-8 mt-16">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400">
-            © 2024 Réussir son CAP Commerce
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

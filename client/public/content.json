@@ -98,89 +98,8 @@
               "titre": "Hygiène et sécurité",
               "description": "Maintenez un espace de stockage propre et organisé. Respectez les normes d'hygiène et de sécurité alimentaire si nécessaire."
             }
-    },
-    {
-      "id": "bloc4",
-      "titre": "Prévention-Santé-Environnement",
-      "description": "Devenez acteur de votre prévention, de votre santé et de votre environnement professionnel",
-      "icone": "🛡️",
-      "couleur": "#065f46",
-      "sections": [
-        {
-          "id": "bloc4-sec1",
-          "titre": "Santé et Équilibre de vie",
-          "contenu": "La santé est un état de complet bien-être physique, mental et social. Pour un équipier du commerce, maintenir cet équilibre est essentiel pour assurer ses missions efficacement et durablement.",
-          "points_cles": [
-            "Le sommeil est le pilier de la récupération physique et nerveuse",
-            "Une alimentation équilibrée fournit l'énergie nécessaire pour la journée",
-            "L'activité physique régulière prévient les maladies chroniques",
-            "La gestion du stress améliore les relations avec les clients et l'équipe"
-          ]
-        },
-        {
-          "id": "bloc4-sec2",
-          "titre": "Le Sommeil et les Rythmes de vie",
-          "contenu": "Un bon sommeil est indispensable pour la vigilance en magasin et la sécurité au travail.",
-          "conseils": [
-            {
-              "titre": "Régularité",
-              "description": "Essayez de vous coucher et de vous lever à des heures régulières, même le week-end."
-            },
-            {
-              "titre": "Environnement",
-              "description": "Dormez dans une chambre calme, sombre et à une température idéale de 19°C."
-            },
-            {
-              "titre": "Déconnexion",
-              "description": "Évitez les écrans (lumière bleue) au moins 1 heure avant le coucher pour favoriser la mélatonine."
-            }
-          ]
-        },
-        {
-          "id": "bloc4-sec3",
-          "titre": "Prévention des Risques Professionnels",
-          "contenu": "Le secteur du commerce présente des risques spécifiques qu'il faut savoir identifier pour mieux s'en protéger.",
-          "risques": [
-            {
-              "nom": "Risques liés à l'activité physique",
-              "description": "Manutention de charges lourdes, gestes répétitifs, postures prolongées debout.",
-              "prevention": "Utiliser les aides à la manutention, adopter les bonnes postures (dos droit, jambes fléchies)."
-            },
-            {
-              "nom": "Risques liés aux ambiances",
-              "description": "Bruit en entrepôt, variations de température (chambres froides, courants d'air).",
-              "prevention": "Porter les EPI adaptés (casque antibruit, vêtements chauds)."
-            },
-            {
-              "nom": "Risques de chutes",
-              "description": "Sols glissants, obstacles dans les allées, travail en hauteur.",
-              "prevention": "Maintenir les zones de passage dégagées, porter des chaussures antidérapantes."
-            }
-          ]
-        },
-        {
-          "id": "bloc4-sec4",
-          "titre": "Cadre Juridique et Responsabilités",
-          "contenu": "L'équipier polyvalent du commerce doit respecter des règles strictes pour sa sécurité et celle des autres.",
-          "regles": [
-            {
-              "titre": "Interdiction de vente aux mineurs",
-              "description": "La vente d'alcool et de tabac est interdite aux moins de 18 ans. Une preuve d'identité peut être exigée."
-            },
-            {
-              "titre": "Sauveteur Secouriste du Travail (SST)",
-              "description": "Le SST est formé pour intervenir en cas d'urgence et alerter les secours (15, 18, 112)."
-            },
-            {
-              "titre": "Droit d'alerte et de retrait",
-              "description": "En cas de danger grave et imminent pour sa vie ou sa santé, le salarié peut se retirer de son poste."
-            }
           ]
         }
-      ]
-    }
-  ]
-}
       ]
     },
     {
@@ -465,6 +384,86 @@
             {
               "titre": "Remerciements et invitation",
               "description": "Remerciez le client et invitez-le à revenir : 'Merci beaucoup! À bientôt!' Cela crée une relation durable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc4",
+      "titre": "Prévention-Santé-Environnement",
+      "description": "Devenez acteur de votre prévention, de votre santé et de votre environnement professionnel",
+      "icone": "🛡️",
+      "couleur": "#065f46",
+      "sections": [
+        {
+          "id": "bloc4-sec1",
+          "titre": "Santé et Équilibre de vie",
+          "contenu": "La santé est un état de complet bien-être physique, mental et social. Pour un équipier du commerce, maintenir cet équilibre est essentiel pour assurer ses missions efficacement et durablement.",
+          "points_cles": [
+            "Le sommeil est le pilier de la récupération physique et nerveuse",
+            "Une alimentation équilibrée fournit l'énergie nécessaire pour la journée",
+            "L'activité physique régulière prévient les maladies chroniques",
+            "La gestion du stress améliore les relations avec les clients et l'équipe"
+          ]
+        },
+        {
+          "id": "bloc4-sec2",
+          "titre": "Le Sommeil et les Rythmes de vie",
+          "contenu": "Un bon sommeil est indispensable pour la vigilance en magasin et la sécurité au travail.",
+          "conseils": [
+            {
+              "titre": "Régularité",
+              "description": "Essayez de vous coucher et de vous lever à des heures régulières, même le week-end."
+            },
+            {
+              "titre": "Environnement",
+              "description": "Dormez dans une chambre calme, sombre et à une température idéale de 19°C."
+            },
+            {
+              "titre": "Déconnexion",
+              "description": "Évitez les écrans (lumière bleue) au moins 1 heure avant le coucher pour favoriser la mélatonine."
+            }
+          ]
+        },
+        {
+          "id": "bloc4-sec3",
+          "titre": "Prévention des Risques Professionnels",
+          "contenu": "Le secteur du commerce présente des risques spécifiques qu'il faut savoir identifier pour mieux s'en protéger.",
+          "risques": [
+            {
+              "nom": "Risques liés à l'activité physique",
+              "description": "Manutention de charges lourdes, gestes répétitifs, postures prolongées debout.",
+              "prevention": "Utiliser les aides à la manutention, adopter les bonnes postures (dos droit, jambes fléchies)."
+            },
+            {
+              "nom": "Risques liés aux ambiances",
+              "description": "Bruit en entrepôt, variations de température (chambres froides, courants d'air).",
+              "prevention": "Porter les EPI adaptés (casque antibruit, vêtements chauds)."
+            },
+            {
+              "nom": "Risques de chutes",
+              "description": "Sols glissants, obstacles dans les allées, travail en hauteur.",
+              "prevention": "Maintenir les zones de passage dégagées, porter des chaussures antidérapantes."
+            }
+          ]
+        },
+        {
+          "id": "bloc4-sec4",
+          "titre": "Cadre Juridique et Responsabilités",
+          "contenu": "L'équipier polyvalent du commerce doit respecter des règles strictes pour sa sécurité et celle des autres.",
+          "regles": [
+            {
+              "titre": "Interdiction de vente aux mineurs",
+              "description": "La vente d'alcool et de tabac est interdite aux moins de 18 ans. Une preuve d'identité peut être exigée."
+            },
+            {
+              "titre": "Sauveteur Secouriste du Travail (SST)",
+              "description": "Le SST est formé pour intervenir en cas d'urgence et alerter les secours (15, 18, 112)."
+            },
+            {
+              "titre": "Droit d'alerte et de retrait",
+              "description": "En cas de danger grave et imminent pour sa vie ou sa santé, le salarié peut se retirer de son poste."
             }
           ]
         }
