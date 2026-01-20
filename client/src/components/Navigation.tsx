@@ -17,6 +17,7 @@ export default function Navigation() {
     { label: "Bloc 3", href: "/bloc3" },
     { label: "Bloc 4", href: "/bloc4" },
     { label: "Quiz", href: "/quiz" },
+    { label: "Schémas", href: "/schemas" },
     { label: "Cadencier", href: "/cadencier" },
     { label: "Plans de masse", href: "/plans-masse" },
     { label: "Vidéos", href: "/videos" },
