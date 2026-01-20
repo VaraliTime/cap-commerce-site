@@ -25,7 +25,6 @@ export default function Navigation() {
     { label: "Schémas", href: "/schemas" },
     { label: "Cadencier", href: "/cadencier" },
     { label: "Plans de masse", href: "/plans-masse" },
-    { label: "Vidéos", href: "/videos" },
     { label: "Ressources", href: "/ressources" },
     { label: "Outils", href: "/outils" },
     { label: "Annales", href: "/annales" }
