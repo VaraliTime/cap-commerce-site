@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils, Star, Play, Download, CheckCircle } from "lucide-react";
+import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils, Star, Play, Download, CheckCircle, FileText } from "lucide-react";
 
 export default function Podcasts() {
   const podcastCategories = [
@@ -88,6 +88,7 @@ export default function Podcasts() {
       expert: "Philippe Rovira",
       description: "Un épisode crucial pour comprendre les étapes de l'inventaire, le redressement des stocks et la gestion des écarts. Indispensable pour le Bloc 1.",
       embedUrl: "https://player.captivate.fm/episode/0f35c967-3e00-4703-99e3-5dfa5ecaebba",
+      pdfUrl: "/podcast_fiche_inventaire.pdf",
       tags: ["Bloc 1", "Stocks", "Inventaire"]
     },
     {
@@ -95,9 +96,17 @@ export default function Podcasts() {
       podcast: "Les Voix de la Conso",
       expert: "Olivier Dauvers",
       description: "Comprendre les causes du vol et de la casse, et mettre en place des plans d'action efficaces pour protéger la marge.",
-      embedUrl: "https://www.youtube.com/embed/VbKeFvnAyD4", // Utilisation d'une vidéo pédagogique comme alternative si embed podcast indisponible
+      embedUrl: "https://www.youtube.com/embed/VbKeFvnAyD4",
+      pdfUrl: "/bloc1_reception_stockage.pdf",
       tags: ["Bloc 1", "Sécurité", "Marge"]
     }
+  ];
+
+  const blocPdfs = [
+    { title: "Bloc 1 : Réception & Stockage", url: "/bloc1_reception_stockage.pdf", color: "bg-blue-500" },
+    { title: "Bloc 2 : Merchandising & Appro", url: "/bloc2_merchandising_approvisionnement.pdf", color: "bg-emerald-500" },
+    { title: "Bloc 3 : Conseil & Vente", url: "/bloc3_conseil_accompagnement.pdf", color: "bg-purple-500" },
+    { title: "Bloc 4 : PSE & Environnement", url: "/bloc4_pse.pdf", color: "bg-orange-500" }
   ];
 
   const PodcastCard = ({ podcast }: { podcast: any }) => (
@@ -159,12 +168,35 @@ export default function Podcasts() {
             </div>
           </div>
           <h1 className="font-playfair text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Podcasts Commerce
+            Podcasts & Fiches de Synthèse
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            Transformez vos trajets en moments d'apprentissage ! Découvrez une sélection de podcasts 
-            incontournables pour explorer l'univers du retail, du e-commerce et du merchandising.
+            Apprenez en écoutant et révisez avec nos fiches PDF exclusives. Tout pour réussir votre CAP EPC !
           </p>
+        </section>
+
+        {/* Section Téléchargements PDF Blocs */}
+        <section className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <FileText className="text-emerald-600" size={32} />
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-poppins">
+              Fiches de Synthèse par Bloc
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {blocPdfs.map((pdf, idx) => (
+              <a 
+                key={idx} 
+                href={pdf.url} 
+                download 
+                className={`${pdf.color} hover:opacity-90 text-white p-6 rounded-xl shadow-lg transition-all flex flex-col items-center text-center gap-3 group`}
+              >
+                <Download className="group-hover:scale-110 transition-transform" size={32} />
+                <span className="font-bold font-poppins">{pdf.title}</span>
+                <span className="text-xs opacity-80">Télécharger le PDF</span>
+              </a>
+            ))}
+          </div>
         </section>
 
         {/* Podcast de la semaine */}
@@ -186,16 +218,25 @@ export default function Podcasts() {
                 </span>
                 <h3 className="text-3xl font-bold mb-4 font-poppins">Les fondamentaux du merchandising efficace</h3>
                 <p className="text-emerald-50 mb-6 text-lg max-w-2xl">
-                  Adrien Bernard (Pour toutes ces bonnes raisons) nous explique comment optimiser ses linéaires 
-                  pour booster les ventes et améliorer l'expérience client. Un must pour le Bloc 2 !
+                  Adrien Bernard nous explique comment optimiser ses linéaires pour booster les ventes. 
+                  Un must pour le Bloc 2 !
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                  <button className="bg-white text-emerald-700 hover:bg-emerald-50 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all">
+                  <a 
+                    href="https://open.spotify.com/show/1rDoz6eLm9OuiRQcWFl69A" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white text-emerald-700 hover:bg-emerald-50 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all"
+                  >
                     <Play size={20} fill="currentColor" /> Écouter l'épisode
-                  </button>
-                  <button className="bg-emerald-800/40 hover:bg-emerald-800/60 text-white border border-white/30 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all">
-                    <Download size={20} /> Fiche de synthèse
-                  </button>
+                  </a>
+                  <a 
+                    href="/podcast_fiche_merchandising.pdf" 
+                    download
+                    className="bg-emerald-800/40 hover:bg-emerald-800/60 text-white border border-white/30 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all"
+                  >
+                    <Download size={20} /> Fiche de synthèse PDF
+                  </a>
                 </div>
               </div>
             </div>
@@ -231,7 +272,7 @@ export default function Podcasts() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
                     {episode.description}
                   </p>
-                  <div className="rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-inner bg-gray-50 dark:bg-gray-900">
+                  <div className="rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-inner bg-gray-50 dark:bg-gray-900 mb-6">
                     <iframe 
                       style={{ width: '100%', height: '180px' }} 
                       src={episode.embedUrl} 
@@ -240,11 +281,13 @@ export default function Podcasts() {
                       allowFullScreen
                     ></iframe>
                   </div>
-                </div>
-                <div className="bg-blue-50/50 dark:bg-blue-900/10 p-4 border-t border-blue-50 dark:border-blue-900/30">
-                  <button className="w-full text-blue-600 dark:text-blue-400 font-bold text-sm flex items-center justify-center gap-2 hover:underline">
-                    Faire le mini-quiz après écoute →
-                  </button>
+                  <a 
+                    href={episode.pdfUrl} 
+                    download
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all"
+                  >
+                    <Download size={18} /> Télécharger la fiche de révision PDF
+                  </a>
                 </div>
               </Card>
             ))}
@@ -297,33 +340,12 @@ export default function Podcasts() {
             </div>
           </div>
         </section>
-
-        {/* Lien CAP EPC */}
-        <section className="mt-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border-2 border-blue-100 dark:border-blue-800">
-          <h2 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">
-            🎓 Lien avec le CAP EPC
-          </h2>
-          <div className="text-gray-700 dark:text-gray-300 text-sm space-y-2">
-            <p>
-              <strong>Bloc 1 - Réception & Stockage :</strong> "Sans Filtre Ajouté" et "Je Bosse en Grande Distribution" pour la gestion des stocks alimentaires.
-            </p>
-            <p>
-              <strong>Bloc 2 - Merchandising :</strong> "Pour toutes ces bonnes raisons" et les épisodes sur la gestion de rayon de "Je Bosse en Grande Distribution".
-            </p>
-            <p>
-              <strong>Bloc 3 - Vente & Relation Client :</strong> "Le Panier" et "Eat's Business" pour les tendances de consommation alimentaire.
-            </p>
-            <p>
-              <strong>Bloc 4 - PSE :</strong> "Au Rayon Futur" pour les innovations responsables et l'anti-gaspillage.
-            </p>
-          </div>
-        </section>
       </main>
 
       <footer className="bg-gray-900 text-white py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-400">
-            © 2026 Réussir son CAP Commerce. Podcasts sélectionnés pour la préparation du CAP EPC.
+            © 2026 Réussir son CAP Commerce. Ressources pédagogiques pour la préparation du CAP EPC.
           </p>
         </div>
       </footer>
