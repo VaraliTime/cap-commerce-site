@@ -141,6 +141,66 @@ export default function Ressources() {
           </div>
         </section>
 
+        {/* Fiches PDF Téléchargeables */}
+        <section className="mb-16">
+          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+            📥 Fiches de Révision PDF Téléchargeables
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {[
+              { titre: "Fiche Synthèse - Bloc 1", desc: "Points clés de la réception", size: "2.3 MB" },
+              { titre: "Fiche Synthèse - Bloc 2", desc: "Merchandising et rayons", size: "1.8 MB" },
+              { titre: "Fiche Synthèse - Bloc 3", desc: "Vente et accueil client", size: "2.1 MB" },
+              { titre: "Fiche Synthèse - Bloc 4", desc: "PSE et environnement", size: "1.9 MB" },
+              { titre: "Lexique Complet", desc: "150+ termes techniques", size: "3.2 MB" },
+              { titre: "Formules Commerciales", desc: "Calculs avec exemples", size: "1.5 MB" }
+            ].map((fiche, idx) => (
+              <Card key={idx} className="p-6 border-2 border-blue-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-2xl">📄</span>
+                  <span className="text-xs font-bold text-blue-600 uppercase">PDF</span>
+                </div>
+                <h3 className="font-poppins font-semibold text-gray-900 mb-2">{fiche.titre}</h3>
+                <p className="text-gray-600 text-sm mb-4">{fiche.desc}</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <span>Taille: {fiche.size}</span>
+                </div>
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold text-sm transition-colors">
+                  ⬇️ Télécharger
+                </button>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Galerie de Photos */}
+        <section className="mb-16">
+          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+            🖼️ Galerie - Bonnes et Mauvaises Pratiques
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {[
+              { titre: "Bon Facing", cat: "Merchandising", desc: "Rayon bien organisé" },
+              { titre: "Mauvais Facing", cat: "Merchandising", desc: "À éviter absolument" },
+              { titre: "Tête de Gondole", cat: "Merchandising", desc: "Présentation attractive" },
+              { titre: "Réserve Organisée", cat: "Réception", desc: "Stockage logique" },
+              { titre: "Bon Port de Charge", cat: "PSE", desc: "Posture correcte" },
+              { titre: "Mauvaise Posture", cat: "PSE", desc: "Risque de TMS" }
+            ].map((photo, idx) => (
+              <Card key={idx} className="overflow-hidden border-2 border-green-100 hover:shadow-lg transition-shadow">
+                <div className="h-40 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
+                  <span className="text-4xl">🖼️</span>
+                </div>
+                <div className="p-4">
+                  <span className="text-xs font-bold text-green-600 uppercase">{photo.cat}</span>
+                  <h3 className="font-poppins font-semibold text-gray-900 mt-2">{photo.titre}</h3>
+                  <p className="text-gray-600 text-sm mt-2">{photo.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
         {/* Competences Transversales */}
         <section>
           <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-8">

@@ -12,6 +12,8 @@ import Bloc1 from "./pages/Bloc1";
 import Bloc2 from "./pages/Bloc2";
 import Bloc3 from "./pages/Bloc3";
 import Bloc4 from "./pages/Bloc4";
+import Outils from "./pages/Outils";
+import Annales from "./pages/Annales";
 import Ressources from "./pages/Ressources";
 import Cadencier from "./pages/Cadencier";
 import PlansMasse from "./pages/PlanseMasse";
@@ -28,8 +30,10 @@ function Router() {
       <Route path={"/bloc1"} component={Bloc1} />
       <Route path={"/bloc2"} component={Bloc2} />
       <Route path={"/bloc3"} component={Bloc3} />
-      <Route path={"/bloc4"} component={Bloc4} />
-      <Route path={"/ressources"} component={Ressources} />
+          <Route path="/bloc4" component={Bloc4} />
+      <Route path="/ressources" component={Ressources} />
+      <Route path="/outils" component={Outils} />
+      <Route path="/annales" component={Annales} />
       <Route path={"/cadencier"} component={Cadencier} />
       <Route path={"/plans-masse"} component={PlansMasse} />
       <Route path={"/videos"} component={Videos} />
