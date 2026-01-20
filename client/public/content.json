@@ -92,8 +92,12 @@
               "description": "Respectez les conditions spécifiques : température (chaîne du froid), humidité, luminosité."
             },
             {
-              "titre": "L'Inventaire",
-              "description": "Opération consistant à compter physiquement les produits en stock pour détecter la démarque inconnue (vols, casses, erreurs)."
+              "titre": "Les Types d'Inventaire",
+              "description": "1. Annuel : Une fois par an (obligatoire). 2. Tournant : Par zone ou catégorie tout au long de l'année. 3. Permanent : Mise à jour du stock après chaque entrée/sortie."
+            },
+            {
+              "titre": "La Démarque",
+              "description": "Connue : Pertes identifiées (casse, produits périmés). Inconnue : Pertes non identifiées (vols, erreurs de caisse ou de livraison)."
             },
             {
               "titre": "Hygiène et sécurité",

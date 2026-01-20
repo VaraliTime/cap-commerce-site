@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-012",
+    "date": "2026-01-20",
+    "heure": "18:30",
+    "titre": "Focus Inventaire & Démarque",
+    "description": "Ajout de fiches détaillées sur les types d'inventaire (annuel, tournant, permanent) et la gestion des démarques connues et inconnues.",
+    "type": "content"
+  },
+  {
     "id": "upd-011",
     "date": "2026-01-20",
     "heure": "18:15",
