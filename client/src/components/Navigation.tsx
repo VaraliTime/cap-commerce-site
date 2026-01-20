@@ -19,6 +19,7 @@ export default function Navigation() {
     { label: "Bloc 2", href: "/bloc2" },
     { label: "Bloc 3", href: "/bloc3" },
     { label: "Bloc 4", href: "/bloc4" },
+    { label: "Examen", href: "/referentiel" },
     { label: "Quiz", href: "/quiz" },
     { label: "Schémas", href: "/schemas" },
     { label: "Cadencier", href: "/cadencier" },

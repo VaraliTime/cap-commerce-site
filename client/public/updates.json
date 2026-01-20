@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-007",
+    "date": "2026-01-20",
+    "heure": "11:35",
+    "titre": "Guide Référentiel Examen",
+    "description": "Création d'une page détaillée listant les compétences et modalités des épreuves EP1, EP2 et EP3 pour le jour du diplôme.",
+    "type": "content"
+  },
+  {
     "id": "upd-006",
     "date": "2026-01-20",
     "heure": "11:25",
