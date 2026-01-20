@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
+import { RadioPlayer } from "./RadioPlayer";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,26 +44,30 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation & Radio */}
+          <div className="hidden lg:flex items-center gap-4">
             <SearchBar />
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <a
-                  className={`font-poppins font-medium transition-colors text-sm ${
-                    isActive(item.href)
-                      ? "text-emerald-600 border-b-2 border-emerald-600 pb-1"
-                      : "text-gray-600 hover:text-emerald-600"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </Link>
-            ))}
+            <div className="flex items-center gap-4 mr-2">
+              {navItems.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  <a
+                    className={`font-poppins font-medium transition-colors text-sm ${
+                      isActive(item.href)
+                        ? "text-emerald-600 border-b-2 border-emerald-600 pb-1"
+                        : "text-gray-600 hover:text-emerald-600"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              ))}
+            </div>
+            <RadioPlayer />
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button & Radio */}
           <div className="flex items-center gap-3 lg:hidden">
+            <RadioPlayer />
             <div className="sm:hidden">
                <LiveVisitors />
             </div>
