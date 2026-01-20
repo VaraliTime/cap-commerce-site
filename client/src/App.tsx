@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { Chatbot } from "./components/Chatbot";
+import { MaintenanceOverlay } from "./components/MaintenanceOverlay";
 import Home from "./pages/Home";
 import Bloc1 from "./pages/Bloc1";
 import Bloc2 from "./pages/Bloc2";
@@ -43,15 +44,21 @@ function Router() {
 }
 
 function App() {
+  // Logique de maintenance jusqu'à 19h (20 Janvier 2026)
+  const now = new Date();
+  const maintenanceEnd = new Date('2026-01-20T19:00:00');
+  const isMaintenance = now < maintenanceEnd;
+
   return (
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
       >
         <TooltipProvider>
+          {isMaintenance && <MaintenanceOverlay />}
           <Toaster />
           <Router />
-          <Chatbot />
+          {!isMaintenance && <Chatbot />}
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
