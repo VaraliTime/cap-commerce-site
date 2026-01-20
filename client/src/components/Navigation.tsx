@@ -2,10 +2,10 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
-import { LiveVisitors } from "./LiveVisitors";
+import { AdvancedLiveVisitors } from "./AdvancedLiveVisitors";
 import { RadioPlayer } from "./RadioPlayer";
-import { UpdateNotes } from "./UpdateNotes";
-import { RealTimeClock } from "./RealTimeClock";
+import { UpdateNotifications } from "./UpdateNotifications";
+import { RealtimeClock } from "./RealtimeClock";
 import { DarkModeToggle } from "./DarkModeToggle";
 
 export default function Navigation() {
@@ -45,7 +45,7 @@ export default function Navigation() {
               </div>
             </Link>
             <div className="hidden lg:block border-l border-gray-200 dark:border-gray-700 pl-8">
-              <LiveVisitors />
+              <AdvancedLiveVisitors />
             </div>
           </div>
 
@@ -72,9 +72,9 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-700">
-              <RealTimeClock />
+              <RealtimeClock />
               <DarkModeToggle />
-              <UpdateNotes />
+              <UpdateNotifications />
               <RadioPlayer />
             </div>
           </div>
