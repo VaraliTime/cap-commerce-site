@@ -10,7 +10,7 @@ import {
 
 const STATIONS = [
   { name: 'NRJ', url: 'https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=fluxradios' },
-  { name: 'RTL2', url: 'https://rtl-radio.cdn-live.6play.fr/rtl2-1-44-128' },
+  { name: 'RTL2', url: 'https://streaming.radio.funradio.fr/rtl2-1-44-128' },
   { name: 'Skyrock', url: 'https://icecast.skyrock.net/s/natio_mp3_128k' }
 ];
 
