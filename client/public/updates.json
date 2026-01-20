@@ -1,5 +1,21 @@
 [
   {
+    "id": "upd-011",
+    "date": "2026-01-20",
+    "heure": "18:15",
+    "titre": "Enrichissement des Cours",
+    "description": "Mise à jour majeure de tous les blocs (1 à 4) : ajout du SONCAS, PRAP, développement durable, traçabilité et gestion des stocks pour une préparation exhaustive.",
+    "type": "content"
+  },
+  {
+    "id": "upd-010",
+    "date": "2026-01-20",
+    "heure": "18:05",
+    "titre": "Maintenance Programmée",
+    "description": "Mise en place d'un système de maintenance automatique pour assurer la stabilité du site lors des mises à jour techniques.",
+    "type": "feature"
+  },
+  {
     "id": "upd-009",
     "date": "2026-01-20",
     "heure": "17:45",
