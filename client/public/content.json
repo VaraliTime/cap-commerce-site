@@ -10,99 +10,22 @@
         {
           "id": "bloc1-sec1",
           "titre": "Généralités sur la réception",
-          "contenu": "La réception des marchandises est une étape cruciale de la chaîne logistique. Elle garantit que les produits reçus correspondent exactement à la commande passée, tant en quantité qu'en qualité. Le réceptionnaire est responsable de vérifier que tout est conforme avant d'accepter la livraison.",
+          "contenu": "La réception des marchandises est une étape cruciale de la chaîne logistique. Elle garantit que les produits reçus correspondent exactement à la commande passée, tant en quantité qu'en qualité.",
           "points_cles": [
             "La réception est la première étape du processus de mise en stock",
             "Elle requiert rigueur et attention aux détails",
-            "Le réceptionnaire doit connaître les procédures de l'entreprise",
             "La traçabilité des produits est essentielle"
           ]
         },
         {
           "id": "bloc1-sec2",
-          "titre": "Processus de réception détaillé",
+          "titre": "Processus de réception",
           "contenu": "Le processus de réception suit plusieurs étapes bien définies pour assurer la conformité de la livraison.",
           "etapes": [
-            {
-              "numero": 1,
-              "titre": "Accueil du transporteur",
-              "description": "Accueillez le livreur avec courtoisie, vérifiez son identité et celle de l'entreprise de transport."
-            },
-            {
-              "numero": 2,
-              "titre": "Vérification des documents",
-              "description": "Comparez le Bon de Livraison (BL) avec le Bon de Commande (BC). Vérifiez que les références, quantités et prix correspondent."
-            },
-            {
-              "numero": 3,
-              "titre": "Contrôle quantitatif",
-              "description": "Comptez les colis reçus et vérifiez qu'ils correspondent au nombre indiqué sur le BL. Vérifiez également le poids total si applicable."
-            },
-            {
-              "numero": 4,
-              "titre": "Contrôle qualitatif",
-              "description": "Inspectez l'état des produits : emballages intacts, dates de péremption valides, absence de dommages."
-            },
-            {
-              "numero": 5,
-              "titre": "Signature et Bon de Réception",
-              "description": "Signez le BL. Si tout est conforme, émettez un Bon de Réception (BR). Si des réserves existent, notez-les clairement."
-            },
-            {
-              "numero": 6,
-              "titre": "Rangement en stock",
-              "description": "Transportez les marchandises en réserve ou directement en rayon selon la procédure de l'entreprise."
-            }
-          ]
-        },
-        {
-          "id": "bloc1-sec3",
-          "titre": "Documents essentiels et Traçabilité",
-          "documents": [
-            {
-              "nom": "Bon de Commande (BC)",
-              "description": "Document émis par l'acheteur (magasin) au fournisseur. Contient les références, quantités et prix des produits commandés."
-            },
-            {
-              "nom": "Bon de Livraison (BL)",
-              "description": "Document émis par le fournisseur ou le transporteur. Accompagne la livraison et liste les produits expédiés."
-            },
-            {
-              "nom": "Bon de Réception (BR)",
-              "description": "Document interne émis par le réceptionnaire après vérification. Confirme la conformité de la livraison."
-            },
-            {
-              "nom": "Facture",
-              "description": "Document commercial et fiscal émis par le fournisseur. Utilisée pour le paiement et la comptabilité."
-            }
-          ],
-          "traçabilite": "La traçabilité permet de suivre le produit de sa fabrication à sa vente. Elle repose sur le numéro de lot et la DLC/DLUO."
-        },
-        {
-          "id": "bloc1-sec4",
-          "titre": "Rangement, Stockage et Inventaire",
-          "contenu": "Après la réception, les produits doivent être rangés correctement pour faciliter leur accès et préserver leur qualité.",
-          "principes": [
-            {
-              "titre": "Règle FIFO",
-              "description": "First In, First Out (Premier Entré, Premier Sorti). Les produits reçus en premier doivent être vendus en premier pour éviter le gaspillage."
-            },
-            {
-              "titre": "Conditions de stockage",
-              "description": "Respectez les conditions spécifiques : température (chaîne du froid), humidité, luminosité."
-            },
-            {
-              "titre": "Les Types d'Inventaire",
-              "description": "1. Annuel : Une fois par an (obligatoire). 2. Tournant : Par zone ou catégorie tout au long de l'année. 3. Permanent : Mise à jour du stock après chaque entrée/sortie."
-            },
-            {
-              "titre": "La Démarque",
-              "description": "Connue : Pertes identifiées (casse, produits périmés). Inconnue : Pertes non identifiées (vols, erreurs de caisse ou de livraison)."
-            },
-            {
-              "titre": "Hygiène et sécurité",
-              "description": "Maintenez un espace de stockage propre et organisé. Respectez les normes d'hygiène et de sécurité."
-            }
+            { "numero": 1, "titre": "Accueil du transporteur", "description": "Vérifiez l'identité et l'entreprise de transport." },
+            { "numero": 2, "titre": "Vérification des documents", "description": "Comparez le Bon de Livraison (BL) avec le Bon de Commande (BC)." },
+            { "numero": 3, "titre": "Contrôle quantitatif", "description": "Comptez les colis reçus." },
+            { "numero": 4, "titre": "Contrôle qualitatif", "description": "Inspectez l'état des produits et les dates de péremption." }
           ]
         }
       ]
@@ -117,123 +40,22 @@
         {
           "id": "bloc2-sec1",
           "titre": "Principes du merchandising",
-          "contenu": "Le merchandising est l'ensemble des techniques d'optimisation de la présentation des produits pour maximiser les ventes.",
+          "contenu": "Le merchandising est l'art de présenter les produits de manière à maximiser les ventes.",
           "objectifs": [
             "Augmenter les ventes et le chiffre d'affaires",
-            "Améliorer l'image et l'ambiance du magasin",
-            "Faciliter la recherche et l'accès aux produits",
-            "Créer une expérience d'achat agréable"
+            "Améliorer l'image du magasin",
+            "Faciliter l'accès aux produits"
           ]
         },
         {
           "id": "bloc2-sec2",
-          "titre": "Les 5B de Kepner et l'Assortiment",
-          "contenu": "La méthode des 5B est un cadre fondamental pour le merchandising efficace.",
+          "titre": "Les 5B de Kepner",
           "cinq_b": [
-            {
-              "lettre": "B",
-              "mot": "Bon produit",
-              "explication": "Le produit doit répondre aux besoins de la zone de chalandise."
-            },
-            {
-              "lettre": "B",
-              "mot": "Bon endroit",
-              "explication": "Emplacement stratégique dans le magasin et sur le rayon."
-            },
-            {
-              "lettre": "B",
-              "mot": "Bon moment",
-              "explication": "Saisonnalité et disponibilité permanente."
-            },
-            {
-              "lettre": "B",
-              "mot": "Bonne quantité",
-              "explication": "Éviter les ruptures tout en limitant le surstock."
-            },
-            {
-              "lettre": "B",
-              "mot": "Bonne information",
-              "explication": "Prix lisible, balisage clair et promotion visible."
-            }
-          ]
-        },
-        {
-          "id": "bloc2-sec3",
-          "titre": "Niveaux de présentation et Facing",
-          "contenu": "La position des produits sur le rayon influence directement les ventes. Le facing assure la visibilité.",
-          "niveaux": [
-            {
-              "nom": "Niveau des yeux",
-              "hauteur": "140-170 cm",
-              "caracteristiques": "Zone la plus vendeuse. Pour les produits à forte marge ou nouveautés."
-            },
-            {
-              "nom": "Niveau des mains",
-              "hauteur": "80-140 cm",
-              "caracteristiques": "Facile d'accès. Pour les produits de consommation courante."
-            },
-            {
-              "nom": "Niveau des pieds",
-              "hauteur": "0-80 cm",
-              "caracteristiques": "Moins visible. Pour les produits lourds, volumineux ou premiers prix."
-            },
-            {
-              "nom": "Niveau du chapeau",
-              "hauteur": "170+ cm",
-              "caracteristiques": "Difficile d'accès. Utilisé pour le stockage de réserve ou la signalétique."
-            }
-          ]
-        },
-        {
-          "id": "bloc2-sec4",
-          "titre": "Approvisionnement et Gestion des Rayons",
-          "etapes": [
-            {
-              "titre": "Le Facing",
-              "description": "Ramener les produits vers l'avant du rayon pour donner une impression de plein."
-            },
-            {
-              "titre": "Le Plein",
-              "description": "Remplir les rayons en respectant le FIFO (rotation des dates)."
-            },
-            {
-              "titre": "Le Balisage",
-              "description": "Vérifier que chaque produit a son étiquette prix correspondante (obligatoire)."
-            }
-          ]
-        },
-        {
-          "id": "bloc2-sec5",
-          "titre": "Signalétique, ILV et PLV",
-          "contenu": "Une bonne signalétique guide le client et facilite ses achats.",
-          "types": [
-            {
-              "type": "ILV (Information)",
-              "description": "Guide le client (panneaux de secteurs, étiquettes techniques)."
-            },
-            {
-              "type": "PLV (Publicité)",
-              "description": "Pousse à l'achat (affiches promo, présentoirs de marque)."
-            }
-          ]
-        },
-        {
-          "id": "bloc2-sec6",
-          "titre": "L'Omnicanalité et Nouveaux Services",
-          "contenu": "Le commerce moderne intègre le physique et le digital.",
-          "services": [
-            {
-              "titre": "Click & Collect",
-              "description": "Achat en ligne, retrait en magasin."
-            },
-            {
-              "titre": "Drive",
-              "description": "Retrait des courses directement dans le coffre de la voiture."
-            },
-            {
-              "titre": "E-Réservation",
-              "description": "Réserver un article en ligne pour l'essayer en magasin."
-            }
+            { "lettre": "B", "mot": "Bon produit" },
+            { "lettre": "B", "mot": "Bon endroit" },
+            { "lettre": "B", "mot": "Bon moment" },
+            { "lettre": "B", "mot": "Bonne quantité" },
+            { "lettre": "B", "mot": "Bonne information" }
           ]
         }
       ]
@@ -243,121 +65,74 @@
       "titre": "Conseil et accompagnement du client",
       "description": "Maîtrisez les techniques de vente et d'accueil pour offrir un excellent service client",
       "icone": "👥",
-      "couleur": "#047857",
+      "couleur": "#2563EB",
       "sections": [
         {
           "id": "bloc3-sec1",
-          "titre": "L'Accueil et la Méthode SBAM",
-          "contenu": "L'accueil est le premier contact. Il doit être irréprochable.",
-          "sbam": [
-            { "lettre": "S", "mot": "Sourire", "description": "Même au téléphone, le sourire s'entend." },
-            { "lettre": "B", "mot": "Bonjour", "description": "Salutation systématique dès l'entrée du client." },
-            { "lettre": "A", "mot": "Au revoir", "description": "Prendre congé poliment pour laisser une bonne impression." },
-            { "lettre": "M", "mot": "Merci", "description": "Remercier pour l'achat ou simplement pour la visite." }
-          ]
-        },
-        {
-          "id": "bloc3-sec2",
-          "titre": "Les Étapes de la Vente",
-          "etapes": [
-            { "numero": 1, "titre": "Prise de contact", "description": "Accueil SBAM et phrase d'accroche." },
-            { "numero": 2, "titre": "Découverte", "description": "Questions ouvertes pour identifier les besoins et mobiles d'achat (SONCAS)." },
-            { "numero": 3, "titre": "Argumentation", "description": "Utilisation de la méthode CAP (Caractéristique, Avantage, Preuve)." },
-            { "numero": 4, "titre": "Objections", "description": "Écouter, reformuler et répondre aux freins du client." },
-            { "numero": 5, "titre": "Conclusion", "description": "Conclure la vente et proposer une vente additionnelle." }
-          ]
-        },
-        {
-          "id": "bloc3-sec3",
-          "titre": "Le SONCAS : Comprendre les Mobiles d'Achat",
-          "contenu": "Chaque client a une motivation principale pour acheter.",
-          "mobiles": [
-            { "lettre": "S", "mot": "Sécurité", "description": "Besoin d'être rassuré (garantie, solidité)." },
-            { "lettre": "O", "mot": "Orgueil", "description": "Besoin de se valoriser (prestige, marque)." },
-            { "lettre": "N", "mot": "Nouveauté", "description": "Besoin de changement (innovation, mode)." },
-            { "lettre": "C", "mot": "Confort", "description": "Besoin de facilité (bien-être, simplicité)." },
-            { "lettre": "A", "mot": "Argent", "description": "Besoin d'économie (prix, promotion)." },
-            { "lettre": "S", "mot": "Sympathie", "description": "Besoin de relation (accueil, cadeau)." }
-          ]
-        },
-        {
-          "id": "bloc3-sec4",
-          "titre": "L'Encaissement et la Fidélisation",
-          "contenu": "L'acte de paiement doit être rapide et sécurisé.",
-          "points": [
-            { "titre": "Moyens de paiement", "description": "Espèces, CB, Sans contact, Chèques, Bons d'achat." },
-            { "titre": "Fidélisation", "description": "Proposer la carte de fidélité, collecter l'email (RGPD)." },
-            { "titre": "Services", "description": "Paquet cadeau, livraison, SAV." }
+          "titre": "L'accueil du client",
+          "contenu": "L'accueil est la première étape cruciale de la vente. Il doit être chaleureux et professionnel.",
+          "points_cles": [
+            "La méthode SBAM (Sourire, Bonjour, Au revoir, Merci)",
+            "La règle des 4x20",
+            "L'importance de la posture"
           ]
         }
       ]
     },
     {
       "id": "bloc4",
-      "titre": "Prévention-Santé-Environnement",
-      "description": "Devenez acteur de votre prévention, de votre santé et de votre environnement professionnel",
-      "icone": "🛡️",
-      "couleur": "#065f46",
+      "titre": "Encaissement et Fidélisation",
+      "description": "Maîtrisez les procédures de caisse, les moyens de paiement et la relation client durable",
+      "icone": "💳",
+      "couleur": "#7C3AED",
       "sections": [
         {
           "id": "bloc4-sec1",
-          "titre": "Santé et Hygiène de Vie",
-          "contenu": "Un bon équilibre est nécessaire pour tenir le rythme en magasin.",
-          "piliers": [
-            { "titre": "Sommeil", "description": "Récupération physique et mentale (7-8h par nuit)." },
-            { "titre": "Alimentation", "description": "Énergie stable pour éviter la fatigue." },
-            { "titre": "Addictions", "description": "Dangers du tabac, alcool et drogues sur la vigilance." }
+          "titre": "Procédures de caisse",
+          "contenu": "La tenue de caisse demande rigueur et honnêteté.",
+          "points_cles": [
+            "Ouverture de caisse : vérification du fond de caisse",
+            "Enregistrement : scan des articles, gestion des antivols",
+            "Fermeture : comptage et prélèvement"
           ]
         },
         {
           "id": "bloc4-sec2",
-          "titre": "Prévention des Risques (PRAP)",
-          "contenu": "Apprendre à protéger son corps au travail.",
+          "titre": "Moyens de paiement",
+          "paiements": [
+            { "nom": "Espèces", "description": "Vérification des billets, rendu de monnaie." },
+            { "nom": "Carte Bancaire", "description": "Paiement sans contact ou avec code." },
+            { "nom": "Titres Restaurant", "description": "Vérification de la validité." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pse",
+      "titre": "Prévention Santé Environnement",
+      "description": "Assurez votre sécurité et celle des autres tout en préservant l'environnement",
+      "icone": "🛡️",
+      "couleur": "#DC2626",
+      "sections": [
+        {
+          "id": "pse-sec1",
+          "titre": "Santé et Sécurité au travail",
           "risques": [
-            { "nom": "TMS", "description": "Troubles Musculo-Squelettiques dus aux gestes répétitifs." },
-            { "nom": "Manutention", "description": "Porter avec les jambes, dos droit, charge près du corps." },
-            { "nom": "Chutes", "description": "Sols glissants, encombrement des allées." }
+            "Troubles Musculo-Squelettiques (TMS)",
+            "Chutes de plain-pied",
+            "Risques liés à la manutention"
           ]
         },
         {
-          "id": "bloc4-sec3",
-          "titre": "Environnement et Développement Durable",
-          "contenu": "Le commerce doit limiter son impact écologique.",
-          "actions": [
-            { "titre": "Gestion des déchets", "description": "Tri sélectif (cartons, plastiques, biodéchets)." },
-            { "titre": "Énergie", "description": "Éteindre les lumières, fermer les meubles frigorifiques." },
-            { "titre": "Gaspillage", "description": "Gestion des invendus (dons aux associations, paniers anti-gaspi)." }
+          "id": "pse-sec2",
+          "titre": "Gestes et Postures",
+          "conseils": [
+            "Plier les genoux pour ramasser un objet",
+            "Garder le dos droit",
+            "Porter la charge près du corps"
           ]
-        },
-        {
-          "id": "bloc4-sec4",
-          "titre": "Secourisme et Urgences",
-          "contenu": "Savoir réagir en cas d'accident.",
-          "numeros": [
-            { "nom": "SAMU", "numero": "15" },
-            { "nom": "Police", "numero": "17" },
-            { "nom": "Pompiers", "numero": "18" },
-            { "nom": "Urgence Européenne", "numero": "112" }
-          ],
-          "protocole": "Protéger, Alerter, Secourir (PAS)."
         }
       ]
     }
-  ],
-  "ressources": {
-    "glossaire": [
-      { "terme": "FIFO", "definition": "First In, First Out. Rotation des stocks pour vendre les produits les plus anciens en premier." },
-      { "terme": "Facing", "definition": "Action de ramener les produits sur le devant de l'étagère." },
-      { "terme": "Gondole", "definition": "Meuble de présentation des produits en magasin." },
-      { "terme": "Tête de gondole (TG)", "definition": "Emplacement promo situé au bout d'un rayon." },
-      { "terme": "ILV / PLV", "definition": "Information / Publicité sur le Lieu de Vente." },
-      { "terme": "Démarque inconnue", "definition": "Perte financière due aux vols, casses ou erreurs de stock." },
-      { "terme": "SONCAS", "definition": "Méthode pour identifier les motivations d'achat (Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie)." },
-      { "terme": "CAP", "definition": "Technique d'argumentation (Caractéristique, Avantage, Preuve)." },
-      { "terme": "SBAM", "definition": "Base de l'accueil (Sourire, Bonjour, Au revoir, Merci)." },
-      { "terme": "DLC / DLUO", "definition": "Date Limite de Consommation / Date Limite d'Utilisation Optimale." },
-      { "terme": "Zone de chalandise", "definition": "Zone géographique d'où provient la majorité des clients d'un magasin." },
-      { "terme": "Chiffre d'Affaires (CA)", "definition": "Montant total des ventes réalisées sur une période donnée." }
-    ]
-  }
+  ]
 }
