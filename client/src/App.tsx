@@ -17,7 +17,7 @@ import Videos from "./pages/Videos";
 function Router() {
   return (
     <Switch>
-      <Route path={"/ "} component={Home} />
+      <Route path={"/"} component={Home} />
       <Route path={"/bloc1"} component={Bloc1} />
       <Route path={"/bloc2"} component={Bloc2} />
       <Route path={"/bloc3"} component={Bloc3} />
