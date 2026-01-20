@@ -1,0 +1,62 @@
+graph TD
+    subgraph Magasin ["Plan de Masse du Magasin"]
+        direction TB
+        
+        subgraph Reserve ["📦 RÉSERVE (Zone de Stockage)"]
+            R1[Stockage Sec]
+            R2[Chambre Froide]
+            R3[Quai de Réception]
+        end
+
+        subgraph SurfaceVente ["🛒 SURFACE DE VENTE"]
+            direction LR
+            
+            subgraph ZoneFroide ["❄️ ZONE FROIDE (Faible trafic)"]
+                ZF1[Produits d'entretien]
+                ZF2[Hygiène]
+                ZF3[Gros volumes]
+            end
+
+            subgraph ZoneChaude ["🔥 ZONE CHAUDE (Fort trafic)"]
+                ZC1[Produits Frais]
+                ZC2[Boulangerie]
+                ZC3[Promotions / Têtes de Gondole]
+            end
+
+            subgraph Rayons ["↕️ RAYONS LINÉAIRES"]
+                RL1[Épicerie Sucrée]
+                RL2[Épicerie Salée]
+                RL3[Boissons]
+            end
+        end
+
+        subgraph EntreeSortie ["🚪 ENTRÉE / SORTIE"]
+            E[Entrée Client]
+            C[Zone de Caisses / Achats Impulsifs]
+            S[Sortie]
+        end
+    end
+
+    %% Flux de circulation
+    E --> ZC3
+    ZC3 --> RL1
+    RL1 --> ZC1
+    ZC1 --> RL2
+    RL2 --> ZF1
+    ZF1 --> RL3
+    RL3 --> C
+    C --> S
+
+    %% Liaisons Réserve
+    R3 --> R1
+    R3 --> R2
+    R1 -.-> RL1
+    R2 -.-> ZC1
+
+    %% Styles
+    style ZoneChaude fill:#ffebee,stroke:#f44336,stroke-width:2px
+    style ZoneFroide fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    style Reserve fill:#f5f5f5,stroke:#9e9e9e,stroke-dasharray: 5 5
+    style ZoneChaude color:#b71c1c
+    style ZoneFroide color:#0d47a1
+    style C fill:#fff9c4,stroke:#fbc02d

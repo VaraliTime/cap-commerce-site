@@ -309,6 +309,42 @@ export default function PlansMasse() {
           </section>
         )}
 
+        {/* Schéma du Plan de Masse */}
+        <section className="mb-16">
+          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+            🗺️ Schéma type d'un plan de masse
+          </h2>
+          <Card className="border border-gray-200 p-6 bg-white overflow-hidden">
+            <div className="mb-6">
+              <h3 className="font-poppins font-semibold text-emerald-600 mb-2">
+                Organisation spatiale : Rayons, Réserve et Zones Thermiques
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Ce schéma illustre l'organisation type d'un point de vente incluant la <strong>réserve</strong>, 
+                les <strong>rayons</strong>, ainsi que la distinction entre <strong>zone chaude</strong> (fort trafic) 
+                et <strong>zone froide</strong> (faible trafic).
+              </p>
+            </div>
+            <div className="flex justify-center bg-gray-50 rounded-lg p-4 border border-gray-100">
+              <img 
+                src="/diagrams/plan_masse_magasin.png" 
+                alt="Schéma du plan de masse du magasin" 
+                className="max-w-full h-auto shadow-sm rounded"
+              />
+            </div>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-red-50 rounded-lg border border-red-100">
+                <h4 className="font-semibold text-red-700 mb-1">🔥 Zone Chaude</h4>
+                <p className="text-sm text-red-600">Zone de circulation naturelle où le client se rend spontanément (produits frais, boulangerie, promotions).</p>
+              </div>
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
+                <h4 className="font-semibold text-blue-700 mb-1">❄️ Zone Froide</h4>
+                <p className="text-sm text-blue-600">Zone moins fréquentée nécessitant des produits d'appel ou de première nécessité pour y attirer le client.</p>
+              </div>
+            </div>
+          </Card>
+        </section>
+
         {/* Principes de merchandising */}
         <section className="mb-16">
           <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
