@@ -22,6 +22,7 @@ import PlansMasse from "./pages/PlanseMasse";
 import QuizPage from "./pages/QuizPage";
 import SchemasPage from "./pages/SchemasPage";
 import ReferentielPage from "./pages/ReferentielPage";
+import Podcasts from "./pages/Podcasts";
 
 
 function Router() {
@@ -43,6 +44,7 @@ function Router() {
       <Route path={"/quiz/:blocId"} component={QuizPage} />
       <Route path={"/schemas"} component={SchemasPage} />
       <Route path={"/referentiel"} component={ReferentielPage} />
+      <Route path={"/podcasts"} component={Podcasts} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
