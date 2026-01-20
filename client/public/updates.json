@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-009",
+    "date": "2026-01-20",
+    "heure": "17:45",
+    "titre": "Nouveau Plan de Masse",
+    "description": "Ajout d'un schéma détaillé dans la catégorie 'Plans de masse' incluant les rayons, la réserve et l'identification des zones chaudes et froides du magasin.",
+    "type": "content"
+  },
+  {
     "id": "upd-008",
     "date": "2026-01-20",
     "heure": "11:40",
