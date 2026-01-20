@@ -34,35 +34,55 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 transition-colors">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center gap-4">
+    <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 transition-all">
+      <div className="container max-w-[1600px] mx-auto px-6">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo & Visitors */}
+          <div className="flex items-center gap-8">
             <Link href="/">
-              <div className="flex items-center gap-2 cursor-pointer">
-                <div className="text-2xl font-bold text-emerald-600">📚</div>
-                <span className="font-playfair text-xl font-bold text-gray-900 dark:text-white hidden sm:inline">
-                  CAP Commerce
+              <div className="flex items-center gap-3 cursor-pointer group">
+                <div className="text-3xl transform group-hover:scale-110 transition-transform">📚</div>
+                <span className="font-playfair text-2xl font-black text-gray-900 dark:text-white hidden xl:inline tracking-tight">
+                  CAP <span className="text-emerald-600">Commerce</span>
                 </span>
               </div>
             </Link>
-            <div className="hidden md:block">
+            <div className="hidden lg:block border-l border-gray-200 dark:border-gray-700 pl-8">
               <LiveVisitors />
             </div>
           </div>
 
-          {/* Desktop Navigation & Tools */}
-          <div className="hidden lg:flex items-center gap-4">
-            <SearchBar />
-            <div className="flex items-center gap-4 mr-2">
-              {navItems.map((item) => (
+          {/* Desktop Navigation & Tools - Optimized for PC */}
+          <div className="hidden lg:flex items-center gap-6 flex-1 justify-end">
+            <div className="max-w-xs w-full">
+              <SearchBar />
+            </div>
+            
+            <div className="flex items-center gap-1 xl:gap-2">
+              {navItems.slice(0, 7).map((item) => (
                 <Link key={item.href} href={item.href}>
                   <a
-                    className={`font-poppins font-medium transition-colors text-sm ${
+                    className={`px-3 py-2 rounded-xl font-poppins font-semibold transition-all text-[13px] xl:text-sm whitespace-nowrap ${
                       isActive(item.href)
-                        ? "text-emerald-600 border-b-2 border-emerald-600 pb-1"
-                        : "text-gray-600 dark:text-gray-400 hover:text-emerald-600"
+                        ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 shadow-sm"
+                        : "text-gray-600 dark:text-gray-400 hover:text-emerald-600 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              ))}
+              
+              {/* Dropdown for more items on smaller PC screens if needed, but here we keep it simple */}
+              <div className="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-2"></div>
+              
+              {navItems.slice(7, 12).map((item) => (
+                <Link key={item.href} href={item.href}>
+                  <a
+                    className={`px-3 py-2 rounded-xl font-poppins font-semibold transition-all text-[13px] xl:text-sm whitespace-nowrap ${
+                      isActive(item.href)
+                        ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 shadow-sm"
+                        : "text-gray-600 dark:text-gray-400 hover:text-emerald-600 hover:bg-gray-50 dark:hover:bg-gray-800"
                     }`}
                   >
                     {item.label}
@@ -70,7 +90,8 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
-            <div className="flex items-center gap-2">
+
+            <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-700">
               <RealTimeClock />
               <DarkModeToggle />
               <UpdateNotes />
@@ -79,14 +100,12 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button & Tools */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <RealTimeClock />
+          <div className="flex items-center gap-3 lg:hidden">
             <DarkModeToggle />
-            <UpdateNotes />
             <RadioPlayer />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-400"
+              className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl text-gray-600 dark:text-gray-400 transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -95,19 +114,19 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden pb-4 border-t border-gray-200 dark:border-gray-800">
-            <div className="px-4 py-3 sm:hidden">
+          <div className="lg:hidden pb-8 pt-4 border-t border-gray-100 dark:border-gray-800 animate-in slide-in-from-top-4 duration-300">
+            <div className="px-2 py-4">
                <SearchBar />
             </div>
-            <div className="grid grid-cols-2 gap-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href}>
                   <a
                     onClick={() => setIsOpen(false)}
-                    className={`block py-2 px-4 font-poppins font-medium text-sm transition-colors ${
+                    className={`flex items-center justify-center py-4 px-4 rounded-2xl font-poppins font-bold text-sm transition-all ${
                       isActive(item.href)
-                        ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20"
-                        : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                        ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 shadow-inner"
+                        : "text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800"
                     }`}
                   >
                     {item.label}
