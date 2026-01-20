@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import InteractiveGlossary from "@/components/InteractiveGlossary";
+import { GlossaireAudio } from "@/components/GlossaireAudio";
 import { Card } from "@/components/ui/card";
 
 interface Term {
@@ -86,6 +87,11 @@ export default function Ressources() {
           ) : (
             <InteractiveGlossary terms={glossaire} />
           )}
+        </section>
+
+        {/* Glossaire Audio Section */}
+        <section className="mb-16 bg-emerald-50 p-8 rounded-lg border-2 border-emerald-200">
+          <GlossaireAudio />
         </section>
 
         {/* Fiches Section */}

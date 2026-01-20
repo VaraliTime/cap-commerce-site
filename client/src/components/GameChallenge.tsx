@@ -3,6 +3,7 @@ import { Timer, Trophy, XCircle, CheckCircle2, Play, User, Award } from 'lucide-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { BadgeSystem } from "./BadgeSystem";
 
 interface Question {
   id: number;
@@ -162,12 +163,13 @@ export const GameChallenge = () => {
 
   if (gameState === 'gameover') {
     return (
-      <Card className="p-8 text-center border-2 border-red-100">
-        <XCircle className="mx-auto text-red-500 mb-4" size={64} />
-        <h2 className="text-3xl font-bold text-gray-900 mb-2 font-playfair">Partie Terminée !</h2>
-        <p className="text-2xl font-bold text-emerald-600 mb-6">Score Final : {score}</p>
-        
-        <div className="max-w-sm mx-auto bg-gray-50 p-6 rounded-2xl border border-gray-100 mb-6">
+      <div className="space-y-6">
+        <Card className="p-8 text-center border-2 border-red-100">
+          <XCircle className="mx-auto text-red-500 mb-4" size={64} />
+          <h2 className="text-3xl font-bold text-gray-900 mb-2 font-playfair">Partie Terminee !</h2>
+          <p className="text-2xl font-bold text-emerald-600 mb-6">Score Final : {score}</p>
+          
+          <div className="max-w-sm mx-auto bg-gray-50 p-6 rounded-2xl border border-gray-100 mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">Enregistrez votre score</label>
           <div className="flex gap-2">
             <Input 
@@ -182,10 +184,15 @@ export const GameChallenge = () => {
           </div>
         </div>
         
-        <Button variant="outline" onClick={() => setGameState('idle')} className="w-full">
-          Retour au menu
-        </Button>
-      </Card>
+          <Button variant="outline" onClick={() => setGameState('idle')} className="w-full">
+            Retour au menu
+          </Button>
+        </Card>
+        
+        <Card className="p-8 border-2 border-emerald-200 bg-emerald-50">
+          <BadgeSystem score={score} questionsAnswered={currentQuestionIndex} />
+        </Card>
+      </div>
     );
   }
 

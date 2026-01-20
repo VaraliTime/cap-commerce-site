@@ -6,6 +6,7 @@ import { LiveVisitors } from "./LiveVisitors";
 import { RadioPlayer } from "./RadioPlayer";
 import { UpdateNotes } from "./UpdateNotes";
 import { RealTimeClock } from "./RealTimeClock";
+import { DarkModeToggle } from "./DarkModeToggle";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,6 +70,7 @@ export default function Navigation() {
             </div>
             <div className="flex items-center gap-2">
               <RealTimeClock />
+              <DarkModeToggle />
               <UpdateNotes />
               <RadioPlayer />
             </div>
@@ -77,6 +79,7 @@ export default function Navigation() {
           {/* Mobile Menu Button & Tools */}
           <div className="flex items-center gap-2 lg:hidden">
             <RealTimeClock />
+            <DarkModeToggle />
             <UpdateNotes />
             <RadioPlayer />
             <button
