@@ -18,6 +18,7 @@ import Videos from "./pages/Videos";
 import Ressources from "./pages/Ressources";
 import Cadencier from "./pages/Cadencier";
 import PlansMasse from "./pages/PlanseMasse";
+import Examens from "./pages/Examens";
 
 import QuizPage from "./pages/QuizPage";
 import SchemasPage from "./pages/SchemasPage";
@@ -39,6 +40,7 @@ function Router() {
       <Route path="/videos" component={Videos} />
       <Route path={"/cadencier"} component={Cadencier} />
       <Route path={"/plans-masse"} component={PlansMasse} />
+      <Route path={"/examens"} component={Examens} />
   
       <Route path={"/quiz"} component={QuizPage} />
       <Route path={"/quiz/:blocId"} component={QuizPage} />

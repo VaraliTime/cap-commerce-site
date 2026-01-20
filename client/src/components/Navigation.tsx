@@ -20,7 +20,8 @@ export default function Navigation() {
     { label: "Bloc 2", href: "/bloc2" },
     { label: "Bloc 3", href: "/bloc3" },
     { label: "Bloc 4", href: "/bloc4" },
-    { label: "Examen", href: "/referentiel" },
+    { label: "Référentiel", href: "/referentiel" },
+    { label: "Examens", href: "/examens" },
     { label: "Quiz", href: "/quiz" },
     { label: "Schémas", href: "/schemas" },
     { label: "Cadencier", href: "/cadencier" },
@@ -33,7 +34,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 transition-colors">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -41,7 +42,7 @@ export default function Navigation() {
             <Link href="/">
               <div className="flex items-center gap-2 cursor-pointer">
                 <div className="text-2xl font-bold text-emerald-600">📚</div>
-                <span className="font-playfair text-xl font-bold text-gray-900 hidden sm:inline">
+                <span className="font-playfair text-xl font-bold text-gray-900 dark:text-white hidden sm:inline">
                   CAP Commerce
                 </span>
               </div>
@@ -61,7 +62,7 @@ export default function Navigation() {
                     className={`font-poppins font-medium transition-colors text-sm ${
                       isActive(item.href)
                         ? "text-emerald-600 border-b-2 border-emerald-600 pb-1"
-                        : "text-gray-600 hover:text-emerald-600"
+                        : "text-gray-600 dark:text-gray-400 hover:text-emerald-600"
                     }`}
                   >
                     {item.label}
@@ -85,7 +86,7 @@ export default function Navigation() {
             <RadioPlayer />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 hover:bg-gray-100 rounded-lg"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-400"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -94,24 +95,26 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden pb-4 border-t border-gray-200">
+          <div className="lg:hidden pb-4 border-t border-gray-200 dark:border-gray-800">
             <div className="px-4 py-3 sm:hidden">
                <SearchBar />
             </div>
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <a
-                  onClick={() => setIsOpen(false)}
-                  className={`block py-2 px-4 font-poppins font-medium text-sm transition-colors ${
-                    isActive(item.href)
-                      ? "text-emerald-600 bg-emerald-50"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </Link>
-            ))}
+            <div className="grid grid-cols-2 gap-1">
+              {navItems.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  <a
+                    onClick={() => setIsOpen(false)}
+                    className={`block py-2 px-4 font-poppins font-medium text-sm transition-colors ${
+                      isActive(item.href)
+                        ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20"
+                        : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              ))}
+            </div>
           </div>
         )}
       </div>
