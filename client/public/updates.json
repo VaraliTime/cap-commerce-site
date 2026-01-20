@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-014",
+    "date": "2026-01-20",
+    "heure": "19:00",
+    "titre": "Nouvelles Fonctionnalités Massives",
+    "description": "🎉 Ajout de la Calculatrice Commerciale, Annales, Fiches PDF, Système de Badges, Mode Sombre et Glossaire Audio. Le site est maintenant ultra-complet !",
+    "type": "feature"
+  },
+  {
     "id": "upd-013",
     "date": "2026-01-20",
     "heure": "18:45",
