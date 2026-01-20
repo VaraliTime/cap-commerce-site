@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Volume2, Search } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Volume2, Search, AlertCircle, CheckCircle } from 'lucide-react';
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
@@ -12,6 +12,17 @@ interface Term {
 export const GlossaireAudio = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTerm, setSelectedTerm] = useState<Term | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [supportsSpeech, setSupportsSpeech] = useState(true);
+  const [lastPlayedTerm, setLastPlayedTerm] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Vérifier la disponibilité de l'API Web Speech
+    const synth = window.speechSynthesis;
+    if (!synth) {
+      setSupportsSpeech(false);
+    }
+  }, []);
 
   const terms: Term[] = [
     { terme: "FIFO", definition: "First In, First Out - Premier entré, premier sorti", pronunciation: "fi-fo" },
@@ -37,12 +48,57 @@ export const GlossaireAudio = () => {
   );
 
   const playAudio = (terme: string) => {
-    // Utiliser l'API Web Speech pour la prononciation
-    const utterance = new SpeechSynthesisUtterance(terme);
-    utterance.lang = 'fr-FR';
-    utterance.rate = 0.9;
-    window.speechSynthesis.speak(utterance);
+    try {
+      // Arrêter la lecture précédente
+      window.speechSynthesis.cancel();
+      
+      // Créer une nouvelle utterance
+      const utterance = new SpeechSynthesisUtterance(terme);
+      utterance.lang = 'fr-FR';
+      utterance.rate = 0.85;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      
+      // Callbacks pour gérer l'état
+      utterance.onstart = () => {
+        setIsPlaying(true);
+        setLastPlayedTerm(terme);
+      };
+      
+      utterance.onend = () => {
+        setIsPlaying(false);
+        setLastPlayedTerm(null);
+      };
+      
+      utterance.onerror = (event) => {
+        console.error('Erreur de synthèse vocale:', event.error);
+        setIsPlaying(false);
+        alert('Erreur lors de la lecture audio. Veuillez vérifier les paramètres de votre navigateur.');
+      };
+      
+      // Lancer la lecture
+      window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      console.error('Erreur lors de la lecture:', error);
+      alert('La synthèse vocale n\'est pas disponible sur votre navigateur.');
+    }
   };
+
+  if (!supportsSpeech) {
+    return (
+      <div className="w-full">
+        <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg flex items-start gap-3">
+          <AlertCircle className="text-yellow-600 flex-shrink-0 mt-1" size={20} />
+          <div>
+            <h3 className="font-bold text-yellow-900 mb-1">Synthèse vocale non disponible</h3>
+            <p className="text-sm text-yellow-800">
+              Votre navigateur ne supporte pas la synthèse vocale. Veuillez utiliser un navigateur moderne (Chrome, Firefox, Safari, Edge).
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
@@ -63,6 +119,15 @@ export const GlossaireAudio = () => {
           />
         </div>
       </div>
+
+      {isPlaying && (
+        <div className="mb-4 p-3 bg-emerald-50 border-2 border-emerald-200 rounded-lg flex items-center gap-2">
+          <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
+          <span className="text-sm text-emerald-700 font-semibold">
+            Lecture en cours: <strong>{lastPlayedTerm}</strong>
+          </span>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredTerms.map((term, idx) => (
@@ -90,10 +155,19 @@ export const GlossaireAudio = () => {
                   e.stopPropagation();
                   playAudio(term.terme);
                 }}
-                className="ml-2 p-2 hover:bg-emerald-100 rounded-lg transition-colors"
+                disabled={isPlaying && lastPlayedTerm === term.terme}
+                className={`ml-2 p-2 rounded-lg transition-colors flex-shrink-0 ${
+                  isPlaying && lastPlayedTerm === term.terme
+                    ? 'bg-emerald-200 cursor-wait'
+                    : 'hover:bg-emerald-100'
+                }`}
                 title="Écouter la prononciation"
               >
-                <Volume2 className="text-emerald-600" size={20} />
+                {isPlaying && lastPlayedTerm === term.terme ? (
+                  <Volume2 className="text-emerald-700 animate-pulse" size={20} />
+                ) : (
+                  <Volume2 className="text-emerald-600" size={20} />
+                )}
               </button>
             </div>
           </Card>
@@ -105,6 +179,18 @@ export const GlossaireAudio = () => {
           Aucun terme trouvé pour "{searchTerm}"
         </div>
       )}
+
+      <div className="mt-8 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+        <div className="flex items-start gap-2">
+          <CheckCircle className="text-blue-600 flex-shrink-0 mt-1" size={20} />
+          <div>
+            <h4 className="font-bold text-blue-900 mb-1">💡 Conseil</h4>
+            <p className="text-sm text-blue-800">
+              Si le son ne fonctionne pas, vérifiez que votre navigateur autorise la synthèse vocale et que votre volume est activé.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
