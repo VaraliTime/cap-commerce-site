@@ -65,6 +65,30 @@
           ],
           "correctAnswer": 1,
           "explication": "Le contrôle qualitatif consiste à vérifier l'état des produits, les emballages intacts, les dates de péremption et l'absence de dommages."
+        },
+        {
+          "id": "q6",
+          "question": "Que doit-on faire en cas d'anomalie constatée sur le Bon de Livraison ?",
+          "options": [
+            "Accepter la livraison sans rien dire",
+            "Émettre des réserves précises et motivées sur le BL",
+            "Appeler immédiatement le directeur",
+            "Jeter les produits endommagés"
+          ],
+          "correctAnswer": 1,
+          "explication": "En cas d'anomalie, il est impératif d'écrire des réserves précises (ex: '2 colis écrasés') sur le Bon de Livraison avant de le signer."
+        },
+        {
+          "id": "q7",
+          "question": "Quelle est la température réglementaire pour la réception de produits surgelés ?",
+          "options": [
+            "0°C",
+            "-12°C",
+            "-18°C ou moins",
+            "4°C"
+          ],
+          "correctAnswer": 2,
+          "explication": "Les produits surgelés doivent être maintenus à une température de -18°C ou moins pour respecter la chaîne du froid."
         }
       ]
     },
@@ -133,6 +157,30 @@
           ],
           "correctAnswer": 1,
           "explication": "ILV = Information sur le Lieu de Vente (étiquettes, codes-barres). PLV = Publicité sur le Lieu de Vente (affiches, présentoirs)."
+        },
+        {
+          "id": "q6",
+          "question": "Qu'est-ce qu'une 'tête de gondole' (TG) ?",
+          "options": [
+            "Le bureau du directeur",
+            "L'emplacement situé à l'extrémité d'un rayon",
+            "Le haut d'une étagère",
+            "La vitrine du magasin"
+          ],
+          "correctAnswer": 1,
+          "explication": "La tête de gondole est un emplacement privilégié situé au bout d'un rayon, souvent utilisé pour les promotions ou les nouveautés."
+        },
+        {
+          "id": "q7",
+          "question": "Que signifie le terme 'Rupture de stock' ?",
+          "options": [
+            "Trop de produits en rayon",
+            "Absence d'un produit en rayon et en réserve",
+            "Un produit mal étiqueté",
+            "Un produit périmé"
+          ],
+          "correctAnswer": 1,
+          "explication": "La rupture de stock signifie que le produit n'est plus disponible à la vente, ce qui entraîne une perte de chiffre d'affaires."
         }
       ]
     },
@@ -201,6 +249,30 @@
           ],
           "correctAnswer": 1,
           "explication": "La bonne approche est : Écoute active, Reformulation, Validation, puis Réponse adaptée. Cela montre votre compréhension et votre professionnalisme."
+        },
+        {
+          "id": "q6",
+          "question": "Qu'est-ce qu'une 'vente additionnelle' ?",
+          "options": [
+            "Vendre un produit moins cher",
+            "Vendre un produit complémentaire au produit principal",
+            "Annuler une vente",
+            "Faire une remise"
+          ],
+          "correctAnswer": 1,
+          "explication": "La vente additionnelle consiste à proposer un produit qui complète l'achat principal (ex: des piles avec un jouet) pour augmenter le panier moyen."
+        },
+        {
+          "id": "q7",
+          "question": "Que signifie le SONCAS dans la découverte des besoins ?",
+          "options": [
+            "Une méthode de rangement",
+            "Les 6 motivations d'achat du client",
+            "Un type de contrat de travail",
+            "Une technique d'encaissement"
+          ],
+          "correctAnswer": 1,
+          "explication": "SONCAS (Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie) permet d'identifier les leviers psychologiques qui poussent un client à acheter."
         }
       ]
     }
