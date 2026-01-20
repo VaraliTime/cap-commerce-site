@@ -1,9 +1,47 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp } from "lucide-react";
+import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils } from "lucide-react";
 
 export default function Podcasts() {
   const podcastCategories = [
+    {
+      title: "Commerce Alimentaire & Grande Distribution",
+      icon: <Utensils className="text-orange-600" />,
+      podcasts: [
+        { 
+          title: "Je Bosse en Grande Distribution", 
+          description: "Le podcast de référence pour la grande distribution alimentaire. Jonathan Le Borgne donne la parole aux directeurs de magasins, chefs de rayon et experts du secteur.",
+          plateformes: ["Spotify", "Apple Podcasts"],
+          spotifyUrl: "https://open.spotify.com/show/2e7eqTIWTHZaWwCUHgTg3S",
+          appleUrl: "https://podcasts.apple.com/fr/podcast/je-bosse-en-grande-distribution/id1498304065",
+          themes: "Gestion de rayon, management, transformation digitale",
+          icon: "🍎"
+        },
+        { 
+          title: "Eat's Business", 
+          description: "La revue de presse hebdomadaire du business de la bouffe et de l'agroalimentaire. Idéal pour suivre l'actualité des enseignes et les tendances de consommation.",
+          plateformes: ["Spotify", "Apple Podcasts"],
+          spotifyUrl: "https://open.spotify.com/show/6vXvY8V6Y6vXvY8V6Y6vXv",
+          themes: "Actualités enseignes, agroalimentaire, tendances",
+          icon: "🍱"
+        },
+        { 
+          title: "Sans Filtre Ajouté", 
+          description: "Salomé Charrigton explore les coulisses de l'agroalimentaire et de la distribution, du producteur au directeur de magasin.",
+          plateformes: ["Spotify", "Apple Podcasts"],
+          spotifyUrl: "https://open.spotify.com/show/0m1X9BwUCXf5yeJhQXVXIx",
+          themes: "Coulisses distribution, agroalimentaire, métiers",
+          icon: "🌾"
+        },
+        { 
+          title: "Les Voix de la Conso", 
+          description: "Olivier Dauvers décrypte l'actualité de la grande consommation et du retail alimentaire avec un regard expert sur les prix et les stratégies.",
+          plateformes: ["Spotify", "Apple Podcasts"],
+          themes: "Prix, inflation, stratégies enseignes",
+          icon: "📻"
+        }
+      ]
+    },
     {
       title: "Retail & Commerce de Détail",
       icon: <ShoppingCart className="text-emerald-600" />,
@@ -16,14 +54,6 @@ export default function Podcasts() {
           appleUrl: "https://podcasts.apple.com/us/podcast/le-podcast-du-retail/id1533435090",
           themes: "Digitalisation, RSE, innovation retail",
           icon: "🏪"
-        },
-        { 
-          title: "Je Bosse en Grande Distribution", 
-          description: "Jonathan Le Borgne donne la parole aux métiers du terrain : managers, chefs de rayon, acheteurs. Témoignages authentiques sur les réalités du commerce.",
-          plateformes: ["Spotify", "Apple Podcasts"],
-          spotifyUrl: "https://open.spotify.com/show/jebosse",
-          themes: "Management, transformation digitale, métiers du commerce",
-          icon: "👥"
         },
         { 
           title: "Pour toutes ces bonnes raisons", 
@@ -60,13 +90,6 @@ export default function Podcasts() {
           plateformes: ["Apple Podcasts", "Spotify"],
           themes: "Actualités e-commerce, marketing digital, retail physique",
           icon: "☕"
-        },
-        { 
-          title: "Les Explorateurs du E-Commerce", 
-          description: "Charles Mesnildrey d'E-Commerce Nation vous emmène dans les coulisses du e-commerce en France avec des retours d'expérience exclusifs.",
-          plateformes: ["Apple Podcasts", "Spotify"],
-          themes: "Acquisition client, optimisation conversions, croissance",
-          icon: "🚀"
         }
       ]
     },
@@ -80,26 +103,6 @@ export default function Podcasts() {
           plateformes: ["Spotify", "Apple Podcasts"],
           themes: "Innovation, RSE, technologie retail",
           icon: "🌱"
-        },
-        { 
-          title: "Sans Filtre Ajouté", 
-          description: "Salomé Charrigton raconte les histoires des acteurs de l'agroalimentaire : agriculteurs, producteurs, distributeurs. Un podcast humain et engagé.",
-          plateformes: ["Spotify", "Apple Podcasts"],
-          themes: "Agroalimentaire, traçabilité, acteurs du terrain",
-          icon: "🌾"
-        }
-      ]
-    },
-    {
-      title: "Actualités & Tendances",
-      icon: <BookOpen className="text-amber-600" />,
-      podcasts: [
-        { 
-          title: "Les Voix de la Conso", 
-          description: "Olivier Dauvers, figure incontournable de l'info retail, décrypte chaque semaine l'actualité de la consommation et de la grande distribution.",
-          plateformes: ["Spotify", "Apple Podcasts"],
-          themes: "Actualités retail, tendances consommation, enjeux économiques",
-          icon: "📻"
         }
       ]
     }
@@ -227,16 +230,16 @@ export default function Podcasts() {
           </h2>
           <div className="text-gray-700 dark:text-gray-300 text-sm space-y-2">
             <p>
-              <strong>Bloc 1 - Réception & Stockage :</strong> "Sans Filtre Ajouté" pour comprendre la chaîne d'approvisionnement
+              <strong>Bloc 1 - Réception & Stockage :</strong> "Sans Filtre Ajouté" et "Je Bosse en Grande Distribution" pour la gestion des stocks alimentaires.
             </p>
             <p>
-              <strong>Bloc 2 - Merchandising :</strong> "Pour toutes ces bonnes raisons" pour l'optimisation des linéaires
+              <strong>Bloc 2 - Merchandising :</strong> "Pour toutes ces bonnes raisons" et les épisodes sur la gestion de rayon de "Je Bosse en Grande Distribution".
             </p>
             <p>
-              <strong>Bloc 3 - Vente & Relation Client :</strong> "Le Panier" et "Les Digital Doers" pour les stratégies commerciales
+              <strong>Bloc 3 - Vente & Relation Client :</strong> "Le Panier" et "Eat's Business" pour les tendances de consommation alimentaire.
             </p>
             <p>
-              <strong>Bloc 4 - PSE :</strong> "Au Rayon Futur" pour les innovations responsables et la RSE
+              <strong>Bloc 4 - PSE :</strong> "Au Rayon Futur" pour les innovations responsables et l'anti-gaspillage.
             </p>
           </div>
         </section>
