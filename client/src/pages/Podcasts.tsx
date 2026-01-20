@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils } from "lucide-react";
+import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils, Star, Play, Download, CheckCircle } from "lucide-react";
 
 export default function Podcasts() {
   const podcastCategories = [
@@ -32,18 +32,11 @@ export default function Podcasts() {
           spotifyUrl: "https://open.spotify.com/show/0m1X9BwUCXf5yeJhQXVXIx",
           themes: "Coulisses distribution, agroalimentaire, métiers",
           icon: "🌾"
-        },
-        { 
-          title: "Les Voix de la Conso", 
-          description: "Olivier Dauvers décrypte l'actualité de la grande consommation et du retail alimentaire avec un regard expert sur les prix et les stratégies.",
-          plateformes: ["Spotify", "Apple Podcasts"],
-          themes: "Prix, inflation, stratégies enseignes",
-          icon: "📻"
         }
       ]
     },
     {
-      title: "Retail & Commerce de Détail",
+      title: "Retail & Merchandising",
       icon: <ShoppingCart className="text-emerald-600" />,
       podcasts: [
         { 
@@ -65,12 +58,12 @@ export default function Podcasts() {
       ]
     },
     {
-      title: "E-commerce & Stratégies Digitales",
+      title: "E-commerce & Vente",
       icon: <TrendingUp className="text-blue-600" />,
       podcasts: [
         { 
           title: "Le Panier", 
-          description: "Laurent Kretz part à la rencontre des e-commerçants pour recueillir leurs bonnes pratiques et stratégies gagnantes. Le premier podcast e-commerce français.",
+          description: "Laurent Kretz part à la rencontre des e-commerçants pour recueillir leurs bonnes pratiques et stratégies gagnantes.",
           plateformes: ["Spotify", "Apple Podcasts"],
           spotifyUrl: "https://open.spotify.com/show/lepanier",
           appleUrl: "https://podcasts.apple.com/podcast/le-panier",
@@ -79,32 +72,31 @@ export default function Podcasts() {
         },
         { 
           title: "Les Digital Doers", 
-          description: "Cyril du Plessis interroge les leaders du retail et du e-commerce sur leurs parcours et visions. Idéal pour comprendre les enjeux du digital.",
+          description: "Cyril du Plessis interroge les leaders du retail et du e-commerce sur leurs parcours et visions.",
           plateformes: ["Spotify", "Apple Podcasts"],
           themes: "Innovation, CRM, marketing digital, omnicanal",
           icon: "💻"
-        },
-        { 
-          title: "Le Café de l'E-commerce", 
-          description: "Adrien et Laetitia décryptent chaque semaine l'actualité du commerce électronique avec expertise et humour.",
-          plateformes: ["Apple Podcasts", "Spotify"],
-          themes: "Actualités e-commerce, marketing digital, retail physique",
-          icon: "☕"
         }
       ]
+    }
+  ];
+
+  const examEpisodes = [
+    {
+      title: "Comment préparer et gérer l'inventaire d'un magasin ?",
+      podcast: "Je Bosse en Grande Distribution",
+      expert: "Philippe Rovira",
+      description: "Un épisode crucial pour comprendre les étapes de l'inventaire, le redressement des stocks et la gestion des écarts. Indispensable pour le Bloc 1.",
+      embedUrl: "https://player.captivate.fm/episode/0f35c967-3e00-4703-99e3-5dfa5ecaebba",
+      tags: ["Bloc 1", "Stocks", "Inventaire"]
     },
     {
-      title: "Innovation & Responsabilité",
-      icon: <Leaf className="text-green-600" />,
-      podcasts: [
-        { 
-          title: "Au Rayon Futur", 
-          description: "Le Groupe Casino met en avant les innovations responsables du secteur : lutte contre le gaspillage, MDD durables, magasins autonomes.",
-          plateformes: ["Spotify", "Apple Podcasts"],
-          themes: "Innovation, RSE, technologie retail",
-          icon: "🌱"
-        }
-      ]
+      title: "Lutter contre la démarque inconnue en magasin",
+      podcast: "Les Voix de la Conso",
+      expert: "Olivier Dauvers",
+      description: "Comprendre les causes du vol et de la casse, et mettre en place des plans d'action efficaces pour protéger la marge.",
+      embedUrl: "https://www.youtube.com/embed/VbKeFvnAyD4", // Utilisation d'une vidéo pédagogique comme alternative si embed podcast indisponible
+      tags: ["Bloc 1", "Sécurité", "Marge"]
     }
   ];
 
@@ -150,11 +142,6 @@ export default function Podcasts() {
             🎧 Apple Podcasts
           </a>
         )}
-        {!podcast.spotifyUrl && !podcast.appleUrl && (
-          <span className="inline-flex items-center gap-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-xs font-semibold">
-            Disponible sur {podcast.plateformes.join(", ")}
-          </span>
-        )}
       </div>
     </Card>
   );
@@ -164,6 +151,7 @@ export default function Podcasts() {
       <Navigation />
 
       <main className="container mx-auto px-4 py-12">
+        {/* Header */}
         <section className="mb-16 text-center">
           <div className="inline-block mb-4">
             <div className="bg-emerald-100 dark:bg-emerald-900/30 p-4 rounded-full">
@@ -179,6 +167,91 @@ export default function Podcasts() {
           </p>
         </section>
 
+        {/* Podcast de la semaine */}
+        <section className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <Star className="text-amber-500 fill-amber-500" size={32} />
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-poppins">
+              Le Podcast de la Semaine
+            </h2>
+          </div>
+          <Card className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-8 rounded-2xl border-none shadow-2xl overflow-hidden relative">
+            <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+              <div className="bg-white/20 p-6 rounded-2xl backdrop-blur-sm">
+                <Podcast size={80} className="text-white" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block uppercase tracking-wider">
+                  Recommandation Merchandising
+                </span>
+                <h3 className="text-3xl font-bold mb-4 font-poppins">Les fondamentaux du merchandising efficace</h3>
+                <p className="text-emerald-50 mb-6 text-lg max-w-2xl">
+                  Adrien Bernard (Pour toutes ces bonnes raisons) nous explique comment optimiser ses linéaires 
+                  pour booster les ventes et améliorer l'expérience client. Un must pour le Bloc 2 !
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                  <button className="bg-white text-emerald-700 hover:bg-emerald-50 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all">
+                    <Play size={20} fill="currentColor" /> Écouter l'épisode
+                  </button>
+                  <button className="bg-emerald-800/40 hover:bg-emerald-800/60 text-white border border-white/30 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all">
+                    <Download size={20} /> Fiche de synthèse
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 bg-white/10 w-64 h-64 rounded-full blur-3xl"></div>
+          </Card>
+        </section>
+
+        {/* Épisodes Spécial Examen */}
+        <section className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <CheckCircle className="text-blue-600" size={32} />
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-poppins">
+              Sélection "Spécial Examen"
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {examEpisodes.map((episode, idx) => (
+              <Card key={idx} className="border-2 border-blue-100 dark:border-blue-900/30 overflow-hidden bg-white dark:bg-gray-800 flex flex-col">
+                <div className="p-6 flex-1">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {episode.tags.map(tag => (
+                      <span key={tag} className="bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold px-2 py-1 rounded uppercase">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 font-poppins">
+                    {episode.title}
+                  </h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs mb-4">
+                    Par {episode.expert} • {episode.podcast}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+                    {episode.description}
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-inner bg-gray-50 dark:bg-gray-900">
+                    <iframe 
+                      style={{ width: '100%', height: '180px' }} 
+                      src={episode.embedUrl} 
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+                <div className="bg-blue-50/50 dark:bg-blue-900/10 p-4 border-t border-blue-50 dark:border-blue-900/30">
+                  <button className="w-full text-blue-600 dark:text-blue-400 font-bold text-sm flex items-center justify-center gap-2 hover:underline">
+                    Faire le mini-quiz après écoute →
+                  </button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Toutes les chaînes */}
         <div className="space-y-16">
           {podcastCategories.map((category, idx) => (
             <section key={idx}>
@@ -198,6 +271,7 @@ export default function Podcasts() {
           ))}
         </div>
 
+        {/* Pourquoi écouter ? */}
         <section className="mt-20 bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-8 border-2 border-emerald-100 dark:border-emerald-800">
           <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100 mb-6 flex items-center gap-2">
             💡 Pourquoi écouter des podcasts ?
@@ -224,6 +298,7 @@ export default function Podcasts() {
           </div>
         </section>
 
+        {/* Lien CAP EPC */}
         <section className="mt-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 border-2 border-blue-100 dark:border-blue-800">
           <h2 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">
             🎓 Lien avec le CAP EPC
