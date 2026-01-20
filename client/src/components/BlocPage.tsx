@@ -118,6 +118,20 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     </p>
                   )}
 
+                  {/* Schema Image Integration */}
+                  {section.schema && (
+                    <div className="mb-8 bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                      <h4 className="font-poppins font-semibold text-gray-900 mb-4 text-center">
+                        Schéma : {section.schema_titre || section.titre}
+                      </h4>
+                      <img 
+                        src={section.schema} 
+                        alt={section.schema_titre || section.titre}
+                        className="max-w-full h-auto mx-auto rounded"
+                      />
+                    </div>
+                  )}
+
                   {section.points_cles && (
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-3">Points clés :</h4>
@@ -137,9 +151,9 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Étapes :</h4>
                       <div className="space-y-4">
                         {section.etapes.map((etape: any) => (
-                          <div key={etape.numero} className="bg-white p-4 rounded border-l-4 border-emerald-600">
+                          <div key={etape.numero || etape.titre} className="bg-white p-4 rounded border-l-4 border-emerald-600">
                             <h5 className="font-poppins font-semibold text-gray-900 mb-2">
-                              Étape {etape.numero} : {etape.titre}
+                              {etape.numero ? `Étape ${etape.numero} : ` : ""}{etape.titre}
                             </h5>
                             <p className="text-gray-700">{etape.description}</p>
                           </div>
@@ -277,7 +291,6 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                     </div>
                   )}
 
-                  {/* Bloc 4 Specific Renderers */}
                   {section.conseils && (
                     <div className="mb-6">
                       <h4 className="font-poppins font-semibold text-gray-900 mb-4">Conseils :</h4>

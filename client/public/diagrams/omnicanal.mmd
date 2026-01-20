@@ -1,0 +1,36 @@
+graph TD
+    Client((Client))
+    
+    subgraph Canaux_de_Vente [Canaux de Vente]
+        Magasin[Magasin Physique]
+        Web[Site E-commerce]
+        App[Application Mobile]
+        Social[Réseaux Sociaux]
+    end
+    
+    subgraph Services_Omnicanaux [Services Omnicanaux]
+        ClickCollect[Click & Collect]
+        E-Resa[E-Réservation]
+        ShipFromStore[Ship from Store]
+        ReturnInStore[Retour en Magasin]
+    end
+    
+    Client --- Magasin
+    Client --- Web
+    Client --- App
+    Client --- Social
+    
+    Magasin <--> ClickCollect
+    Web <--> ClickCollect
+    Web <--> E-Resa
+    Magasin <--> E-Resa
+    Web <--> ShipFromStore
+    Magasin <--> ShipFromStore
+    Web <--> ReturnInStore
+    Magasin <--> ReturnInStore
+    
+    style Client fill:#f9f,stroke:#333,stroke-width:4px
+    style Magasin fill:#10B981,stroke:#333,stroke-width:2px
+    style Web fill:#10B981,stroke:#333,stroke-width:2px
+    style App fill:#10B981,stroke:#333,stroke-width:2px
+    style Social fill:#10B981,stroke:#333,stroke-width:2px

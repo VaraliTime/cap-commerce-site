@@ -227,6 +227,33 @@
               "importance": "Légalement obligatoires et essentielles pour la transparence"
             }
           ]
+        },
+        {
+          "id": "bloc2-sec6",
+          "titre": "L'Omnicanalité dans le Commerce",
+          "contenu": "L'omnicanalité est une stratégie de vente qui utilise tous les canaux de contact et de vente possibles entre l'entreprise et ses clients.",
+          "schema": "/diagrams/omnicanal.png",
+          "schema_titre": "L'écosystème Omnicanal",
+          "points_cles": [
+            "Expérience client fluide et sans couture",
+            "Complémentarité entre magasin physique et digital",
+            "Personnalisation de la relation client",
+            "Optimisation de la logistique (Click & Collect, etc.)"
+          ],
+          "etapes": [
+            {
+              "titre": "Click & Collect",
+              "description": "Le client commande en ligne et retire son produit en magasin."
+            },
+            {
+              "titre": "E-Réservation",
+              "description": "Le client réserve un produit en ligne sans payer, et vient l'essayer en magasin."
+            },
+            {
+              "titre": "Ship from Store",
+              "description": "Le magasin sert de point d'expédition pour les commandes web."
+            }
+          ]
         }
       ]
     },
@@ -241,6 +268,8 @@
           "id": "bloc3-sec1",
           "titre": "Accueil du client - Méthode SBAM",
           "contenu": "L'accueil est la première impression que le client a de votre magasin. La méthode SBAM garantit un accueil professionnel et chaleureux.",
+          "schema": "/diagrams/methode_sbam.png",
+          "schema_titre": "Les 4 piliers de l'accueil (SBAM)",
           "sbam": [
             {
               "lettre": "S",
@@ -311,6 +340,8 @@
           "id": "bloc3-sec3",
           "titre": "Méthode CAP - Argumentation",
           "contenu": "La méthode CAP est une technique d'argumentation efficace pour présenter les produits et convaincre le client.",
+          "schema": "/diagrams/methode_cap.png",
+          "schema_titre": "Structure de l'argumentation CAP",
           "cap": [
             {
               "lettre": "C",

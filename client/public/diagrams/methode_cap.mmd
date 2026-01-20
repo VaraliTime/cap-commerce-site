@@ -1,0 +1,15 @@
+graph LR
+    C[Caractéristique] -->|Ce que c'est| A[Avantage]
+    A -->|Ce que ça apporte| P[Preuve]
+    P -->|La démonstration| V((Vente))
+    
+    subgraph Argumentation
+        C
+        A
+        P
+    end
+    
+    style C fill:#10B981,stroke:#333,stroke-width:2px
+    style A fill:#10B981,stroke:#333,stroke-width:2px
+    style P fill:#10B981,stroke:#333,stroke-width:2px
+    style V fill:#065f46,stroke:#333,stroke-width:2px
