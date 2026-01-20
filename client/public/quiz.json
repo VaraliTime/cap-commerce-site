@@ -4,7 +4,7 @@
       "id": "quiz-bloc1",
       "blocId": "bloc1",
       "titre": "Quiz - Bloc 1 : Recevoir et suivre les commandes",
-      "description": "Testez vos connaissances sur la réception des marchandises",
+      "description": "Testez vos connaissances sur la réception, les inventaires et la démarque",
       "questions": [
         {
           "id": "q1",
@@ -44,39 +44,39 @@
         },
         {
           "id": "q4",
-          "question": "Qui émet le Bon de Réception (BR) ?",
+          "question": "Qu'est-ce qu'un inventaire tournant ?",
           "options": [
-            "Le fournisseur",
-            "Le transporteur",
-            "Le réceptionnaire",
-            "Le comptable"
+            "Un inventaire réalisé une seule fois par an",
+            "Un inventaire par zone ou catégorie tout au long de l'année",
+            "Un inventaire où l'on fait tourner les produits",
+            "Un inventaire réalisé uniquement par le directeur"
           ],
-          "correctAnswer": 2,
-          "explication": "Le Bon de Réception (BR) est émis par le réceptionnaire après vérification de la conformité de la livraison."
+          "correctAnswer": 1,
+          "explication": "L'inventaire tournant consiste à compter périodiquement une partie du stock (par rayon ou famille de produits) pour étaler la charge de travail."
         },
         {
           "id": "q5",
-          "question": "Quel est l'objectif principal du contrôle qualitatif ?",
+          "question": "La démarque connue correspond à :",
           "options": [
-            "Vérifier le nombre de colis",
-            "Vérifier l'état des produits et l'absence de dommages",
-            "Vérifier les prix",
-            "Vérifier les documents"
+            "Le vol par les clients",
+            "Les erreurs de livraison non détectées",
+            "Les pertes identifiées comme la casse ou les produits périmés",
+            "Les produits vendus en promotion"
           ],
-          "correctAnswer": 1,
-          "explication": "Le contrôle qualitatif consiste à vérifier l'état des produits, les emballages intacts, les dates de péremption et l'absence de dommages."
+          "correctAnswer": 2,
+          "explication": "La démarque connue regroupe toutes les pertes dont on connaît la cause exacte (casse, DLC dépassée, etc.)."
         },
         {
           "id": "q6",
-          "question": "Que doit-on faire en cas d'anomalie constatée sur le Bon de Livraison ?",
+          "question": "Qu'est-ce que la démarque inconnue ?",
           "options": [
-            "Accepter la livraison sans rien dire",
-            "Émettre des réserves précises et motivées sur le BL",
-            "Appeler immédiatement le directeur",
-            "Jeter les produits endommagés"
+            "La différence entre le stock théorique et le stock réel",
+            "Les produits dont on ne connaît pas le prix",
+            "Les nouveaux produits qui arrivent en magasin",
+            "Les produits sans étiquette"
           ],
-          "correctAnswer": 1,
-          "explication": "En cas d'anomalie, il est impératif d'écrire des réserves précises (ex: '2 colis écrasés') sur le Bon de Livraison avant de le signer."
+          "correctAnswer": 0,
+          "explication": "La démarque inconnue est le manque à gagner constaté lors de l'inventaire, souvent dû au vol, à la casse non signalée ou aux erreurs administratives."
         },
         {
           "id": "q7",
@@ -172,15 +172,15 @@
         },
         {
           "id": "q7",
-          "question": "Que signifie le terme 'Rupture de stock' ?",
+          "question": "Que signifie le terme 'Omnicanal' ?",
           "options": [
-            "Trop de produits en rayon",
-            "Absence d'un produit en rayon et en réserve",
-            "Un produit mal étiqueté",
-            "Un produit périmé"
+            "Vendre uniquement en magasin",
+            "Vendre uniquement sur internet",
+            "Utiliser tous les canaux de vente (magasin, web, mobile) de façon intégrée",
+            "Vendre des produits de toutes les marques"
           ],
-          "correctAnswer": 1,
-          "explication": "La rupture de stock signifie que le produit n'est plus disponible à la vente, ce qui entraîne une perte de chiffre d'affaires."
+          "correctAnswer": 2,
+          "explication": "L'omnicanalité permet au client de passer d'un canal à l'autre (ex: commander en ligne et retirer en magasin) de manière fluide."
         }
       ]
     },
@@ -216,15 +216,15 @@
         },
         {
           "id": "q3",
-          "question": "Combien d'étapes y a-t-il dans le processus de vente ?",
+          "question": "Dans la méthode SONCAS, que représente le 'A' ?",
           "options": [
-            "5 étapes",
-            "6 étapes",
-            "7 étapes",
-            "8 étapes"
+            "Achat",
+            "Argent",
+            "Accueil",
+            "Ambition"
           ],
-          "correctAnswer": 2,
-          "explication": "Les 7 étapes sont : Prise de contact, Découverte des besoins, Argumentation, Traitement des objections, Vente additionnelle, Encaissement, Prise de congé."
+          "correctAnswer": 1,
+          "explication": "Le 'A' de SONCAS signifie Argent. C'est le mobile d'achat d'un client qui recherche le meilleur prix ou une promotion."
         },
         {
           "id": "q4",
@@ -264,15 +264,15 @@
         },
         {
           "id": "q7",
-          "question": "Que signifie le SONCAS dans la découverte des besoins ?",
+          "question": "Le mobile d'achat 'Orgueil' dans le SONCAS correspond à :",
           "options": [
-            "Une méthode de rangement",
-            "Les 6 motivations d'achat du client",
-            "Un type de contrat de travail",
-            "Une technique d'encaissement"
+            "Un besoin de sécurité",
+            "Un besoin de faire des économies",
+            "Un besoin de se valoriser, de prestige ou de marque",
+            "Un besoin de confort"
           ],
-          "correctAnswer": 1,
-          "explication": "SONCAS (Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie) permet d'identifier les leviers psychologiques qui poussent un client à acheter."
+          "correctAnswer": 2,
+          "explication": "L'Orgueil pousse le client à acheter des produits qui valorisent son image (marques de luxe, exclusivités)."
         }
       ]
     },
@@ -280,19 +280,19 @@
       "id": "quiz-bloc4",
       "blocId": "bloc4",
       "titre": "Quiz - Bloc 4 : Prévention-Santé-Environnement",
-      "description": "Testez vos connaissances sur la santé et la sécurité au travail",
+      "description": "Testez vos connaissances sur la santé, la sécurité et l'environnement",
       "questions": [
         {
           "id": "q1",
-          "question": "Quel est l'effet principal d'un manque de sommeil chez un adolescent ?",
+          "question": "Que signifie l'acronyme TMS ?",
           "options": [
-            "Une meilleure mémorisation",
-            "Des troubles de la concentration et de l'irritabilité",
-            "Une augmentation de l'énergie physique",
-            "Une diminution de l'appétit"
+            "Temps de Mise en Stock",
+            "Troubles Musculo-Squelettiques",
+            "Technique de Manutention Sécurisée",
+            "Taux de Marge Standard"
           ],
           "correctAnswer": 1,
-          "explication": "Le sommeil permet la récupération mentale. Un manque de sommeil impacte directement les capacités cognitives et l'humeur."
+          "explication": "Les TMS sont des maladies qui touchent les articulations, les muscles et les tendons, souvent dues à des gestes répétitifs ou de mauvaises postures."
         },
         {
           "id": "q2",
@@ -308,39 +308,39 @@
         },
         {
           "id": "q3",
-          "question": "En France, la vente d'alcool est interdite aux mineurs de moins de :",
+          "question": "Quelle est la bonne posture pour porter une charge lourde ?",
           "options": [
-            "16 ans",
-            "18 ans",
-            "20 ans",
-            "21 ans"
+            "Garder les jambes tendues et plier le dos",
+            "Plier les jambes et garder le dos droit",
+            "Porter la charge à bout de bras",
+            "Se pencher sur le côté"
           ],
           "correctAnswer": 1,
-          "explication": "La loi française interdit strictement la vente d'alcool aux mineurs de moins de 18 ans pour protéger leur santé."
+          "explication": "Pour protéger son dos, il faut plier les genoux, garder le dos bien droit et porter la charge le plus près possible du corps."
         },
         {
           "id": "q4",
-          "question": "Quel comportement favorise un endormissement de qualité ?",
+          "question": "Que signifie l'acronyme PRAP ?",
           "options": [
-            "Regarder une série sur son smartphone juste avant de dormir",
-            "Pratiquer un sport intensif à 22h",
-            "Éviter les boissons excitantes (café, soda) après 16h",
-            "Prendre un repas très copieux le soir"
+            "Prévention des Risques liés à l'Activité Physique",
+            "Protection Rapide des Articles Périssables",
+            "Plan de Rangement des Allées Principales",
+            "Protocole de Réception des Apprentis"
           ],
-          "correctAnswer": 2,
-          "explication": "La caféine et la théine stimulent le système nerveux et retardent l'endormissement."
+          "correctAnswer": 0,
+          "explication": "La formation PRAP apprend aux salariés à analyser leur situation de travail pour réduire les risques de fatigue et d'accidents."
         },
         {
           "id": "q5",
-          "question": "Quel risque est principalement lié au travail dans une chambre froide ?",
+          "question": "Dans le cadre du développement durable, que doit faire un magasin de ses invendus alimentaires ?",
           "options": [
-            "Risque lié aux ambiances thermiques",
-            "Risque lié au bruit",
-            "Risque chimique",
-            "Risque biologique"
+            "Les jeter systématiquement",
+            "Les laisser en rayon jusqu'à la vente",
+            "Privilégier le don aux associations ou les paniers anti-gaspi",
+            "Les renvoyer au fournisseur"
           ],
-          "correctAnswer": 0,
-          "explication": "Le travail au froid expose le corps à des contraintes thermiques pouvant entraîner des engourdissements ou des gelures."
+          "correctAnswer": 2,
+          "explication": "La lutte contre le gaspillage alimentaire est une priorité. Les magasins donnent souvent leurs invendus à des banques alimentaires."
         },
         {
           "id": "q6",
@@ -356,15 +356,15 @@
         },
         {
           "id": "q7",
-          "question": "Quel est l'impact de la lumière bleue des écrans sur le sommeil ?",
+          "question": "Quel est le numéro d'urgence européen unique ?",
           "options": [
-            "Elle aide à s'endormir plus vite",
-            "Elle n'a aucun impact",
-            "Elle bloque la sécrétion de mélatonine (hormone du sommeil)",
-            "Elle améliore la qualité des rêves"
+            "15",
+            "17",
+            "18",
+            "112"
           ],
-          "correctAnswer": 2,
-          "explication": "La lumière bleue imite la lumière du jour, trompant le cerveau et retardant la phase d'endormissement."
+          "correctAnswer": 3,
+          "explication": "Le 112 est le numéro d'urgence gratuit et unique, accessible partout dans l'Union Européenne."
         }
       ]
     }

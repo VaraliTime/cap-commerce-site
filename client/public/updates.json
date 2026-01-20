@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-013",
+    "date": "2026-01-20",
+    "heure": "18:45",
+    "titre": "Mise à jour des Quiz",
+    "description": "Les quiz de chaque bloc ont été synchronisés avec les nouveaux contenus : SONCAS, types d'inventaire, démarques et prévention des risques.",
+    "type": "content"
+  },
+  {
     "id": "upd-012",
     "date": "2026-01-20",
     "heure": "18:30",
