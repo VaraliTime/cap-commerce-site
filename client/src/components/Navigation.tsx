@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import { LiveVisitors } from "./LiveVisitors";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,14 +27,19 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="text-2xl font-bold text-emerald-600">📚</div>
-              <span className="font-playfair text-xl font-bold text-gray-900 hidden sm:inline">
-                CAP Commerce
-              </span>
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <div className="flex items-center gap-2 cursor-pointer">
+                <div className="text-2xl font-bold text-emerald-600">📚</div>
+                <span className="font-playfair text-xl font-bold text-gray-900 hidden sm:inline">
+                  CAP Commerce
+                </span>
+              </div>
+            </Link>
+            <div className="hidden md:block">
+              <LiveVisitors />
             </div>
-          </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
@@ -54,17 +60,25 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3 lg:hidden">
+            <div className="sm:hidden">
+               <LiveVisitors />
+            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 hover:bg-gray-100 rounded-lg"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="lg:hidden pb-4 border-t border-gray-200">
+            <div className="px-4 py-3 sm:hidden">
+               <SearchBar />
+            </div>
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <a
