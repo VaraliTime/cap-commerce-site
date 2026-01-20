@@ -20,13 +20,10 @@ export default function Navigation() {
     { label: "Bloc 2", href: "/bloc2" },
     { label: "Bloc 3", href: "/bloc3" },
     { label: "Bloc 4", href: "/bloc4" },
-    { label: "Référentiel", href: "/referentiel" },
+    { label: "Ateliers", href: "/ateliers" },
     { label: "Examens", href: "/examens" },
     { label: "Quiz", href: "/quiz" },
     { label: "Schémas", href: "/schemas" },
-    { label: "Cadencier", href: "/cadencier" },
-    { label: "Plans de masse", href: "/plans-masse" },
-    { label: "Vidéos", href: "/videos" },
     { label: "Podcasts", href: "/podcasts" },
     { label: "Ressources", href: "/ressources" },
     { label: "Outils", href: "/outils" },
@@ -52,34 +49,17 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Desktop Navigation & Tools - Optimized for PC */}
-          <div className="hidden lg:flex items-center gap-6 flex-1 justify-end">
+          {/* Desktop Navigation & Tools */}
+          <div className="hidden lg:flex items-center gap-4 flex-1 justify-end">
             <div className="max-w-xs w-full">
               <SearchBar />
             </div>
             
             <div className="flex items-center gap-1 xl:gap-2">
-              {navItems.slice(0, 7).map((item) => (
+              {navItems.map((item) => (
                 <Link key={item.href} href={item.href}>
                   <a
-                    className={`px-3 py-2 rounded-xl font-poppins font-semibold transition-all text-[13px] xl:text-sm whitespace-nowrap ${
-                      isActive(item.href)
-                        ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 shadow-sm"
-                        : "text-gray-600 dark:text-gray-400 hover:text-emerald-600 hover:bg-gray-50 dark:hover:bg-gray-800"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                </Link>
-              ))}
-              
-              {/* Dropdown for more items on smaller PC screens if needed, but here we keep it simple */}
-              <div className="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-2"></div>
-              
-              {navItems.slice(7, 12).map((item) => (
-                <Link key={item.href} href={item.href}>
-                  <a
-                    className={`px-3 py-2 rounded-xl font-poppins font-semibold transition-all text-[13px] xl:text-sm whitespace-nowrap ${
+                    className={`px-3 py-2 rounded-xl font-poppins font-semibold transition-all text-[12px] xl:text-sm whitespace-nowrap ${
                       isActive(item.href)
                         ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 shadow-sm"
                         : "text-gray-600 dark:text-gray-400 hover:text-emerald-600 hover:bg-gray-50 dark:hover:bg-gray-800"
