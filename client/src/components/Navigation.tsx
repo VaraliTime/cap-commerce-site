@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
 import { RadioPlayer } from "./RadioPlayer";
 import { UpdateNotes } from "./UpdateNotes";
+import { RealTimeClock } from "./RealTimeClock";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,6 +65,7 @@ export default function Navigation() {
               ))}
             </div>
             <div className="flex items-center gap-2">
+              <RealTimeClock />
               <UpdateNotes />
               <RadioPlayer />
             </div>
@@ -71,6 +73,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button & Tools */}
           <div className="flex items-center gap-2 lg:hidden">
+            <RealTimeClock />
             <UpdateNotes />
             <RadioPlayer />
             <button

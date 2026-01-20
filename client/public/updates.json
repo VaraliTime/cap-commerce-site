@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-006",
+    "date": "2026-01-20",
+    "heure": "11:25",
+    "titre": "Horloge en Temps Réel",
+    "description": "Ajout d'une horloge affichant l'heure, la date et le jour en direct dans la barre de navigation.",
+    "type": "feature"
+  },
+  {
     "id": "upd-005",
     "date": "2026-01-20",
     "heure": "11:20",
