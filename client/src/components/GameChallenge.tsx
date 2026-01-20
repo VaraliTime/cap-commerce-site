@@ -28,6 +28,7 @@ export const GameChallenge = () => {
   const [timeLeft, setTimeLeft] = useState(30);
   const [playerName, setPlayerName] = useState('');
   const [leaderboard, setLeaderboard] = useState<ScoreEntry[]>([]);
+  const [usedQuestionIds, setUsedQuestionIds] = useState<Set<number>>(new Set());
 
   // Charger les données
   useEffect(() => {
@@ -61,6 +62,7 @@ export const GameChallenge = () => {
     // Mélanger les questions à chaque début de partie
     const shuffled = [...questions].sort(() => Math.random() - 0.5);
     setQuestions(shuffled);
+    setUsedQuestionIds(new Set());
     
     setScore(0);
     setCurrentQuestionIndex(0);
@@ -89,8 +91,23 @@ export const GameChallenge = () => {
 
     if (isCorrect) {
       setScore(prev => prev + question.points);
-      if (currentQuestionIndex + 1 < questions.length) {
-        setCurrentQuestionIndex(prev => prev + 1);
+      
+      // Marquer cette question comme utilisée
+      const newUsedIds = new Set(usedQuestionIds);
+      newUsedIds.add(question.id);
+      setUsedQuestionIds(newUsedIds);
+      
+      // Trouver la prochaine question non utilisée
+      let nextIndex = -1;
+      for (let i = currentQuestionIndex + 1; i < questions.length; i++) {
+        if (!newUsedIds.has(questions[i].id)) {
+          nextIndex = i;
+          break;
+        }
+      }
+      
+      if (nextIndex !== -1) {
+        setCurrentQuestionIndex(nextIndex);
         setTimeLeft(30);
         setSelectedOptions([]);
       } else {
