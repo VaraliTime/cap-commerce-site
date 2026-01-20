@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils, Star, Play, Download, CheckCircle, FileText } from "lucide-react";
+import { Podcast, BookOpen, ShoppingCart, Leaf, TrendingUp, Utensils, Star, Play, Download, CheckCircle, FileText, Globe, Zap } from "lucide-react";
 
 export default function Podcasts() {
   const podcastCategories = [
@@ -32,6 +32,13 @@ export default function Podcasts() {
           spotifyUrl: "https://open.spotify.com/show/0m1X9BwUCXf5yeJhQXVXIx",
           themes: "Coulisses distribution, agroalimentaire, métiers",
           icon: "🌾"
+        },
+        { 
+          title: "Les Voix de la Conso", 
+          description: "Olivier Dauvers décrypte l'actualité de la grande consommation et du retail alimentaire avec un regard expert sur les prix et les stratégies.",
+          plateformes: ["Spotify", "Apple Podcasts"],
+          themes: "Prix, inflation, stratégies enseignes",
+          icon: "📻"
         }
       ]
     },
@@ -76,6 +83,40 @@ export default function Podcasts() {
           plateformes: ["Spotify", "Apple Podcasts"],
           themes: "Innovation, CRM, marketing digital, omnicanal",
           icon: "💻"
+        },
+        { 
+          title: "Le Café de l'E-commerce", 
+          description: "Adrien et Laetitia décryptent chaque semaine l'actualité du commerce électronique avec expertise et humour.",
+          plateformes: ["Apple Podcasts", "Spotify"],
+          themes: "Actualités e-commerce, marketing digital, retail physique",
+          icon: "☕"
+        },
+        { 
+          title: "Les Explorateurs du E-Commerce", 
+          description: "Charles Mesnildrey (E-Commerce Nation) nous emmène dans les coulisses du e-commerce en France.",
+          plateformes: ["Apple Podcasts", "Spotify"],
+          themes: "Acquisition client, conversion, croissance",
+          icon: "🚀"
+        }
+      ]
+    },
+    {
+      title: "Innovation & Responsabilité",
+      icon: <Leaf className="text-green-600" />,
+      podcasts: [
+        { 
+          title: "Au Rayon Futur", 
+          description: "Le Groupe Casino met en avant les innovations responsables du secteur : lutte contre le gaspillage, MDD durables, magasins autonomes.",
+          plateformes: ["Spotify", "Apple Podcasts"],
+          themes: "Innovation, RSE, technologie retail",
+          icon: "🌱"
+        },
+        { 
+          title: "La France Bouge", 
+          description: "Émission d'Europe 1 qui met en avant les initiatives positives et novatrices, souvent liées à la grande distribution.",
+          plateformes: ["Europe 1", "Spotify"],
+          themes: "Entrepreneuriat, innovation, économie locale",
+          icon: "🇫🇷"
         }
       ]
     }
@@ -151,6 +192,11 @@ export default function Podcasts() {
             🎧 Apple Podcasts
           </a>
         )}
+        {!podcast.spotifyUrl && !podcast.appleUrl && (
+          <span className="inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1.5 rounded-lg text-xs font-semibold">
+            Disponible sur {podcast.plateformes.join(", ")}
+          </span>
+        )}
       </div>
     </Card>
   );
@@ -168,10 +214,11 @@ export default function Podcasts() {
             </div>
           </div>
           <h1 className="font-playfair text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Podcasts & Fiches de Synthèse
+            Bibliothèque de Podcasts
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            Apprenez en écoutant et révisez avec nos fiches PDF exclusives. Tout pour réussir votre CAP EPC !
+            Une sélection exhaustive des meilleurs podcasts pour maîtriser tous les aspects du commerce, 
+            du terrain à la stratégie digitale.
           </p>
         </section>
 
