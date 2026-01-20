@@ -1,23 +1,31 @@
+import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
+import InteractiveGlossary from "@/components/InteractiveGlossary";
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
+
+interface Term {
+  terme: string;
+  definition: string;
+}
 
 export default function Ressources() {
-  const [expandedGlossaire, setExpandedGlossaire] = useState<string | null>(null);
+  const [glossaire, setGlossaire] = useState<Term[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const glossaire = [
-    { id: "fifo", terme: "FIFO", definition: "First In, First Out (Premier Entré, Premier Sorti). Principe de gestion des stocks où les produits reçus en premier sont vendus en premier." },
-    { id: "facing", terme: "Facing", definition: "Nombre de produits d'une même référence visibles de face sur le rayon. Un bon facing attire l'attention du client." },
-    { id: "gondole", terme: "Gondole", definition: "Meuble de vente composé de plusieurs niveaux de rayons. C'est l'élément principal de présentation des produits en magasin." },
-    { id: "tete", terme: "Tête de gondole", definition: "Emplacement promotionnel en bout de rayon. C'est un emplacement très visible et très vendu." },
-    { id: "ilv", terme: "ILV", definition: "Information sur le Lieu de Vente. Étiquettes, codes-barres et informations produit affichées en magasin." },
-    { id: "plv", terme: "PLV", definition: "Publicité sur le Lieu de Vente. Affiches, présentoirs et éléments de décoration promotionnelle." },
-    { id: "demarque", terme: "Démarque inconnue", definition: "Différence entre le stock théorique (selon l'inventaire) et le stock réel. Peut être due aux vols, erreurs ou gaspillage." },
-    { id: "omnicanal", terme: "Omnicanal", definition: "Approche commerciale intégrant le commerce en ligne et en magasin physique pour une expérience client fluide." },
-    { id: "bc", terme: "Bon de Commande (BC)", definition: "Document émis par l'acheteur (magasin) au fournisseur. Contient les références, quantités et prix des produits commandés." },
-    { id: "bl", terme: "Bon de Livraison (BL)", definition: "Document émis par le fournisseur ou le transporteur. Accompagne la livraison et liste les produits expédiés." },
-    { id: "br", terme: "Bon de Réception (BR)", definition: "Document interne émis par le réceptionnaire après vérification. Confirme la conformité de la livraison." }
-  ];
+  useEffect(() => {
+    const loadGlossaire = async () => {
+      try {
+        const response = await fetch("/content.json");
+        const data = await response.json();
+        setGlossaire(data.ressources.glossaire || []);
+      } catch (err) {
+        console.error("Failed to load glossaire:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadGlossaire();
+  }, []);
 
   const fiches = [
     {
@@ -62,7 +70,7 @@ export default function Ressources() {
           <h1 className="font-playfair text-4xl font-bold text-gray-900 mb-4">
             Ressources
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 max-w-3xl">
             Glossaire, fiches de révision et ressources complémentaires pour votre préparation au CAP EPC.
           </p>
         </div>
@@ -72,48 +80,24 @@ export default function Ressources() {
           <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
             📚 Glossaire du CAP Commerce
           </h2>
-          <div className="space-y-3">
-            {glossaire.map((item) => (
-              <Card 
-                key={item.id}
-                className="border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-              >
-                <button
-                  onClick={() => setExpandedGlossaire(expandedGlossaire === item.id ? null : item.id)}
-                  className="w-full p-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                >
-                  <h3 className="font-poppins font-semibold text-gray-900">
-                    {item.terme}
-                  </h3>
-                  <span className="text-emerald-600 text-xl">
-                    {expandedGlossaire === item.id ? "−" : "+"}
-                  </span>
-                </button>
-
-                {expandedGlossaire === item.id && (
-                  <div className="px-4 pb-4 border-t border-gray-200 bg-gray-50">
-                    <p className="text-gray-700 leading-relaxed">
-                      {item.definition}
-                    </p>
-                  </div>
-                )}
-              </Card>
-            ))}
-          </div>
+          
+          {loading ? (
+            <div className="text-center text-gray-600">Chargement du glossaire...</div>
+          ) : (
+            <InteractiveGlossary terms={glossaire} />
+          )}
         </section>
 
-        {/* Fiches de révision Section */}
+        {/* Fiches Section */}
         <section className="mb-16">
           <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
             📝 Fiches de révision rapides
           </h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {fiches.map((fiche) => (
-              <Card 
-                key={fiche.id}
-                className="border border-gray-200 p-6 bg-emerald-50 border-l-4 border-l-emerald-600 hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-poppins font-semibold text-gray-900 mb-4">
+              <Card key={fiche.id} className="p-6 border border-gray-200 hover:shadow-md transition-shadow">
+                <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
                   {fiche.titre}
                 </h3>
                 <div className="text-gray-700 whitespace-pre-line text-sm leading-relaxed">
@@ -125,94 +109,72 @@ export default function Ressources() {
         </section>
 
         {/* Tips Section */}
-        <section className="mb-16">
-          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+        <section className="bg-emerald-50 border-l-4 border-emerald-600 p-8 rounded mb-12">
+          <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-6">
             💡 Conseils pour réussir
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="border border-gray-200 p-6">
-              <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-poppins font-semibold text-emerald-700 mb-4">
                 Avant l'examen
               </h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Révisez régulièrement les trois blocs de compétences</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Mémorisez les méthodes clés : SBAM, CAP, 5B</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Pratiquez les étapes de la vente en situation réelle</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Apprenez le vocabulaire professionnel</span>
-                </li>
+              <ul className="space-y-2 text-gray-700">
+                <li>✓ Révisez régulièrement les trois blocs de compétences</li>
+                <li>✓ Mémorisez les méthodes clés : SBAM, CAP, 5B</li>
+                <li>✓ Pratiquez les étapes de la vente en situation réelle</li>
+                <li>✓ Apprenez le vocabulaire professionnel</li>
               </ul>
-            </Card>
-
-            <Card className="border border-gray-200 p-6">
-              <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
+            </div>
+            
+            <div>
+              <h3 className="font-poppins font-semibold text-emerald-700 mb-4">
                 Pendant l'examen
               </h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Restez professionnel et courtois avec le client</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Appliquez les étapes de la vente dans l'ordre</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Écoutez attentivement les questions</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-600 font-bold">✓</span>
-                  <span>Utilisez le vocabulaire approprié</span>
-                </li>
+              <ul className="space-y-2 text-gray-700">
+                <li>✓ Restez professionnel et courtois avec le client</li>
+                <li>✓ Appliquez les étapes de la vente dans l'ordre</li>
+                <li>✓ Écoutez attentivement les questions</li>
+                <li>✓ Utilisez le vocabulaire approprié</li>
               </ul>
-            </Card>
+            </div>
           </div>
         </section>
 
-        {/* Compétences transversales Section */}
-        <section className="mb-16">
-          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+        {/* Competences Transversales */}
+        <section>
+          <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-8">
             🎯 Compétences transversales
           </h2>
-          <div className="bg-gray-50 rounded-lg p-8 border border-gray-200">
-            <p className="text-gray-700 mb-6 leading-relaxed">
-              Au-delà des trois blocs de compétences, le CAP EPC évalue également vos compétences transversales essentielles pour le commerce :
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-poppins font-semibold text-emerald-600 mb-3">
-                  Comportement professionnel
-                </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Tenue vestimentaire appropriée</li>
-                  <li>• Ponctualité et assiduité</li>
-                  <li>• Respect des règles de l'entreprise</li>
-                  <li>• Travail en équipe</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-poppins font-semibold text-emerald-600 mb-3">
-                  Hygiène et sécurité
-                </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Respect des normes d'hygiène</li>
-                  <li>• Prévention des accidents</li>
-                  <li>• Gestion des déchets</li>
-                  <li>• Développement durable</li>
-                </ul>
-              </div>
-            </div>
+          
+          <p className="text-gray-700 mb-8 leading-relaxed">
+            Au-delà des trois blocs de compétences, le CAP EPC évalue également vos compétences transversales essentielles pour le commerce :
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="p-6 border border-gray-200">
+              <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
+                Comportement professionnel
+              </h3>
+              <ul className="space-y-2 text-gray-700 text-sm">
+                <li>• Tenue vestimentaire appropriée</li>
+                <li>• Ponctualité et assiduité</li>
+                <li>• Respect des règles de l'entreprise</li>
+                <li>• Travail en équipe</li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 border border-gray-200">
+              <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
+                Hygiène et sécurité
+              </h3>
+              <ul className="space-y-2 text-gray-700 text-sm">
+                <li>• Respect des normes d'hygiène</li>
+                <li>• Prévention des accidents</li>
+                <li>• Gestion des déchets</li>
+                <li>• Développement durable</li>
+              </ul>
+            </Card>
           </div>
         </section>
       </main>

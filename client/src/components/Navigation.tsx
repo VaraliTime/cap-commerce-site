@@ -1,6 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import SearchBar from "./SearchBar";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function Navigation() {
     { label: "Bloc 1", href: "/bloc1" },
     { label: "Bloc 2", href: "/bloc2" },
     { label: "Bloc 3", href: "/bloc3" },
+    { label: "Quiz", href: "/quiz" },
     { label: "Cadencier", href: "/cadencier" },
     { label: "Plans de masse", href: "/plans-masse" },
     { label: "Vidéos", href: "/videos" },
@@ -35,6 +37,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
+            <SearchBar />
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <a

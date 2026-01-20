@@ -1,0 +1,208 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz-bloc1",
+      "blocId": "bloc1",
+      "titre": "Quiz - Bloc 1 : Recevoir et suivre les commandes",
+      "description": "Testez vos connaissances sur la réception des marchandises",
+      "questions": [
+        {
+          "id": "q1",
+          "question": "Quel est le premier document à vérifier lors de la réception d'une livraison ?",
+          "options": [
+            "La facture",
+            "Le Bon de Livraison (BL)",
+            "Le Bon de Réception (BR)",
+            "Le Bon de Commande (BC)"
+          ],
+          "correctAnswer": 1,
+          "explication": "Le Bon de Livraison (BL) doit être comparé avec le Bon de Commande (BC) pour vérifier la conformité de la livraison."
+        },
+        {
+          "id": "q2",
+          "question": "Qu'est-ce que la règle FIFO ?",
+          "options": [
+            "First In, First Out - Premier entré, premier sorti",
+            "First In, First In - Premier entré, premier entré",
+            "Final In, First Out - Dernier entré, premier sorti",
+            "First In, Final Out - Premier entré, dernier sorti"
+          ],
+          "correctAnswer": 0,
+          "explication": "FIFO signifie First In, First Out. Les produits reçus en premier doivent être vendus en premier pour éviter le gaspillage."
+        },
+        {
+          "id": "q3",
+          "question": "Quels sont les trois types de contrôle à effectuer lors de la réception ?",
+          "options": [
+            "Contrôle documentaire, quantitatif et qualitatif",
+            "Contrôle visuel, auditif et tactile",
+            "Contrôle initial, intermédiaire et final",
+            "Contrôle interne, externe et mixte"
+          ],
+          "correctAnswer": 0,
+          "explication": "Les trois contrôles essentiels sont : documentaire (vérifier les documents), quantitatif (compter les colis) et qualitatif (vérifier l'état)."
+        },
+        {
+          "id": "q4",
+          "question": "Qui émet le Bon de Réception (BR) ?",
+          "options": [
+            "Le fournisseur",
+            "Le transporteur",
+            "Le réceptionnaire",
+            "Le comptable"
+          ],
+          "correctAnswer": 2,
+          "explication": "Le Bon de Réception (BR) est émis par le réceptionnaire après vérification de la conformité de la livraison."
+        },
+        {
+          "id": "q5",
+          "question": "Quel est l'objectif principal du contrôle qualitatif ?",
+          "options": [
+            "Vérifier le nombre de colis",
+            "Vérifier l'état des produits et l'absence de dommages",
+            "Vérifier les prix",
+            "Vérifier les documents"
+          ],
+          "correctAnswer": 1,
+          "explication": "Le contrôle qualitatif consiste à vérifier l'état des produits, les emballages intacts, les dates de péremption et l'absence de dommages."
+        }
+      ]
+    },
+    {
+      "id": "quiz-bloc2",
+      "blocId": "bloc2",
+      "titre": "Quiz - Bloc 2 : Mettre en valeur et approvisionner",
+      "description": "Testez vos connaissances sur le merchandising et l'approvisionnement",
+      "questions": [
+        {
+          "id": "q1",
+          "question": "Quel est le niveau de rayon le plus vendu ?",
+          "options": [
+            "Niveau des pieds (0-80 cm)",
+            "Niveau des mains (80-140 cm)",
+            "Niveau des yeux (140-170 cm)",
+            "Niveau du chapeau (170+ cm)"
+          ],
+          "correctAnswer": 2,
+          "explication": "Le niveau des yeux (140-170 cm) est le plus visible et le plus vendu. Il est réservé aux produits à forte marge ou aux best-sellers."
+        },
+        {
+          "id": "q2",
+          "question": "Qu'est-ce que le 'facing' ?",
+          "options": [
+            "La façade du magasin",
+            "Le nombre de produits visibles de face sur le rayon",
+            "La face avant du produit",
+            "L'affichage des prix"
+          ],
+          "correctAnswer": 1,
+          "explication": "Le facing est le nombre de produits d'une même référence visibles de face sur le rayon. Un bon facing attire l'attention du client."
+        },
+        {
+          "id": "q3",
+          "question": "Combien de B y a-t-il dans la méthode de Kepner ?",
+          "options": [
+            "3 B",
+            "4 B",
+            "5 B",
+            "6 B"
+          ],
+          "correctAnswer": 2,
+          "explication": "La méthode des 5B comprend : Bon produit, Bon endroit, Bon moment, Bonne quantité, Bonne information."
+        },
+        {
+          "id": "q4",
+          "question": "Où faut-il placer les produits volumineux ?",
+          "options": [
+            "Au niveau des yeux",
+            "Au niveau des mains",
+            "Au niveau des pieds",
+            "Au niveau du chapeau"
+          ],
+          "correctAnswer": 2,
+          "explication": "Les produits volumineux doivent être placés au niveau des pieds (0-80 cm) car ils sont moins visibles mais faciles à accéder."
+        },
+        {
+          "id": "q5",
+          "question": "Quelle est la différence entre ILV et PLV ?",
+          "options": [
+            "ILV = Publicité, PLV = Information",
+            "ILV = Information, PLV = Publicité",
+            "Aucune différence",
+            "ILV = Interne, PLV = Externe"
+          ],
+          "correctAnswer": 1,
+          "explication": "ILV = Information sur le Lieu de Vente (étiquettes, codes-barres). PLV = Publicité sur le Lieu de Vente (affiches, présentoirs)."
+        }
+      ]
+    },
+    {
+      "id": "quiz-bloc3",
+      "blocId": "bloc3",
+      "titre": "Quiz - Bloc 3 : Conseil et accompagnement du client",
+      "description": "Testez vos connaissances sur la vente et l'accueil client",
+      "questions": [
+        {
+          "id": "q1",
+          "question": "Que signifie SBAM ?",
+          "options": [
+            "Sourire, Bonjour, Au revoir, Merci",
+            "Service, Bien, Accueil, Marchandise",
+            "Sécurité, Bienveillance, Assistance, Motivation",
+            "Système, Bloc, Accord, Méthode"
+          ],
+          "correctAnswer": 0,
+          "explication": "SBAM est la méthode d'accueil : Sourire, Bonjour, Au revoir, Merci. Elle crée une relation de confiance avec le client."
+        },
+        {
+          "id": "q2",
+          "question": "Que signifie CAP en argumentation commerciale ?",
+          "options": [
+            "Client, Achat, Produit",
+            "Caractéristique, Avantage, Preuve",
+            "Commercial, Achat, Promotion",
+            "Conseil, Assistance, Paiement"
+          ],
+          "correctAnswer": 1,
+          "explication": "CAP signifie Caractéristique (ce que le produit est), Avantage (ce qu'il apporte), Preuve (démonstration ou avis)."
+        },
+        {
+          "id": "q3",
+          "question": "Combien d'étapes y a-t-il dans le processus de vente ?",
+          "options": [
+            "5 étapes",
+            "6 étapes",
+            "7 étapes",
+            "8 étapes"
+          ],
+          "correctAnswer": 2,
+          "explication": "Les 7 étapes sont : Prise de contact, Découverte des besoins, Argumentation, Traitement des objections, Vente additionnelle, Encaissement, Prise de congé."
+        },
+        {
+          "id": "q4",
+          "question": "Quelle est la première étape de la vente ?",
+          "options": [
+            "Découverte des besoins",
+            "Argumentation",
+            "Prise de contact",
+            "Encaissement"
+          ],
+          "correctAnswer": 2,
+          "explication": "La prise de contact est la première étape où vous accueillez le client avec la méthode SBAM."
+        },
+        {
+          "id": "q5",
+          "question": "Comment traiter efficacement une objection client ?",
+          "options": [
+            "Ignorer l'objection et continuer",
+            "Écouter, reformuler, valider, puis répondre",
+            "Contredire le client immédiatement",
+            "Proposer un autre produit"
+          ],
+          "correctAnswer": 1,
+          "explication": "La bonne approche est : Écoute active, Reformulation, Validation, puis Réponse adaptée. Cela montre votre compréhension et votre professionnalisme."
+        }
+      ]
+    }
+  ]
+}

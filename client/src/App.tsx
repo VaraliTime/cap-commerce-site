@@ -12,6 +12,7 @@ import Ressources from "./pages/Ressources";
 import Cadencier from "./pages/Cadencier";
 import PlansMasse from "./pages/PlanseMasse";
 import Videos from "./pages/Videos";
+import QuizPage from "./pages/QuizPage";
 
 
 function Router() {
@@ -25,6 +26,8 @@ function Router() {
       <Route path={"/cadencier"} component={Cadencier} />
       <Route path={"/plans-masse"} component={PlansMasse} />
       <Route path={"/videos"} component={Videos} />
+      <Route path={"/quiz"} component={QuizPage} />
+      <Route path={"/quiz/:blocId"} component={QuizPage} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
