@@ -136,6 +136,27 @@ export default function Home() {
                 <p className="text-gray-600">Synthèses et points clés pour vos révisions efficaces</p>
               </div>
             </div>
+            <div className="flex gap-4">
+              <div className="text-3xl">📅</div>
+              <div>
+                <h3 className="font-poppins font-semibold text-gray-900 mb-2">Cadencier et stocks</h3>
+                <p className="text-gray-600">Plannings types de livraison et gestion des stocks</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl">🏪</div>
+              <div>
+                <h3 className="font-poppins font-semibold text-gray-900 mb-2">Plans de masse</h3>
+                <p className="text-gray-600">Agencement de magasin et principes de merchandising</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl">🎥</div>
+              <div>
+                <h3 className="font-poppins font-semibold text-gray-900 mb-2">Vidéos explicatives</h3>
+                <p className="text-gray-600">Tutoriels vidéo pour mieux comprendre les concepts</p>
+              </div>
+            </div>
           </div>
         </section>
       </main>

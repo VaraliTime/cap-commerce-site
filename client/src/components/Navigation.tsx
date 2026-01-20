@@ -13,6 +13,9 @@ export default function Navigation() {
     { label: "Bloc 1", href: "/bloc1" },
     { label: "Bloc 2", href: "/bloc2" },
     { label: "Bloc 3", href: "/bloc3" },
+    { label: "Cadencier", href: "/cadencier" },
+    { label: "Plans de masse", href: "/plans-masse" },
+    { label: "Vidéos", href: "/videos" },
     { label: "Ressources", href: "/ressources" }
   ];
 
@@ -31,11 +34,11 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <a
-                  className={`font-poppins font-medium transition-colors ${
+                  className={`font-poppins font-medium transition-colors text-sm ${
                     isActive(item.href)
                       ? "text-emerald-600 border-b-2 border-emerald-600 pb-1"
                       : "text-gray-600 hover:text-emerald-600"
@@ -50,7 +53,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -58,12 +61,12 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-gray-200">
+          <div className="lg:hidden pb-4 border-t border-gray-200">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <a
                   onClick={() => setIsOpen(false)}
-                  className={`block py-2 px-4 font-poppins font-medium transition-colors ${
+                  className={`block py-2 px-4 font-poppins font-medium text-sm transition-colors ${
                     isActive(item.href)
                       ? "text-emerald-600 bg-emerald-50"
                       : "text-gray-600 hover:bg-gray-50"

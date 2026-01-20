@@ -9,16 +9,22 @@ import Bloc1 from "./pages/Bloc1";
 import Bloc2 from "./pages/Bloc2";
 import Bloc3 from "./pages/Bloc3";
 import Ressources from "./pages/Ressources";
+import Cadencier from "./pages/Cadencier";
+import PlansMasse from "./pages/PlanseMasse";
+import Videos from "./pages/Videos";
 
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/ "} component={Home} />
       <Route path={"/bloc1"} component={Bloc1} />
       <Route path={"/bloc2"} component={Bloc2} />
       <Route path={"/bloc3"} component={Bloc3} />
       <Route path={"/ressources"} component={Ressources} />
+      <Route path={"/cadencier"} component={Cadencier} />
+      <Route path={"/plans-masse"} component={PlansMasse} />
+      <Route path={"/videos"} component={Videos} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
