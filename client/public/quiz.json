@@ -275,6 +275,98 @@
           "explication": "SONCAS (Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie) permet d'identifier les leviers psychologiques qui poussent un client à acheter."
         }
       ]
+    },
+    {
+      "id": "quiz-bloc4",
+      "blocId": "bloc4",
+      "titre": "Quiz - Bloc 4 : Prévention-Santé-Environnement",
+      "description": "Testez vos connaissances sur la santé et la sécurité au travail",
+      "questions": [
+        {
+          "id": "q1",
+          "question": "Quel est l'effet principal d'un manque de sommeil chez un adolescent ?",
+          "options": [
+            "Une meilleure mémorisation",
+            "Des troubles de la concentration et de l'irritabilité",
+            "Une augmentation de l'énergie physique",
+            "Une diminution de l'appétit"
+          ],
+          "correctAnswer": 1,
+          "explication": "Le sommeil permet la récupération mentale. Un manque de sommeil impacte directement les capacités cognitives et l'humeur."
+        },
+        {
+          "id": "q2",
+          "question": "Quelle est la température recommandée pour une chambre afin de favoriser un bon sommeil ?",
+          "options": [
+            "15°C",
+            "19°C",
+            "22°C",
+            "25°C"
+          ],
+          "correctAnswer": 1,
+          "explication": "Une température de 19°C est idéale pour permettre au corps de réguler sa température interne durant la nuit."
+        },
+        {
+          "id": "q3",
+          "question": "En France, la vente d'alcool est interdite aux mineurs de moins de :",
+          "options": [
+            "16 ans",
+            "18 ans",
+            "20 ans",
+            "21 ans"
+          ],
+          "correctAnswer": 1,
+          "explication": "La loi française interdit strictement la vente d'alcool aux mineurs de moins de 18 ans pour protéger leur santé."
+        },
+        {
+          "id": "q4",
+          "question": "Quel comportement favorise un endormissement de qualité ?",
+          "options": [
+            "Regarder une série sur son smartphone juste avant de dormir",
+            "Pratiquer un sport intensif à 22h",
+            "Éviter les boissons excitantes (café, soda) après 16h",
+            "Prendre un repas très copieux le soir"
+          ],
+          "correctAnswer": 2,
+          "explication": "La caféine et la théine stimulent le système nerveux et retardent l'endormissement."
+        },
+        {
+          "id": "q5",
+          "question": "Quel risque est principalement lié au travail dans une chambre froide ?",
+          "options": [
+            "Risque lié aux ambiances thermiques",
+            "Risque lié au bruit",
+            "Risque chimique",
+            "Risque biologique"
+          ],
+          "correctAnswer": 0,
+          "explication": "Le travail au froid expose le corps à des contraintes thermiques pouvant entraîner des engourdissements ou des gelures."
+        },
+        {
+          "id": "q6",
+          "question": "Que signifie l'acronyme SST en milieu professionnel ?",
+          "options": [
+            "Sécurité et Santé au Travail",
+            "Sauveteur Secouriste du Travail",
+            "Service de Soins Technologiques",
+            "Suivi Sanitaire des Travailleurs"
+          ],
+          "correctAnswer": 1,
+          "explication": "Le SST est un salarié formé pour porter secours en cas d'accident et participer à la prévention des risques dans l'entreprise."
+        },
+        {
+          "id": "q7",
+          "question": "Quel est l'impact de la lumière bleue des écrans sur le sommeil ?",
+          "options": [
+            "Elle aide à s'endormir plus vite",
+            "Elle n'a aucun impact",
+            "Elle bloque la sécrétion de mélatonine (hormone du sommeil)",
+            "Elle améliore la qualité des rêves"
+          ],
+          "correctAnswer": 2,
+          "explication": "La lumière bleue imite la lumière du jour, trompant le cerveau et retardant la phase d'endormissement."
+        }
+      ]
     }
   ]
 }

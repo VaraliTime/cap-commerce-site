@@ -27,6 +27,14 @@ export default function Home() {
       icone: "👥",
       couleur: "#047857",
       lien: "/bloc3"
+    },
+    {
+      id: "bloc4",
+      titre: "Prévention-Santé-Environnement",
+      description: "Devenez acteur de votre prévention, de votre santé et de votre environnement professionnel",
+      icone: "🛡️",
+      couleur: "#065f46",
+      lien: "/bloc4"
     }
   ];
 
@@ -60,10 +68,10 @@ export default function Home() {
         {/* Blocs Section */}
         <section className="mb-16">
           <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-12 text-center">
-            Les 3 blocs de compétences du CAP EPC
+            Les 4 blocs de compétences du CAP EPC
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {blocs.map((bloc) => (
               <Link key={bloc.id} href={bloc.lien}>
                 <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300 cursor-pointer h-full">
