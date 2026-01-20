@@ -61,6 +61,15 @@ export default function Ressources() {
     }
   ];
 
+  const photos = [
+    { titre: "Bon Facing", cat: "Merchandising", desc: "Rayon bien organisé et produits avancés", src: "/gallery/merch_good.jpg" },
+    { titre: "Mauvais Facing", cat: "Merchandising", desc: "Rayon vide ou désordonné à éviter", src: "/gallery/merch_bad.jpg" },
+    { titre: "Tête de Gondole", cat: "Merchandising", desc: "Mise en avant promotionnelle attractive", src: "/gallery/gondole.jpg" },
+    { titre: "Réserve Organisée", cat: "Réception", desc: "Stockage logique et sécurisé", src: "/gallery/reserve.jpg" },
+    { titre: "Conseil Client", cat: "Vente", desc: "Posture d'écoute et de conseil", src: "/gallery/conseil.jpg" },
+    { titre: "Encaissement", cat: "Vente", desc: "Relation client finale et paiement", src: "/gallery/encaissement.jpg" }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -114,6 +123,31 @@ export default function Ressources() {
           </div>
         </section>
 
+        {/* Galerie de Photos */}
+        <section className="mb-16">
+          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
+            🖼️ Galerie - Bonnes et Mauvaises Pratiques
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {photos.map((photo, idx) => (
+              <Card key={idx} className="overflow-hidden border-2 border-gray-100 hover:shadow-lg transition-all group">
+                <div className="h-64 overflow-hidden bg-gray-100">
+                  <img 
+                    src={photo.src} 
+                    alt={photo.titre}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4">
+                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">{photo.cat}</span>
+                  <h3 className="font-poppins font-semibold text-gray-900 mt-2">{photo.titre}</h3>
+                  <p className="text-gray-600 text-sm mt-2">{photo.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
+
         {/* Tips Section */}
         <section className="bg-emerald-50 border-l-4 border-emerald-600 p-8 rounded mb-12">
           <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-6">
@@ -154,12 +188,10 @@ export default function Ressources() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
-              { titre: "Fiche Synthèse - Bloc 1", desc: "Points clés de la réception", size: "2.3 MB" },
-              { titre: "Fiche Synthèse - Bloc 2", desc: "Merchandising et rayons", size: "1.8 MB" },
-              { titre: "Fiche Synthèse - Bloc 3", desc: "Vente et accueil client", size: "2.1 MB" },
-              { titre: "Fiche Synthèse - Bloc 4", desc: "PSE et environnement", size: "1.9 MB" },
-              { titre: "Lexique Complet", desc: "150+ termes techniques", size: "3.2 MB" },
-              { titre: "Formules Commerciales", desc: "Calculs avec exemples", size: "1.5 MB" }
+              { titre: "Fiche Synthèse - Bloc 1", desc: "Points clés de la réception", url: "/bloc1_reception_stockage.pdf" },
+              { titre: "Fiche Synthèse - Bloc 2", desc: "Merchandising et rayons", url: "/bloc2_merchandising_approvisionnement.pdf" },
+              { titre: "Fiche Synthèse - Bloc 3", desc: "Vente et accueil client", url: "/bloc3_conseil_accompagnement.pdf" },
+              { titre: "Fiche Synthèse - Bloc 4", desc: "PSE et environnement", url: "/bloc4_pse.pdf" }
             ].map((fiche, idx) => (
               <Card key={idx} className="p-6 border-2 border-blue-100 hover:shadow-lg transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
@@ -168,79 +200,15 @@ export default function Ressources() {
                 </div>
                 <h3 className="font-poppins font-semibold text-gray-900 mb-2">{fiche.titre}</h3>
                 <p className="text-gray-600 text-sm mb-4">{fiche.desc}</p>
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                  <span>Taille: {fiche.size}</span>
-                </div>
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold text-sm transition-colors">
+                <a 
+                  href={fiche.url} 
+                  download
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+                >
                   ⬇️ Télécharger
-                </button>
+                </a>
               </Card>
             ))}
-          </div>
-        </section>
-
-        {/* Galerie de Photos */}
-        <section className="mb-16">
-          <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
-            🖼️ Galerie - Bonnes et Mauvaises Pratiques
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              { titre: "Bon Facing", cat: "Merchandising", desc: "Rayon bien organisé" },
-              { titre: "Mauvais Facing", cat: "Merchandising", desc: "À éviter absolument" },
-              { titre: "Tête de Gondole", cat: "Merchandising", desc: "Présentation attractive" },
-              { titre: "Réserve Organisée", cat: "Réception", desc: "Stockage logique" },
-              { titre: "Bon Port de Charge", cat: "PSE", desc: "Posture correcte" },
-              { titre: "Mauvaise Posture", cat: "PSE", desc: "Risque de TMS" }
-            ].map((photo, idx) => (
-              <Card key={idx} className="overflow-hidden border-2 border-green-100 hover:shadow-lg transition-shadow">
-                <div className="h-40 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
-                  <span className="text-4xl">🖼️</span>
-                </div>
-                <div className="p-4">
-                  <span className="text-xs font-bold text-green-600 uppercase">{photo.cat}</span>
-                  <h3 className="font-poppins font-semibold text-gray-900 mt-2">{photo.titre}</h3>
-                  <p className="text-gray-600 text-sm mt-2">{photo.desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Competences Transversales */}
-        <section>
-          <h2 className="font-poppins text-2xl font-semibold text-gray-900 mb-8">
-            🎯 Compétences transversales
-          </h2>
-          
-          <p className="text-gray-700 mb-8 leading-relaxed">
-            Au-delà des trois blocs de compétences, le CAP EPC évalue également vos compétences transversales essentielles pour le commerce :
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6 border border-gray-200">
-              <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
-                Comportement professionnel
-              </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
-                <li>• Tenue vestimentaire appropriée</li>
-                <li>• Ponctualité et assiduité</li>
-                <li>• Respect des règles de l'entreprise</li>
-                <li>• Travail en équipe</li>
-              </ul>
-            </Card>
-
-            <Card className="p-6 border border-gray-200">
-              <h3 className="font-poppins font-semibold text-emerald-600 mb-4">
-                Hygiène et sécurité
-              </h3>
-              <ul className="space-y-2 text-gray-700 text-sm">
-                <li>• Respect des normes d'hygiène</li>
-                <li>• Prévention des accidents</li>
-                <li>• Gestion des déchets</li>
-                <li>• Développement durable</li>
-              </ul>
-            </Card>
           </div>
         </section>
       </main>
@@ -249,7 +217,7 @@ export default function Ressources() {
       <footer className="bg-gray-900 text-white py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-400">
-            © 2024 Réussir son CAP Commerce
+            © 2026 Réussir son CAP Commerce
           </p>
         </div>
       </footer>
