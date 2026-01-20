@@ -1,0 +1,42 @@
+[
+  {
+    "id": "upd-005",
+    "date": "2026-01-20",
+    "heure": "11:20",
+    "titre": "Correction Radio RTL2",
+    "description": "Rétablissement du flux RTL2 avec une nouvelle URL sécurisée et fonctionnelle.",
+    "type": "fix"
+  },
+  {
+    "id": "upd-004",
+    "date": "2026-01-20",
+    "heure": "11:10",
+    "titre": "Lecteur Radio Intégré",
+    "description": "Ajout d'un lecteur radio en haut à droite avec NRJ, RTL2 et Skyrock pour accompagner vos révisions.",
+    "type": "feature"
+  },
+  {
+    "id": "upd-003",
+    "date": "2026-01-20",
+    "heure": "11:00",
+    "titre": "Graphique de Flux en Direct",
+    "description": "Visualisation en temps réel de la fréquentation du site sur la page d'accueil.",
+    "type": "feature"
+  },
+  {
+    "id": "upd-002",
+    "date": "2026-01-20",
+    "heure": "10:55",
+    "titre": "Galerie des Schémas",
+    "description": "Création d'une page dédiée regroupant tous les schémas pédagogiques (Omnicanal, SBAM, CAP).",
+    "type": "feature"
+  },
+  {
+    "id": "upd-001",
+    "date": "2026-01-20",
+    "heure": "10:45",
+    "titre": "Nouveau Bloc 4 : PSE",
+    "description": "Ajout complet du Bloc 4 sur la Prévention-Santé-Environnement avec son quiz dédié.",
+    "type": "content"
+  }
+]

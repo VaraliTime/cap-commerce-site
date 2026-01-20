@@ -4,6 +4,7 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
 import { RadioPlayer } from "./RadioPlayer";
+import { UpdateNotes } from "./UpdateNotes";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Desktop Navigation & Radio */}
+          {/* Desktop Navigation & Tools */}
           <div className="hidden lg:flex items-center gap-4">
             <SearchBar />
             <div className="flex items-center gap-4 mr-2">
@@ -62,15 +63,16 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
-            <RadioPlayer />
+            <div className="flex items-center gap-2">
+              <UpdateNotes />
+              <RadioPlayer />
+            </div>
           </div>
 
-          {/* Mobile Menu Button & Radio */}
-          <div className="flex items-center gap-3 lg:hidden">
+          {/* Mobile Menu Button & Tools */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <UpdateNotes />
             <RadioPlayer />
-            <div className="sm:hidden">
-               <LiveVisitors />
-            </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 hover:bg-gray-100 rounded-lg"
