@@ -58,6 +58,10 @@ export const GameChallenge = () => {
   }, [gameState, timeLeft, endGame]);
 
   const startGame = () => {
+    // Mélanger les questions à chaque début de partie
+    const shuffled = [...questions].sort(() => Math.random() - 0.5);
+    setQuestions(shuffled);
+    
     setScore(0);
     setCurrentQuestionIndex(0);
     setTimeLeft(30);
