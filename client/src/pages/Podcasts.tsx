@@ -1,16 +1,20 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
+import { useState } from "react";
 import { 
   Podcast, ShoppingCart, Leaf, TrendingUp, Utensils, Star, 
-  Download, CheckCircle, FileText, Zap, ArrowRight
+  Download, CheckCircle, FileText, Zap, ArrowRight, X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Podcasts() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   // --- Données des Podcasts ---
   const podcastCategories = [
     {
+      id: "alimentaire",
       title: "Commerce Alimentaire",
       subtitle: "Grande Distribution & Agro",
       icon: <Utensils size={32} />,
@@ -27,10 +31,17 @@ export default function Podcasts() {
           description: "La revue de presse hebdomadaire du business de la bouffe.",
           spotifyUrl: "https://open.spotify.com/show/6vXvY8V6Y6vXvY8V6Y6vXv",
           icon: "🍱"
+        },
+        { 
+          title: "Sans Filtre Ajouté", 
+          description: "Salomé Charrigton explore les coulisses de l'agroalimentaire.",
+          spotifyUrl: "https://open.spotify.com/show/0m1X9BwUCXf5yeJhQXVXIx",
+          icon: "🌾"
         }
       ]
     },
     {
+      id: "retail",
       title: "Retail & Merch",
       subtitle: "Agencement & Stratégie",
       icon: <ShoppingCart size={32} />,
@@ -50,6 +61,7 @@ export default function Podcasts() {
       ]
     },
     {
+      id: "ecommerce",
       title: "E-commerce",
       subtitle: "Vente en ligne & Digital",
       icon: <TrendingUp size={32} />,
@@ -65,10 +77,16 @@ export default function Podcasts() {
           title: "Les Digital Doers", 
           description: "Interviews des leaders du digital.",
           icon: "💻"
+        },
+        { 
+          title: "Le Café de l'E-commerce", 
+          description: "Décryptage hebdomadaire de l'actualité e-commerce.",
+          icon: "☕"
         }
       ]
     },
     {
+      id: "innovation",
       title: "Innovation RSE",
       subtitle: "Responsabilité & Futur",
       icon: <Leaf size={32} />,
@@ -116,6 +134,10 @@ export default function Podcasts() {
     { title: "Bloc 4 : PSE & Environnement", url: "/bloc4_pse.pdf", color: "bg-orange-500" }
   ];
 
+  const filteredPodcasts = selectedCategory 
+    ? podcastCategories.find(c => c.id === selectedCategory)?.podcasts || []
+    : [];
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <Navigation />
@@ -136,17 +158,28 @@ export default function Podcasts() {
             Bibliothèque de Podcasts
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Apprenez les métiers du commerce en écoutant les meilleurs experts du secteur.
+            Apprenez les métiers du commerce en écoutant les meilleurs experts du secteur. Cliquez sur un univers pour explorer les podcasts dédiés.
           </p>
         </motion.section>
 
-        {/* --- CATEGORIES --- */}
+        {/* --- CATEGORIES (FONCTIONNELLES) --- */}
         <section className="mb-24">
-          <div className="flex items-center gap-3 mb-10">
-            <Zap className="text-yellow-500 fill-yellow-500" size={32} />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-poppins">
-              Explorez par Univers
-            </h2>
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <Zap className="text-yellow-500 fill-yellow-500" size={32} />
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white font-poppins">
+                Explorez par Univers
+              </h2>
+            </div>
+            {selectedCategory && (
+              <Button 
+                variant="ghost" 
+                onClick={() => setSelectedCategory(null)}
+                className="text-gray-500 hover:text-red-500 flex items-center gap-2"
+              >
+                <X size={20} /> Réinitialiser
+              </Button>
+            )}
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -154,34 +187,51 @@ export default function Podcasts() {
               <motion.div 
                 key={idx}
                 whileHover={{ y: -10 }}
-                className="group cursor-pointer"
+                className={`group cursor-pointer ${selectedCategory && selectedCategory !== cat.id ? 'opacity-50 grayscale' : ''}`}
+                onClick={() => setSelectedCategory(cat.id)}
               >
-                <Card className={`h-full border-none shadow-xl overflow-hidden relative transition-all group-hover:shadow-2xl`}>
+                <Card className={`h-full border-none shadow-xl overflow-hidden relative transition-all ${selectedCategory === cat.id ? 'ring-4 ring-emerald-500' : 'group-hover:shadow-2xl'}`}>
                   <div className={`h-32 bg-gradient-to-br ${cat.color} p-6 flex items-end justify-between text-white`}>
                     <div className="bg-white/20 p-3 rounded-xl backdrop-blur-md">
                       {cat.icon}
                     </div>
-                    <ArrowRight className="opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0" />
+                    <ArrowRight className={`transition-all transform ${selectedCategory === cat.id ? 'rotate-90' : 'group-hover:translate-x-2'}`} />
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold mb-1 group-hover:text-emerald-600 transition-colors">{cat.title}</h3>
-                    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-4">{cat.subtitle}</p>
-                    
-                    <div className="space-y-4">
-                      {cat.podcasts.map((p, pIdx) => (
-                        <div key={pIdx} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                          <span className="text-xl">{p.icon}</span>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold truncate">{p.title}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">{cat.subtitle}</p>
                   </div>
                 </Card>
               </motion.div>
             ))}
           </div>
+
+          {/* Affichage des podcasts filtrés */}
+          <AnimatePresence mode="wait">
+            {selectedCategory && (
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {filteredPodcasts.map((p, pIdx) => (
+                  <Card key={pIdx} className="p-6 border-2 border-emerald-50 dark:border-emerald-900/20 bg-white dark:bg-gray-800 hover:shadow-lg transition-all">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="text-4xl">{p.icon}</span>
+                      <h4 className="font-bold text-lg">{p.title}</h4>
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">{p.description}</p>
+                    {p.spotifyUrl && (
+                      <Button asChild variant="outline" className="w-full border-emerald-500 text-emerald-600 hover:bg-emerald-50">
+                        <a href={p.spotifyUrl} target="_blank" rel="noopener noreferrer">Écouter sur Spotify</a>
+                      </Button>
+                    )}
+                  </Card>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </section>
 
         {/* Section Téléchargements PDF Blocs */}
