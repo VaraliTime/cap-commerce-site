@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-015",
+    "date": "2026-01-21",
+    "heure": "12:15",
+    "titre": "🚀 Nouveaux Mini-Jeux & Podcasts Interactifs",
+    "description": "🎮 Découvrez la nouvelle page Mini-Jeux avec le Simulateur de Caisse, le Juste Prix et le Tri PSE ! 🎙️ Les podcasts sont maintenant filtrables par univers pour une navigation simplifiée.",
+    "type": "feature"
+  },
+  {
     "id": "upd-014",
     "date": "2026-01-20",
     "heure": "19:00",

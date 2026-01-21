@@ -31,7 +31,14 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div className="sticky top-0 z-50">
+      <div className="bg-emerald-600 text-white py-2 px-4 text-center text-sm font-medium">
+        🚀 Nouvelles mises à jour : Découvrez le Simulateur de Caisse et les Podcasts interactifs ! 
+        <Link href="/mini-jeux">
+          <a className="underline ml-2 hover:text-emerald-100">Essayer maintenant →</a>
+        </Link>
+      </div>
+      <nav className="bg-white border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -112,5 +119,6 @@ export default function Navigation() {
         )}
       </div>
     </nav>
+    </div>
   );
 }
