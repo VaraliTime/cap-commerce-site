@@ -18,6 +18,7 @@ import QuizPage from "./pages/QuizPage";
 import SchemasPage from "./pages/SchemasPage";
 import ReferentielPage from "./pages/ReferentielPage";
 import Podcasts from "./pages/Podcasts";
+import MiniJeux from "./pages/MiniJeux";
 
 
 function Router() {
@@ -33,6 +34,7 @@ function Router() {
       <Route path={"/plans-masse"} component={PlansMasse} />
       <Route path={"/videos"} component={Videos} />
       <Route path={"/podcasts"} component={Podcasts} />
+      <Route path={"/mini-jeux"} component={MiniJeux} />
       <Route path={"/quiz"} component={QuizPage} />
       <Route path={"/quiz/:blocId"} component={QuizPage} />
       <Route path={"/schemas"} component={SchemasPage} />

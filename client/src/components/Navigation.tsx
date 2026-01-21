@@ -26,6 +26,7 @@ export default function Navigation() {
     { label: "Plans de masse", href: "/plans-masse" },
     { label: "Vidéos", href: "/videos" },
     { label: "Podcasts", href: "/podcasts" },
+    { label: "Mini-Jeux", href: "/mini-jeux" },
     { label: "Ressources", href: "/ressources" }
   ];
 
