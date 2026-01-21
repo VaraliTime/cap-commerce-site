@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle } from "lucide-react";
+import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
@@ -24,6 +24,7 @@ export default function Navigation() {
         { label: "Bloc 3 : Vente", href: "/bloc3" },
         { label: "Bloc 4 : PSE", href: "/bloc4" },
         { label: "Référentiel Examen", href: "/referentiel" },
+        { label: "Dossier Professionnel", href: "/dossier-pro" },
       ]
     },
     {
@@ -32,12 +33,15 @@ export default function Navigation() {
       items: [
         { label: "Quiz & Tests", href: "/quiz" },
         { label: "Mini-Jeux CAP", href: "/mini-jeux" },
+        { label: "Simulateur Oral EP3", href: "/simulateur-oral" },
+        { label: "Glossaire Audio", href: "/glossaire" },
       ]
     },
     {
-      label: "Outils & Schémas",
+      label: "Outils & Fiches",
       icon: <LayoutDashboard size={16} />,
       items: [
+        { label: "Générateur de Fiches", href: "/fiches-perso" },
         { label: "Schémas Pédago", href: "/schemas" },
         { label: "Cadencier", href: "/cadencier" },
         { label: "Plans de masse", href: "/plans-masse" },
@@ -58,9 +62,9 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
       <div className="bg-emerald-600 text-white py-2 px-4 text-center text-sm font-medium shadow-md">
-        🚀 Nouvelles mises à jour : Découvrez le Simulateur de Caisse et les Podcasts interactifs ! 
-        <Link href="/mini-jeux">
-          <a className="underline ml-2 hover:text-emerald-100 transition-colors">Essayer maintenant →</a>
+        🚀 Mise à jour majeure : Dashboard, Glossaire Audio et Simulateur Oral sont en ligne ! 
+        <Link href="/dashboard">
+          <a className="underline ml-2 hover:text-emerald-100 transition-colors">Voir mon profil →</a>
         </Link>
       </div>
 
@@ -119,6 +123,12 @@ export default function Navigation() {
 
             {/* Right Tools */}
             <div className="flex items-center gap-2">
+              <Link href="/dashboard">
+                <a className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-bold transition-all ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600 hover:bg-emerald-100"}`}>
+                  <UserCircle size={20} />
+                  <span className="hidden sm:inline">Mon Profil</span>
+                </a>
+              </Link>
               <div className="hidden md:block">
                 <SearchBar />
               </div>
@@ -140,8 +150,14 @@ export default function Navigation() {
           {isOpen && (
             <div className="lg:hidden pb-6 border-t border-gray-100 animate-in slide-in-from-top duration-300">
               <div className="mt-4 px-2">
+                <Link href="/dashboard">
+                  <a onClick={() => setIsOpen(false)} className={`flex items-center gap-3 py-4 px-4 rounded-xl font-bold mb-4 ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600"}`}>
+                    <UserCircle size={24} /> Mon Profil & Progression
+                  </a>
+                </Link>
+                
                 <Link href="/">
-                  <a onClick={() => setIsOpen(false)} className={`block py-3 px-4 rounded-xl font-medium mb-2 ${isActive("/") ? "bg-emerald-600 text-white" : "text-gray-700 hover:bg-gray-100"}`}>
+                  <a onClick={() => setIsOpen(false)} className={`block py-3 px-4 rounded-xl font-medium mb-2 ${isActive("/") ? "bg-gray-100 text-gray-900" : "text-gray-700 hover:bg-gray-100"}`}>
                     Accueil
                   </a>
                 </Link>

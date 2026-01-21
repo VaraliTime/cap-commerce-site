@@ -1,5 +1,13 @@
 [
   {
+    "id": "upd-016",
+    "date": "2026-01-21",
+    "heure": "12:45",
+    "titre": "🌟 MÉGA MISE À JOUR v2.0 : Plateforme Complète",
+    "description": "🚀 Transformation majeure du site ! Ajout du Dashboard avec Badges, Glossaire Audio, Simulateur d'Oral EP3, Aide au Dossier Pro et Générateur de Fiches. Votre réussite au CAP EPC commence ici !",
+    "type": "feature"
+  },
+  {
     "id": "upd-015",
     "date": "2026-01-21",
     "heure": "12:15",

@@ -19,6 +19,11 @@ import SchemasPage from "./pages/SchemasPage";
 import ReferentielPage from "./pages/ReferentielPage";
 import Podcasts from "./pages/Podcasts";
 import MiniJeux from "./pages/MiniJeux";
+import Glossaire from "./pages/Glossaire";
+import SimulateurOral from "./pages/SimulateurOral";
+import DossierPro from "./pages/DossierPro";
+import FichesPerso from "./pages/FichesPerso";
+import Dashboard from "./pages/Dashboard";
 
 
 function Router() {
@@ -35,6 +40,11 @@ function Router() {
       <Route path={"/videos"} component={Videos} />
       <Route path={"/podcasts"} component={Podcasts} />
       <Route path={"/mini-jeux"} component={MiniJeux} />
+      <Route path={"/glossaire"} component={Glossaire} />
+      <Route path={"/simulateur-oral"} component={SimulateurOral} />
+      <Route path={"/dossier-pro"} component={DossierPro} />
+      <Route path={"/fiches-perso"} component={FichesPerso} />
+      <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/quiz"} component={QuizPage} />
       <Route path={"/quiz/:blocId"} component={QuizPage} />
       <Route path={"/schemas"} component={SchemasPage} />
