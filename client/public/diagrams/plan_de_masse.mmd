@@ -1,0 +1,28 @@
+graph TD
+    subgraph Magasin ["Plan de Masse Type d'un Magasin"]
+        Entree[Entrée du Magasin] --> ZoneChaude[Zone Chaude : Produits d'impulsion / Nouveautés]
+        ZoneChaude --> AlleeCentrale[Allée Centrale : Circulation principale]
+        AlleeCentrale --> ZoneFroide[Zone Froide : Produits de base / Fond de magasin]
+        
+        subgraph Rayons ["Organisation des Rayons"]
+            R1[Rayon Alimentaire]
+            R2[Rayon Textile]
+            R3[Rayon Maison]
+        end
+        
+        ZoneFroide --> R1
+        ZoneFroide --> R2
+        ZoneFroide --> R3
+        
+        R1 --> Caisses[Ligne de Caisses : Sortie]
+        R2 --> Caisses
+        R3 --> Caisses
+        
+        Caisses --> Sortie[Sortie du Magasin]
+    end
+
+    style Entree fill:#f9f,stroke:#333,stroke-width:2px
+    style ZoneChaude fill:#ff9999,stroke:#333,stroke-width:2px
+    style ZoneFroide fill:#99ccff,stroke:#333,stroke-width:2px
+    style Caisses fill:#99ff99,stroke:#333,stroke-width:2px
+    style Sortie fill:#f9f,stroke:#333,stroke-width:2px
