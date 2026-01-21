@@ -5,7 +5,9 @@ import SearchBar from "./SearchBar";
 import { AdvancedLiveVisitors } from "./AdvancedLiveVisitors";
 import { RadioPlayer } from "./RadioPlayer";
 import { UpdateNotifications } from "./UpdateNotifications";
-import { RealtimeClock } from "./RealtimeClock";
+import Clock from "./Clock";
+import CustomerCounter from "./CustomerCounter";
+import NotificationSystem from "./NotificationSystem";
 import { DarkModeToggle } from "./DarkModeToggle";
 
 export default function Navigation() {
@@ -72,7 +74,9 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 p-1.5 rounded-2xl border border-gray-200 dark:border-gray-700">
-              <RealtimeClock />
+              <Clock />
+              <CustomerCounter />
+              <NotificationSystem />
               <DarkModeToggle />
               <UpdateNotifications />
               <RadioPlayer />
