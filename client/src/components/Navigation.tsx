@@ -25,6 +25,7 @@ export default function Navigation() {
     { label: "Cadencier", href: "/cadencier" },
     { label: "Plans de masse", href: "/plans-masse" },
     { label: "Vidéos", href: "/videos" },
+    { label: "Podcasts", href: "/podcasts" },
     { label: "Ressources", href: "/ressources" }
   ];
 
