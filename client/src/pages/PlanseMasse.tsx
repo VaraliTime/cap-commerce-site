@@ -309,11 +309,20 @@ export default function PlansMasse() {
           </section>
         )}
 
-        {/* Schéma du Plan de Masse */}
+         {/* Plans de masse */}
         <section className="mb-16">
           <h2 className="font-poppins text-3xl font-semibold text-gray-900 mb-8">
-            🗺️ Schéma type d'un plan de masse
+            🏪 Plans de masse - Agencement de magasin
           </h2>
+          
+          {/* Image du plan de masse */}
+          <div className="mb-12 rounded-lg overflow-hidden border border-gray-200 shadow-lg">
+            <img 
+              src="/images/plan_masse_magasin.jpg" 
+              alt="Plan de masse d'un magasin de commerce" 
+              className="w-full h-auto"
+            />
+          </div>
           <Card className="border border-gray-200 p-6 bg-white overflow-hidden">
             <div className="mb-6">
               <h3 className="font-poppins font-semibold text-emerald-600 mb-2">
