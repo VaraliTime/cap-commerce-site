@@ -231,10 +231,10 @@ export default function Home() {
         <section className="mb-24 text-center">
           <div className="max-w-4xl mx-auto bg-gradient-to-r from-emerald-600 to-teal-600 p-16 rounded-[3rem] text-white shadow-2xl shadow-emerald-200">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">Prêt à décrocher votre diplôme ?</h2>
-            <p className="text-xl text-emerald-50 mb-10 opacity-90">Rejoignez des milliers d'étudiants et commencez vos révisions gratuitement dès aujourd'hui.</p>
+            <p className="text-xl text-emerald-50 mb-10 opacity-90">Accédez à toutes nos ressources gratuitement et commencez vos révisions dès maintenant.</p>
             <Link href="/bloc1">
               <Button className="bg-white text-emerald-600 hover:bg-emerald-50 px-12 py-8 text-xl font-bold rounded-2xl transition-all hover:scale-105 shadow-lg">
-                Créer mon compte gratuit
+                Commencer les révisions
               </Button>
             </Link>
           </div>

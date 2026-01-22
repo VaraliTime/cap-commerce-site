@@ -114,9 +114,58 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                 <div className="px-8 pb-10 border-t border-gray-100 bg-white animate-in slide-in-from-top-4 duration-300">
                   <div className="h-1 w-full bg-gradient-to-r from-emerald-500 to-teal-500 mb-8"></div>
                   {section.contenu && (
-                    <p className="text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-gray-700 mb-8 text-lg leading-relaxed">
                       {section.contenu}
                     </p>
+                  )}
+
+                  {/* Video Integration */}
+                  {section.video_url && (
+                    <div className="mb-10 overflow-hidden rounded-3xl border-4 border-emerald-100 shadow-lg">
+                      <div className="bg-emerald-600 text-white px-4 py-2 text-sm font-bold flex items-center gap-2">
+                        <span>📺</span> Vidéo Pédagogique
+                      </div>
+                      <div className="aspect-video">
+                        <iframe
+                          src={section.video_url}
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Example Box */}
+                  {section.example && (
+                    <div className="mb-10 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 p-8 rounded-3xl relative overflow-hidden group">
+                      <div className="absolute -right-4 -top-4 text-6xl opacity-10 group-hover:scale-125 transition-transform duration-500">
+                        {section.example.icone || "💡"}
+                      </div>
+                      <h4 className="font-poppins font-bold text-amber-800 mb-3 flex items-center gap-2 text-xl">
+                        <span className="bg-amber-200 p-2 rounded-xl">{section.example.icone || "💡"}</span>
+                        {section.example.titre}
+                      </h4>
+                      <p className="text-amber-900 leading-relaxed text-lg italic">
+                        {section.example.texte}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Backward compatibility for 'exemple' field name */}
+                  {section.exemple && (
+                    <div className="mb-10 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 p-8 rounded-3xl relative overflow-hidden group">
+                      <div className="absolute -right-4 -top-4 text-6xl opacity-10 group-hover:scale-125 transition-transform duration-500">
+                        {section.exemple.icone || "💡"}
+                      </div>
+                      <h4 className="font-poppins font-bold text-amber-800 mb-3 flex items-center gap-2 text-xl">
+                        <span className="bg-amber-200 p-2 rounded-xl">{section.exemple.icone || "💡"}</span>
+                        {section.exemple.titre}
+                      </h4>
+                      <p className="text-amber-900 leading-relaxed text-lg italic">
+                        {section.exemple.texte}
+                      </p>
+                    </div>
                   )}
 
                   {/* Schema Image Integration */}

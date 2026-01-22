@@ -159,7 +159,7 @@ export default function Navigation() {
               <div className="mt-4 px-2">
                 <Link href="/dashboard">
                   <a onClick={() => setIsOpen(false)} className={`flex items-center gap-3 py-4 px-4 rounded-xl font-bold mb-4 ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600"}`}>
-                    <UserCircle size={24} /> Mon Profil & Progression
+                    <UserCircle size={24} /> Mon Tableau de Bord
                   </a>
                 </Link>
                 
