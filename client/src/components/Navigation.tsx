@@ -61,10 +61,10 @@ export default function Navigation() {
   return (
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
-      <div className="bg-emerald-600 text-white py-2 px-4 text-center text-sm font-medium shadow-md">
-        🚀 Mise à jour majeure : Dashboard, Glossaire Audio et Simulateur Oral sont en ligne ! 
+      <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 px-4 text-center text-sm font-medium shadow-lg animate-in fade-in slide-in-from-top duration-500">
+        ✨ MISE À JOUR v3.0 : Design moderne, contenu enrichi et nouveaux outils interactifs ! 
         <Link href="/dashboard">
-          <a className="underline ml-2 hover:text-emerald-100 transition-colors">Voir mon profil →</a>
+          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Découvrir les nouveautés →</a>
         </Link>
       </div>
 
@@ -75,10 +75,17 @@ export default function Navigation() {
             <div className="flex items-center gap-4">
               <Link href="/">
                 <div className="flex items-center gap-2 cursor-pointer group">
-                  <div className="text-2xl transform group-hover:scale-110 transition-transform">📚</div>
-                  <span className="font-playfair text-xl font-bold text-gray-900 hidden sm:inline group-hover:text-emerald-600 transition-colors">
-                    CAP Commerce
-                  </span>
+                  <div className="bg-emerald-100 p-2 rounded-xl group-hover:bg-emerald-200 transition-colors">
+                    <div className="text-2xl transform group-hover:rotate-12 transition-transform">📚</div>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-playfair text-xl font-bold text-gray-900 hidden sm:inline group-hover:text-emerald-600 transition-colors leading-none">
+                      CAP Commerce
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-600 tracking-widest uppercase hidden sm:inline">
+                      Réussite EPC
+                    </span>
+                  </div>
                 </div>
               </Link>
               <div className="hidden xl:block">

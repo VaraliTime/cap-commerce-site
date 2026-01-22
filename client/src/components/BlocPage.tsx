@@ -87,31 +87,32 @@ export default function BlocPage({ blocId }: BlocPageProps) {
         />
 
         {/* Sections */}
-        <div className="space-y-6 mb-12">
-          {bloc.sections.map((section: any) => (
+        <div className="space-y-8 mb-24">
+          {bloc.sections.map((section: any, index: number) => (
             <Card 
               key={section.id}
-              className="border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
+              className={`border-2 overflow-hidden transition-all duration-300 ${expandedSection === section.id ? 'border-emerald-500 shadow-xl shadow-emerald-50' : 'border-gray-100 hover:border-emerald-200 shadow-sm'}`}
             >
               <button
                 onClick={() => handleSectionClick(section.id)}
-                className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                className={`w-full p-8 text-left flex justify-between items-center transition-colors ${expandedSection === section.id ? 'bg-emerald-50/30' : 'hover:bg-gray-50'}`}
               >
-                <div className="flex items-center gap-3 flex-1">
-                  {completedSections.has(section.id) && (
-                    <span className="text-emerald-600 text-lg">✓</span>
-                  )}
-                  <h3 className="font-poppins text-xl font-semibold text-gray-900">
+                <div className="flex items-center gap-6 flex-1">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg transition-colors ${completedSections.has(section.id) ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-400'}`}>
+                    {completedSections.has(section.id) ? "✓" : index + 1}
+                  </div>
+                  <h3 className={`font-poppins text-2xl font-bold transition-colors ${expandedSection === section.id ? 'text-emerald-700' : 'text-gray-900'}`}>
                     {section.titre}
                   </h3>
                 </div>
-                <span className="text-emerald-600 text-2xl">
-                  {expandedSection === section.id ? "−" : "+"}
-                </span>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${expandedSection === section.id ? 'bg-emerald-600 text-white rotate-180' : 'bg-emerald-50 text-emerald-600'}`}>
+                  <span className="text-2xl leading-none">{expandedSection === section.id ? "−" : "+"}</span>
+                </div>
               </button>
 
               {expandedSection === section.id && (
-                <div className="px-6 pb-6 border-t border-gray-200 bg-gray-50">
+                <div className="px-8 pb-10 border-t border-gray-100 bg-white animate-in slide-in-from-top-4 duration-300">
+                  <div className="h-1 w-full bg-gradient-to-r from-emerald-500 to-teal-500 mb-8"></div>
                   {section.contenu && (
                     <p className="text-gray-700 mb-6 leading-relaxed">
                       {section.contenu}

@@ -18,23 +18,23 @@ export const UpdateNotifications = () => {
     const mockNotifications: Notification[] = [
       {
         id: '1',
-        title: 'Nouveau Quiz Ajouté',
-        message: 'Les quiz des Blocs 1-4 et PSE sont maintenant disponibles',
-        timestamp: new Date(Date.now() - 5 * 60000), // 5 minutes ago
+        title: '🚀 Mise à jour v3.0',
+        message: 'Nouveau design moderne et contenu pédagogique massivement enrichi !',
+        timestamp: new Date(),
         type: 'success'
       },
       {
         id: '2',
-        title: 'Lexique Enrichi',
-        message: 'Plus de 12 termes techniques ajoutés au lexique professionnel',
-        timestamp: new Date(Date.now() - 15 * 60000), // 15 minutes ago
+        title: '📚 Contenu Blocs 1-4',
+        message: 'Toutes les fiches de révision ont été mises à jour avec les derniers référentiels.',
+        timestamp: new Date(Date.now() - 10 * 60000),
         type: 'info'
       },
       {
         id: '3',
-        title: 'Bloc 4 Disponible',
-        message: 'La section Encaissement & Fidélisation est maintenant en ligne',
-        timestamp: new Date(Date.now() - 30 * 60000), // 30 minutes ago
+        title: '🎙️ Simulateur Oral',
+        message: 'Préparez votre épreuve EP3 avec notre nouvel outil interactif.',
+        timestamp: new Date(Date.now() - 30 * 60000),
         type: 'success'
       }
     ];
