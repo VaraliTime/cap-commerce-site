@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { Chatbot } from "./components/Chatbot";
 import UpdateNotification from "./components/UpdateNotification";
+import UpdateModal from "./components/UpdateModal";
 import Home from "./pages/Home";
 import Bloc1 from "./pages/Bloc1";
 import Bloc2 from "./pages/Bloc2";
@@ -80,6 +81,7 @@ function App() {
           <Router />
           <Chatbot />
           <UpdateNotification />
+          <UpdateModal />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
