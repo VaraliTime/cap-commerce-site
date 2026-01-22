@@ -1,132 +1,151 @@
-import { useState, useEffect } from 'react';
-import { Bell, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Card } from "./ui/card";
+import { Button } from "./ui/button";
+import { X, Bell, Rocket, Sparkles, ShieldCheck, Zap } from "lucide-react";
 
-interface Notification {
-  id: string;
-  title: string;
-  message: string;
-  timestamp: Date;
-  type: 'info' | 'success' | 'warning';
-}
+const updates = [
+  {
+    version: "v5.2",
+    date: "22 Janvier 2026",
+    title: "MEGA OPTIMISATION & SCHÉMAS",
+    description: "L'expérience d'apprentissage ultime est arrivée.",
+    icon: <Sparkles className="w-5 h-5 text-amber-500" />,
+    details: [
+      "📊 Nouveaux schémas pédagogiques interactifs (Flux logistique, Niveaux de vente, Entonnoir)",
+      "🚀 Mode Expert : Synthèses approfondies pour chaque bloc de compétences",
+      "⚡ Système Anti-Cache : Chargement instantané des dernières données",
+      "💎 Design Premium : Interface Glassmorphism et animations fluides"
+    ]
+  },
+  {
+    version: "v4.0",
+    date: "21 Janvier 2026",
+    title: "MULTIMÉDIA & ACCESSIBILITÉ",
+    description: "Le site devient une plateforme multimédia ouverte.",
+    icon: <Rocket className="w-5 h-5 text-emerald-500" />,
+    details: [
+      "📺 Intégration de vidéos pédagogiques YouTube dans chaque leçon",
+      "🔓 Suppression totale de la création de compte (Accès libre)",
+      "💡 Ajout de cas pratiques et d'exemples concrets stylisés",
+      "📱 Optimisation de l'interface pour une lecture mobile parfaite"
+    ]
+  },
+  {
+    version: "v3.0",
+    date: "21 Janvier 2026",
+    title: "ENRICHISSEMENT MAJEUR",
+    description: "Refonte complète du contenu pédagogique.",
+    icon: <Zap className="w-5 h-5 text-blue-500" />,
+    details: [
+      "📚 Réécriture complète des 4 Blocs de compétences (EPC)",
+      "🎨 Nouvelle Hero Section avec design moderne et badges",
+      "📝 Ajout de check-lists de révision interactives",
+      "🤝 Section témoignages et engagement renforcé"
+    ]
+  }
+];
 
-export const UpdateNotifications = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
+const UpdateNotifications = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasNew, setHasNew] = useState(true);
 
   useEffect(() => {
-    // Simulate notifications (in a real app, these would come from a server)
-    const mockNotifications: Notification[] = [
-      {
-        id: '1',
-        title: '🚀 Mise à jour v3.0',
-        message: 'Nouveau design moderne et contenu pédagogique massivement enrichi !',
-        timestamp: new Date(),
-        type: 'success'
-      },
-      {
-        id: '2',
-        title: '📚 Contenu Blocs 1-4',
-        message: 'Toutes les fiches de révision ont été mises à jour avec les derniers référentiels.',
-        timestamp: new Date(Date.now() - 10 * 60000),
-        type: 'info'
-      },
-      {
-        id: '3',
-        title: '🎙️ Simulateur Oral',
-        message: 'Préparez votre épreuve EP3 avec notre nouvel outil interactif.',
-        timestamp: new Date(Date.now() - 30 * 60000),
-        type: 'success'
-      }
-    ];
-
-    setNotifications(mockNotifications);
+    const lastSeen = localStorage.getItem("lastUpdateSeen");
+    if (lastSeen === updates[0].version) {
+      setHasNew(false);
+    }
   }, []);
 
-  const removeNotification = (id: string) => {
-    setNotifications(notifications.filter(n => n.id !== id));
-  };
-
-  const formatTime = (date: Date) => {
-    const now = new Date();
-    const diff = now.getTime() - date.getTime();
-    const minutes = Math.floor(diff / 60000);
-    const hours = Math.floor(diff / 3600000);
-
-    if (minutes < 1) return 'À l\'instant';
-    if (minutes < 60) return `Il y a ${minutes}m`;
-    if (hours < 24) return `Il y a ${hours}h`;
-    return date.toLocaleDateString('fr-FR');
-  };
-
-  const getNotificationColor = (type: string) => {
-    switch (type) {
-      case 'success':
-        return 'bg-green-50 border-green-200 text-green-900';
-      case 'warning':
-        return 'bg-yellow-50 border-yellow-200 text-yellow-900';
-      default:
-        return 'bg-blue-50 border-blue-200 text-blue-900';
-    }
+  const handleOpen = () => {
+    setIsOpen(true);
+    setHasNew(false);
+    localStorage.setItem("lastUpdateSeen", updates[0].version);
   };
 
   return (
     <div className="relative">
       {/* Notification Bell Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleOpen}
         className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
       >
         <Bell size={20} className="text-gray-600" />
-        {notifications.length > 0 && (
-          <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-            {notifications.length}
+        {hasNew && (
+          <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold animate-bounce">
+            !
           </span>
         )}
       </button>
 
-      {/* Notifications Dropdown */}
+      {/* Modal Overlay */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 z-50 max-h-96 overflow-y-auto">
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900">Notifications</h3>
-          </div>
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <Card className="w-full max-w-2xl max-h-[80vh] overflow-hidden bg-white rounded-[2.5rem] shadow-2xl flex flex-col border-none">
+            {/* Header */}
+            <div className="p-8 bg-gradient-to-r from-emerald-600 to-teal-600 text-white flex justify-between items-center">
+              <div>
+                <h2 className="text-2xl font-playfair font-bold flex items-center gap-3">
+                  <ShieldCheck className="w-8 h-8" />
+                  Notes de mise à jour
+                </h2>
+                <p className="text-emerald-100 text-sm mt-1">Découvrez les dernières améliorations de votre plateforme.</p>
+              </div>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
-          {notifications.length > 0 ? (
-            <div className="divide-y divide-gray-200">
-              {notifications.map((notification) => (
-                <div
-                  key={notification.id}
-                  className={`p-4 border-l-4 ${getNotificationColor(notification.type)}`}
-                >
-                  <div className="flex justify-between items-start gap-3">
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-sm mb-1">
-                        {notification.title}
-                      </h4>
-                      <p className="text-xs opacity-80 mb-2">
-                        {notification.message}
-                      </p>
-                      <span className="text-xs opacity-60">
-                        {formatTime(notification.timestamp)}
-                      </span>
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-8 space-y-8 bg-slate-50/50">
+              {updates.map((update) => (
+                <div key={update.version} className="relative pl-8 border-l-2 border-emerald-100 last:border-transparent">
+                  <div className="absolute -left-[11px] top-0 w-5 h-5 bg-white border-2 border-emerald-500 rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                  </div>
+                  
+                  <div className="mb-2 flex items-center gap-3">
+                    <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded-full uppercase tracking-wider">
+                      {update.version}
+                    </span>
+                    <span className="text-gray-400 text-xs font-medium">{update.date}</span>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center gap-3 mb-3">
+                      {update.icon}
+                      <h3 className="font-poppins font-bold text-gray-900">{update.title}</h3>
                     </div>
-                    <button
-                      onClick={() => removeNotification(notification.id)}
-                      className="text-gray-400 hover:text-gray-600 flex-shrink-0"
-                    >
-                      <X size={16} />
-                    </button>
+                    <p className="text-gray-600 text-sm mb-4 italic">{update.description}</p>
+                    <ul className="space-y-2">
+                      {update.details.map((detail, i) => (
+                        <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
+                          <span className="text-emerald-500 mt-1">•</span>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <div className="p-8 text-center text-gray-500">
-              <p>Aucune notification</p>
+
+            {/* Footer */}
+            <div className="p-6 bg-white border-t border-gray-100 text-center">
+              <Button 
+                onClick={() => setIsOpen(false)}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 rounded-2xl font-bold transition-all hover:scale-105"
+              >
+                C'est compris !
+              </Button>
             </div>
-          )}
+          </Card>
         </div>
       )}
     </div>
   );
 };
+
+export default UpdateNotifications;
