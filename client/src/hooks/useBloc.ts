@@ -13,6 +13,12 @@ export interface Section {
   id: string;
   titre: string;
   contenu?: string;
+  video_url?: string;
+  exemple?: {
+    titre: string;
+    texte: string;
+    icone?: string;
+  };
   points_cles?: string[];
   etapes?: Etape[];
   documents?: Document[];

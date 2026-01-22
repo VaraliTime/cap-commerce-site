@@ -1,25 +1,30 @@
 import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
-import BlocSidebar from "@/components/BlocSidebar";
-import ProgressBar from "@/components/ProgressBar";
-import { useBloc, BlocData, Section } from "@/hooks/useBloc";
+import { useBloc } from "../hooks/useBloc";
+import Navigation from "./Navigation";
+import ProgressBar from "./ProgressBar";
+import { Card } from "./ui/card";
 
 interface BlocPageProps {
   blocId: string;
 }
 
-export default function BlocPage({ blocId }: BlocPageProps) {
+const BlocPage = ({ blocId }: BlocPageProps) => {
   const { bloc, loading, error } = useBloc(blocId);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [completedSections, setCompletedSections] = useState<Set<string>>(new Set());
 
-  // Auto-expand first section on load
+  // Load progress from localStorage
   useEffect(() => {
-    if (bloc && bloc.sections.length > 0 && !expandedSection) {
-      setExpandedSection(bloc.sections[0].id);
+    const saved = localStorage.getItem(`progress-${blocId}`);
+    if (saved) {
+      setCompletedSections(new Set(JSON.parse(saved)));
     }
-  }, [bloc]);
+  }, [blocId]);
+
+  // Save progress to localStorage
+  useEffect(() => {
+    localStorage.setItem(`progress-${blocId}`, JSON.stringify(Array.from(completedSections)));
+  }, [completedSections, blocId]);
 
   const handleSectionClick = (sectionId: string) => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
@@ -29,11 +34,12 @@ export default function BlocPage({ blocId }: BlocPageProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-slate-50">
         <Navigation />
-        <main className="container mx-auto px-4 py-12">
-          <div className="text-center">
-            <p className="text-gray-600">Chargement du contenu...</p>
+        <main className="container mx-auto px-4 py-24">
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <div className="w-16 h-16 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+            <p className="text-emerald-800 font-bold animate-pulse">Préparation de vos ressources...</p>
           </div>
         </main>
       </div>
@@ -45,8 +51,8 @@ export default function BlocPage({ blocId }: BlocPageProps) {
       <div className="min-h-screen bg-white">
         <Navigation />
         <main className="container mx-auto px-4 py-12">
-          <div className="text-center">
-            <p className="text-red-600">Erreur : {error || "Bloc non trouvé"}</p>
+          <div className="text-center text-red-600">
+            <p>Erreur : {error || "Bloc non trouvé"}</p>
           </div>
         </main>
       </div>
@@ -54,29 +60,29 @@ export default function BlocPage({ blocId }: BlocPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navigation />
 
-      {/* Sidebar */}
-      <BlocSidebar 
-        sections={bloc.sections}
-        activeSection={expandedSection}
-        onSectionClick={handleSectionClick}
-        blocTitre={bloc.titre}
-      />
-
-      <main className="flex-1 container mx-auto px-4 py-12 mt-16 lg:mt-0">
+      <main className="flex-1 container mx-auto px-4 py-12 mt-16 lg:mt-0 bg-slate-50/50">
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl">{bloc.icone}</span>
-            <h1 className="font-playfair text-4xl font-bold text-gray-900">
-              {bloc.titre}
-            </h1>
+        <div className="mb-12 p-8 rounded-[2.5rem] bg-white border border-white shadow-xl shadow-emerald-100/20 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+          <div className="relative z-10">
+            <div className="flex items-center gap-6 mb-6">
+              <div className="w-20 h-20 bg-emerald-100 rounded-3xl flex items-center justify-center text-5xl shadow-inner">
+                {bloc.icone}
+              </div>
+              <div>
+                <div className="text-emerald-600 font-bold text-sm uppercase tracking-widest mb-1">Module de Formation</div>
+                <h1 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900">
+                  {bloc.titre}
+                </h1>
+              </div>
+            </div>
+            <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+              {bloc.description}
+            </p>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            {bloc.description}
-          </p>
         </div>
 
         {/* Progress Bar */}
@@ -113,6 +119,7 @@ export default function BlocPage({ blocId }: BlocPageProps) {
               {expandedSection === section.id && (
                 <div className="px-8 pb-10 border-t border-gray-100 bg-white animate-in slide-in-from-top-4 duration-300">
                   <div className="h-1 w-full bg-gradient-to-r from-emerald-500 to-teal-500 mb-8"></div>
+                  
                   {section.contenu && (
                     <p className="text-gray-700 mb-8 text-lg leading-relaxed">
                       {section.contenu}
@@ -137,75 +144,56 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {/* Example Box */}
-                  {section.example && (
+                  {(section.example || section.exemple) && (
                     <div className="mb-10 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 p-8 rounded-3xl relative overflow-hidden group">
                       <div className="absolute -right-4 -top-4 text-6xl opacity-10 group-hover:scale-125 transition-transform duration-500">
-                        {section.example.icone || "💡"}
+                        {(section.example || section.exemple).icone || "💡"}
                       </div>
                       <h4 className="font-poppins font-bold text-amber-800 mb-3 flex items-center gap-2 text-xl">
-                        <span className="bg-amber-200 p-2 rounded-xl">{section.example.icone || "💡"}</span>
-                        {section.example.titre}
+                        <span className="bg-amber-200 p-2 rounded-xl">{(section.example || section.exemple).icone || "💡"}</span>
+                        {(section.example || section.exemple).titre}
                       </h4>
                       <p className="text-amber-900 leading-relaxed text-lg italic">
-                        {section.example.texte}
+                        {(section.example || section.exemple).texte}
                       </p>
-                    </div>
-                  )}
-
-                  {/* Backward compatibility for 'exemple' field name */}
-                  {section.exemple && (
-                    <div className="mb-10 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 p-8 rounded-3xl relative overflow-hidden group">
-                      <div className="absolute -right-4 -top-4 text-6xl opacity-10 group-hover:scale-125 transition-transform duration-500">
-                        {section.exemple.icone || "💡"}
-                      </div>
-                      <h4 className="font-poppins font-bold text-amber-800 mb-3 flex items-center gap-2 text-xl">
-                        <span className="bg-amber-200 p-2 rounded-xl">{section.exemple.icone || "💡"}</span>
-                        {section.exemple.titre}
-                      </h4>
-                      <p className="text-amber-900 leading-relaxed text-lg italic">
-                        {section.exemple.texte}
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Schema Image Integration */}
-                  {section.schema && (
-                    <div className="mb-8 bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4 text-center">
-                        Schéma : {section.schema_titre || section.titre}
-                      </h4>
-                      <img 
-                        src={section.schema} 
-                        alt={section.schema_titre || section.titre}
-                        className="max-w-full h-auto mx-auto rounded"
-                      />
                     </div>
                   )}
 
                   {section.points_cles && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-3">Points clés :</h4>
-                      <ul className="space-y-2">
+                    <div className="mb-10 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-sm">📝</span>
+                        À retenir impérativement :
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {section.points_cles.map((point: string, idx: number) => (
-                          <li key={idx} className="flex gap-3 text-gray-700">
-                            <span className="text-emerald-600 font-bold">✓</span>
-                            <span>{point}</span>
-                          </li>
+                          <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-200 transition-colors group">
+                            <div className="w-6 h-6 rounded-full bg-white border-2 border-emerald-500 flex-shrink-0 mt-0.5 group-hover:bg-emerald-500 transition-colors"></div>
+                            <span className="text-gray-700 font-medium">{point}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   )}
 
                   {section.etapes && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Étapes :</h4>
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm">🛤️</span>
+                        Méthodologie pas à pas :
+                      </h4>
                       <div className="space-y-4">
                         {section.etapes.map((etape: any) => (
-                          <div key={etape.numero || etape.titre} className="bg-white p-4 rounded border-l-4 border-emerald-600">
-                            <h5 className="font-poppins font-semibold text-gray-900 mb-2">
-                              {etape.numero ? `Étape ${etape.numero} : ` : ""}{etape.titre}
-                            </h5>
-                            <p className="text-gray-700">{etape.description}</p>
+                          <div key={etape.numero || etape.titre} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex gap-6 items-start hover:shadow-md transition-shadow">
+                            <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-lg shadow-emerald-100">
+                              {etape.numero}
+                            </div>
+                            <div>
+                              <h5 className="font-poppins font-bold text-gray-900 mb-2 text-lg">
+                                {etape.titre}
+                              </h5>
+                              <p className="text-gray-600 leading-relaxed">{etape.description}</p>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -213,15 +201,19 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {section.documents && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Documents :</h4>
-                      <div className="space-y-3">
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-sm">📄</span>
+                        Documents à maîtriser :
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {section.documents.map((doc: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
+                          <div key={idx} className="bg-gradient-to-br from-white to-slate-50 p-6 rounded-3xl border border-gray-100 shadow-sm hover:border-purple-200 transition-all group">
+                            <h5 className="font-poppins font-bold text-purple-700 mb-3 text-lg flex items-center gap-2">
+                              <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                               {doc.nom}
                             </h5>
-                            <p className="text-gray-700">{doc.description}</p>
+                            <p className="text-gray-600 leading-relaxed">{doc.description}</p>
                           </div>
                         ))}
                       </div>
@@ -229,15 +221,18 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {section.principes && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Principes :</h4>
-                      <div className="space-y-3">
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-sm">⚖️</span>
+                        Principes fondamentaux :
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {section.principes.map((principe: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
+                          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:border-orange-200 transition-all">
+                            <h5 className="font-poppins font-bold text-orange-700 mb-3 text-lg">
                               {principe.titre}
                             </h5>
-                            <p className="text-gray-700">{principe.description}</p>
+                            <p className="text-gray-600 leading-relaxed">{principe.description}</p>
                           </div>
                         ))}
                       </div>
@@ -245,29 +240,37 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {section.objectifs && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-3">Objectifs :</h4>
-                      <ul className="space-y-2">
+                    <div className="mb-10 bg-emerald-900 text-white p-8 rounded-[2.5rem] shadow-xl shadow-emerald-100 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                      <h4 className="font-poppins font-bold mb-6 flex items-center gap-2 text-xl">
+                        <span className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-sm">🎯</span>
+                        Objectifs de la leçon :
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {section.objectifs.map((obj: string, idx: number) => (
-                          <li key={idx} className="flex gap-3 text-gray-700">
-                            <span className="text-emerald-600 font-bold">•</span>
-                            <span>{obj}</span>
-                          </li>
+                          <div key={idx} className="flex items-center gap-3 bg-white/10 p-4 rounded-2xl border border-white/10">
+                            <span className="text-emerald-400 text-xl">★</span>
+                            <span className="font-medium">{obj}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   )}
 
                   {section.cinq_b && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Les 5B :</h4>
-                      <div className="space-y-3">
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-sm">🖐️</span>
+                        La règle des 5B :
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
                         {section.cinq_b.map((item: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {item.lettre} - {item.mot}
-                            </h5>
-                            <p className="text-gray-700">{item.explication}</p>
+                          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm text-center hover:border-emerald-500 transition-all group">
+                            <div className="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl mx-auto mb-4 shadow-lg shadow-emerald-100 group-hover:scale-110 transition-transform">
+                              {item.lettre}
+                            </div>
+                            <h5 className="font-poppins font-bold text-gray-900 mb-2">{item.mot}</h5>
+                            <p className="text-xs text-gray-500 leading-relaxed">{item.explication}</p>
                           </div>
                         ))}
                       </div>
@@ -275,33 +278,24 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {section.niveaux && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Niveaux :</h4>
-                      <div className="space-y-3">
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-sm">📏</span>
+                        Niveaux de présentation :
+                      </h4>
+                      <div className="space-y-4">
                         {section.niveaux.map((niveau: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {niveau.nom} ({niveau.hauteur})
-                            </h5>
-                            <p className="text-gray-700 mb-2"><strong>Caractéristiques :</strong> {niveau.caracteristiques}</p>
-                            <p className="text-gray-700"><strong>Exemple :</strong> {niveau.exemple}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {section.types && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Types :</h4>
-                      <div className="space-y-3">
-                        {section.types.map((type: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {type.type}
-                            </h5>
-                            <p className="text-gray-700 mb-2">{type.description}</p>
-                            <p className="text-gray-600 text-sm"><strong>Importance :</strong> {type.importance}</p>
+                          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-6 items-center hover:border-indigo-200 transition-all">
+                            <div className="w-full md:w-48 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-lg shadow-indigo-100">
+                              {niveau.hauteur}
+                            </div>
+                            <div className="flex-1">
+                              <h5 className="font-poppins font-bold text-gray-900 mb-1 text-lg">{niveau.nom}</h5>
+                              <p className="text-gray-600 text-sm mb-2">{niveau.caracteristiques}</p>
+                              <div className="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-bold">
+                                Exemple : {niveau.exemple}
+                              </div>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -309,15 +303,19 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {section.sbam && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Méthode SBAM :</h4>
-                      <div className="space-y-3">
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center text-sm">😊</span>
+                        La méthode SBAM :
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                         {section.sbam.map((item: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {item.lettre} - {item.mot}
-                            </h5>
-                            <p className="text-gray-700">{item.description}</p>
+                          <div key={idx} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm text-center hover:border-pink-500 transition-all group">
+                            <div className="w-12 h-12 bg-pink-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl mx-auto mb-4 shadow-lg shadow-pink-100 group-hover:scale-110 transition-transform">
+                              {item.lettre}
+                            </div>
+                            <h5 className="font-poppins font-bold text-gray-900 mb-2">{item.mot}</h5>
+                            <p className="text-xs text-gray-500 leading-relaxed">{item.description}</p>
                           </div>
                         ))}
                       </div>
@@ -325,65 +323,19 @@ export default function BlocPage({ blocId }: BlocPageProps) {
                   )}
 
                   {section.cap && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Méthode CAP :</h4>
-                      <div className="space-y-3">
+                    <div className="mb-10">
+                      <h4 className="font-poppins font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-cyan-100 text-cyan-600 rounded-lg flex items-center justify-center text-sm">💡</span>
+                        La méthode CAP :
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         {section.cap.map((item: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {item.lettre} - {item.mot}
-                            </h5>
-                            <p className="text-gray-700 mb-2">{item.description}</p>
-                            <p className="text-gray-600 text-sm"><strong>Exemple :</strong> {item.exemple}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {section.conseils && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Conseils :</h4>
-                      <div className="space-y-3">
-                        {section.conseils.map((conseil: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {conseil.titre}
-                            </h5>
-                            <p className="text-gray-700">{conseil.description}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {section.risques && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Risques :</h4>
-                      <div className="space-y-3">
-                        {section.risques.map((risque: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {risque.nom}
-                            </h5>
-                            <p className="text-gray-700 mb-2">{risque.description}</p>
-                            <p className="text-gray-600 text-sm"><strong>Prévention :</strong> {risque.prevention}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {section.regles && (
-                    <div className="mb-6">
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-4">Règles :</h4>
-                      <div className="space-y-3">
-                        {section.regles.map((regle: any, idx: number) => (
-                          <div key={idx} className="bg-white p-4 rounded">
-                            <h5 className="font-poppins font-semibold text-emerald-600 mb-2">
-                              {regle.titre}
-                            </h5>
-                            <p className="text-gray-700">{regle.description}</p>
+                          <div key={idx} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:border-cyan-500 transition-all group">
+                            <div className="w-14 h-14 bg-cyan-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-lg shadow-cyan-100 group-hover:rotate-12 transition-transform">
+                              {item.lettre}
+                            </div>
+                            <h5 className="font-poppins font-bold text-gray-900 mb-3 text-xl">{item.mot}</h5>
+                            <p className="text-gray-600 leading-relaxed">{item.description}</p>
                           </div>
                         ))}
                       </div>
@@ -397,4 +349,6 @@ export default function BlocPage({ blocId }: BlocPageProps) {
       </main>
     </div>
   );
-}
+};
+
+export default BlocPage;
