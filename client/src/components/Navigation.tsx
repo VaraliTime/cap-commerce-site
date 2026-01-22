@@ -4,7 +4,7 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
 import { RadioPlayer } from "./RadioPlayer";
-import { UpdateNotes } from "./UpdateNotes";
+import UpdateNotifications from "./UpdateNotifications";
 import { RealTimeClock } from "./RealTimeClock";
 
 export default function Navigation() {
@@ -62,8 +62,8 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 px-4 text-center text-sm font-medium shadow-lg animate-in fade-in slide-in-from-top duration-500">
-        ✨ MISE À JOUR v3.0 : Design moderne, contenu enrichi et nouveaux outils interactifs ! 
-        <Link href="/dashboard">
+        ✨ MISE À JOUR v5.2 : Schémas interactifs, Mode Expert et design Premium ! 
+        <Link href="/bloc1">
           <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Découvrir les nouveautés →</a>
         </Link>
       </div>
@@ -140,7 +140,7 @@ export default function Navigation() {
                 <SearchBar />
               </div>
               <RealTimeClock />
-              <UpdateNotes />
+              <UpdateNotifications />
               <RadioPlayer />
               
               {/* Mobile Menu Button */}
