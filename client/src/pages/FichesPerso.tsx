@@ -1,97 +1,78 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
-import { FilePlus, Download, Trash2, CheckCircle2, ListChecks, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { ListChecks, Download, CheckCircle2, Play, Volume2, Info, AlertTriangle } from "lucide-react";
 import { jsPDF } from "jspdf";
+import { motion } from "framer-motion";
+
+const topics = [
+  {
+    id: "stocks",
+    title: "Gestion des Stocks & Inventaire",
+    bloc: "Bloc 1",
+    content: [
+      { type: "subtitle", value: "1. Les enjeux de la gestion des stocks" },
+      { type: "text", value: "La gestion des stocks est vitale pour éviter la rupture (perte de vente) et le surstock (coût financier). Un bon gestionnaire doit équilibrer ces deux risques." },
+      { type: "list", value: ["Stock de sécurité : pour pallier les retards de livraison.", "Stock d'alerte : niveau déclenchant la commande.", "Rotation des stocks : vitesse à laquelle le stock est renouvelé."] },
+      { type: "subtitle", value: "2. L'Inventaire : Obligation légale" },
+      { type: "text", value: "L'inventaire physique consiste à compter tous les produits présents. Il permet de calculer la Démarque Inconnue (DI)." },
+      { type: "example", value: "Calcul de la DI : Stock Théorique - Stock Réel = Démarque Inconnue." },
+      { type: "svg_schema", value: "flow_stock" }
+    ]
+  },
+  {
+    id: "cadencier",
+    title: "Le Cadencier de Commande",
+    bloc: "Bloc 1",
+    content: [
+      { type: "subtitle", value: "1. Fonctionnement du Cadencier" },
+      { type: "text", value: "Le cadencier est l'outil de pilotage des commandes. Il permet de suivre les ventes et de calculer les besoins futurs." },
+      { type: "table", headers: ["Terme", "Définition", "Utilité"], rows: [
+        ["Stock Initial", "Stock au début de période", "Base de calcul"],
+        ["Livraison", "Quantité reçue", "Augmente le stock"],
+        ["Ventes", "Quantité vendue", "Diminue le stock"],
+        ["Stock Final", "Stock en fin de période", "Devient le SI suivant"]
+      ]},
+      { type: "subtitle", value: "2. Les Calculs Clés" },
+      { type: "list", value: [
+        "Ventes = SI + Livraison - SF",
+        "Besoin Total = Ventes prévues + Stock de sécurité",
+        "Commande = Besoin Total - Stock Réel"
+      ]},
+      { type: "example", value: "Si je vends 10 jus/jour, que j'ai 5 en stock et que je veux 2 jours d'avance : Besoin = 20+5 = 25. Commande = 25-5 = 20." }
+    ]
+  },
+  {
+    id: "merch",
+    title: "Merchandising & Implantation",
+    bloc: "Bloc 2",
+    content: [
+      { type: "subtitle", value: "1. Les niveaux de présentation" },
+      { type: "text", value: "Il existe 3 niveaux principaux en gondole. Le choix du niveau impacte directement le volume des ventes." },
+      { type: "list", value: ["Niveau des yeux : Le plus vendeur (produits à forte marge).", "Niveau des mains : Facile d'accès (produits courants).", "Niveau des pieds : Moins vendeur (gros volumes, prix bas)."] },
+      { type: "subtitle", value: "2. Zones Chaudes et Froides" },
+      { type: "text", value: "La zone chaude est le parcours naturel du client. La zone froide nécessite des produits d'appel pour attirer le client." },
+      { type: "svg_schema", value: "store_layout" }
+    ]
+  },
+  {
+    id: "vente",
+    title: "Vente & Relation Client",
+    bloc: "Bloc 3",
+    content: [
+      { type: "subtitle", value: "1. Les étapes de la vente" },
+      { type: "text", value: "Une vente réussie suit un processus rigoureux de l'accueil à la prise de congé." },
+      { type: "list", value: ["Accueil (SBAM)", "Recherche des besoins (SONCAS)", "Argumentation (CAP)", "Traitement des objections", "Vente additionnelle", "Encaissement et Congé"] },
+      { type: "example", value: "Méthode CAP : Caractéristique -> Avantage -> Preuve." }
+    ]
+  }
+];
 
 export default function FichesPerso() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-
-  const speak = (text: string) => {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'fr-FR';
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const topics = [
-    { 
-      id: "cadencier", 
-      title: "Le Cadencier de Commande", 
-      bloc: "Bloc 1", 
-      audioText: "Le cadencier est l'outil de base du gestionnaire de rayon. Il permet de suivre les ventes et de calculer les quantités à commander.",
-      content: [
-        { type: "text", value: "Le cadencier est l'outil de base du gestionnaire de rayon. Il permet de suivre les ventes, de contrôler les stocks et de calculer les quantités à commander de façon précise." },
-        { type: "subtitle", value: "1. Fonctionnement du Cadencier" },
-        { type: "table", headers: ["Élément", "Définition", "Utilité"], rows: [
-          ["Stock Initial (SI)", "Stock en début de période", "Savoir ce qu'on a"],
-          ["Livraison (L)", "Quantité reçue", "Mise à jour du stock"],
-          ["Stock Final (SF)", "Stock en fin de période", "Calculer les ventes"],
-          ["Ventes (V)", "SI + L - SF", "Analyser la demande"]
-        ]},
-        { type: "svg_schema", value: "FLUX_CADENCIER" },
-        { type: "subtitle", value: "2. Les Calculs de Commande" },
-        { type: "list", value: [
-          "Ventes Prévisionnelles (VP) : Moyenne des ventes passées.",
-          "Besoin Total (BT) : VP + Stock de Sécurité.",
-          "Quantité à Commander (Q) : Besoin Total - Stock Réel."
-        ]},
-        { type: "example", value: "EXEMPLE : Ventes = 20/jour. Délai = 2j. Sécurité = 10. Stock = 15. Commande = (20x2 + 10) - 15 = 35." }
-      ]
-    },
-    { 
-      id: "merch", 
-      title: "Règles du Merchandising", 
-      bloc: "Bloc 2", 
-      audioText: "Le merchandising regroupe les techniques de présentation des produits. La règle des 5B est fondamentale : bon produit, bon endroit, bon moment, bon prix, bonne quantité.",
-      content: [
-        { type: "text", value: "Le merchandising regroupe les techniques de présentation des produits pour optimiser les ventes." },
-        { type: "subtitle", value: "1. La Règle des 5B (Kepner)" },
-        { type: "list", value: ["Le Bon Produit", "Au Bon Endroit", "Au Bon Moment", "Au Bon Prix", "En Bonne Quantité"] },
-        { type: "svg_schema", value: "NIVEAUX_GONDOLE" },
-        { type: "subtitle", value: "2. Zones de Chalandise" },
-        { type: "text", value: "• Zone Chaude : Circulation naturelle, forte impulsion.\n• Zone Froide : Fond de magasin, nécessite des produits d'appel." }
-      ]
-    }
-  ];
-
-  const renderSVG = (type: string) => {
-    if (type === "FLUX_CADENCIER") {
-      return (
-        <svg viewBox="0 0 400 100" className="w-full h-24 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl my-4">
-          <rect x="10" y="30" width="80" height="40" rx="5" className="fill-emerald-500" />
-          <text x="50" y="55" textAnchor="middle" className="fill-white text-[10px] font-bold">SI</text>
-          <path d="M 90 50 L 110 50" className="stroke-emerald-500 stroke-2 fill-none" />
-          <rect x="110" y="30" width="80" height="40" rx="5" className="fill-emerald-600" />
-          <text x="150" y="55" textAnchor="middle" className="fill-white text-[10px] font-bold">LIVRAISON</text>
-          <path d="M 190 50 L 210 50" className="stroke-emerald-600 stroke-2 fill-none" />
-          <rect x="210" y="30" width="80" height="40" rx="5" className="fill-emerald-700" />
-          <text x="250" y="55" textAnchor="middle" className="fill-white text-[10px] font-bold">VENTES</text>
-          <path d="M 290 50 L 310 50" className="stroke-emerald-700 stroke-2 fill-none" />
-          <rect x="310" y="30" width="80" height="40" rx="5" className="fill-emerald-800" />
-          <text x="350" y="55" textAnchor="middle" className="fill-white text-[10px] font-bold">SF</text>
-        </svg>
-      );
-    }
-    if (type === "NIVEAUX_GONDOLE") {
-      return (
-        <svg viewBox="0 0 400 150" className="w-full h-32 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl my-4">
-          <rect x="100" y="10" width="200" height="20" className="fill-gray-300" />
-          <text x="200" y="25" textAnchor="middle" className="fill-gray-600 text-[10px]">CHAPEAU (Signalétique)</text>
-          <rect x="100" y="40" width="200" height="20" className="fill-emerald-500" />
-          <text x="200" y="55" textAnchor="middle" className="fill-white text-[10px] font-bold">YEUX (Marge ++)</text>
-          <rect x="100" y="70" width="200" height="20" className="fill-emerald-400" />
-          <text x="200" y="85" textAnchor="middle" className="fill-white text-[10px]">MAINS (Confort)</text>
-          <rect x="100" y="100" width="200" height="20" className="fill-gray-400" />
-          <text x="200" y="115" textAnchor="middle" className="fill-white text-[10px]">PIEDS (Lourd/Bas prix)</text>
-        </svg>
-      );
-    }
-    return null;
-  };
+  const [isPlaying, setIsPlaying] = useState<string | null>(null);
 
   const toggleTopic = (id: string) => {
     setSelectedTopics(prev => 
@@ -99,55 +80,67 @@ export default function FichesPerso() {
     );
   };
 
-  const handleGeneratePDF = () => {
+  const speak = (text: string, id: string) => {
+    window.speechSynthesis.cancel();
+    if (isPlaying === id) {
+      setIsPlaying(null);
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'fr-FR';
+    utterance.onend = () => setIsPlaying(null);
+    setIsPlaying(id);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const renderSVG = (type: string) => {
+    if (type === "flow_stock") {
+      return (
+        <svg viewBox="0 0 400 100" className="w-full h-32 bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-4">
+          <rect x="10" y="30" width="80" height="40" rx="5" fill="#10b981" />
+          <text x="50" y="55" textAnchor="middle" fill="white" fontSize="10">Réception</text>
+          <path d="M 90 50 L 130 50" stroke="#10b981" strokeWidth="2" markerEnd="url(#arrow)" />
+          <rect x="140" y="30" width="80" height="40" rx="5" fill="#10b981" />
+          <text x="180" y="55" textAnchor="middle" fill="white" fontSize="10">Stockage</text>
+          <path d="M 220 50 L 260 50" stroke="#10b981" strokeWidth="2" markerEnd="url(#arrow)" />
+          <rect x="270" y="30" width="80" height="40" rx="5" fill="#10b981" />
+          <text x="310" y="55" textAnchor="middle" fill="white" fontSize="10">Vente</text>
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#10b981" />
+            </marker>
+          </defs>
+        </svg>
+      );
+    }
+    return null;
+  };
+
+  const generatePDF = () => {
+    if (selectedTopics.length === 0) return;
     setIsGenerating(true);
+
     try {
       const doc = new jsPDF();
-      const margin = 20;
-      const pageWidth = 210;
       let yOffset = 20;
+      const margin = 20;
 
       // Page de garde
       doc.setFillColor(16, 185, 129);
-      doc.rect(0, 0, pageWidth, 70, 'F');
-      doc.setFontSize(32);
+      doc.rect(0, 0, 210, 40, 'F');
       doc.setTextColor(255, 255, 255);
-      doc.text("LIVRET DE RÉVISION", pageWidth / 2, 35, { align: "center" });
-      doc.setFontSize(18);
-      doc.text("CAP Équipier Polyvalent du Commerce", pageWidth / 2, 52, { align: "center" });
-
-      yOffset = 90;
-      doc.setFontSize(14);
-      doc.setTextColor(71, 85, 105);
-      doc.text("Livret enrichi avec schémas et expertise métier", margin, yOffset);
+      doc.setFontSize(22);
+      doc.setFont("helvetica", "bold");
+      doc.text("LIVRET DE RÉVISION CAP EPC", margin, 25);
       
-      yOffset += 30;
-      doc.setFontSize(20);
-      doc.setTextColor(31, 41, 55);
-      doc.text("SOMMAIRE", margin, yOffset);
-      yOffset += 15;
-
-      selectedTopics.forEach((id, index) => {
-        const topic = topics.find(t => t.id === id);
-        if (topic) {
-          doc.setFontSize(12);
-          doc.setTextColor(55, 65, 81);
-          doc.text(`${index + 1}. ${topic.title.toUpperCase()}`, margin + 5, yOffset);
-          doc.text(`Page ${index + 2}`, pageWidth - margin, yOffset, { align: "right" });
-          yOffset += 12;
-        }
-      });
+      doc.setTextColor(100);
+      doc.setFontSize(10);
+      doc.text(`Généré le ${new Date().toLocaleDateString('fr-FR')}`, margin, 50);
 
       selectedTopics.forEach((id) => {
-        doc.addPage();
-        yOffset = 25;
         const topic = topics.find(t => t.id === id);
         if (topic) {
-          doc.setFillColor(248, 250, 252);
-          doc.rect(0, 0, pageWidth, 45, 'F');
-          doc.setFontSize(10);
-          doc.setTextColor(16, 185, 129);
-          doc.text(topic.bloc.toUpperCase(), margin, 20);
+          doc.addPage();
           doc.setFontSize(24);
           doc.setTextColor(15, 23, 42);
           doc.text(topic.title, margin, 35);
@@ -155,28 +148,32 @@ export default function FichesPerso() {
 
           topic.content.forEach((item) => {
             if (yOffset > 260) { doc.addPage(); yOffset = 25; }
+            
+            const val = item.value || "";
+
             switch (item.type) {
               case "subtitle":
                 yOffset += 5;
                 doc.setFontSize(14);
                 doc.setTextColor(15, 23, 42);
                 doc.setFont("helvetica", "bold");
-                doc.text(item.value, margin, yOffset);
+                doc.text(String(val), margin, yOffset);
                 yOffset += 10;
                 break;
               case "text":
                 doc.setFontSize(11);
                 doc.setTextColor(51, 65, 85);
-                const splitText = doc.splitTextToSize(item.value, 170);
+                doc.setFont("helvetica", "normal");
+                const splitText = doc.splitTextToSize(String(val), 170);
                 doc.text(splitText, margin, yOffset);
                 yOffset += (splitText.length * 7) + 5;
                 break;
               case "table":
                 doc.setDrawColor(200);
-                doc.setFillColor(245);
+                doc.setFillColor(245, 245, 245);
                 doc.rect(margin, yOffset, 170, 8, 'F');
                 doc.setFontSize(10);
-                doc.setTextColor(0);
+                doc.setTextColor(0, 0, 0);
                 doc.setFont("helvetica", "bold");
                 item.headers?.forEach((h, i) => doc.text(h, margin + 5 + (i * 55), yOffset + 6));
                 yOffset += 8;
@@ -191,15 +188,17 @@ export default function FichesPerso() {
               case "list":
                 doc.setFontSize(11);
                 doc.setTextColor(51, 65, 85);
-                item.value.forEach((li: string) => {
-                  doc.text("• " + li, margin + 5, yOffset);
-                  yOffset += 7;
-                });
+                if (Array.isArray(val)) {
+                  val.forEach((li: string) => {
+                    doc.text("• " + li, margin + 5, yOffset);
+                    yOffset += 7;
+                  });
+                }
                 yOffset += 3;
                 break;
               case "example":
                 yOffset += 5;
-                const exText = doc.splitTextToSize(item.value, 160);
+                const exText = doc.splitTextToSize(String(val), 160);
                 doc.setFillColor(240, 253, 244);
                 doc.roundedRect(margin - 2, yOffset - 5, 174, (exText.length * 6) + 10, 2, 2, 'F');
                 doc.setFontSize(10);
@@ -249,24 +248,28 @@ export default function FichesPerso() {
                         {selectedTopics.includes(topic.id) && <CheckCircle2 size={14} className="text-white" />}
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold uppercase text-gray-400">{topic.bloc}</span>
-                        <h3 className="font-bold text-xl">{topic.title}</h3>
+                        <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">{topic.bloc}</span>
+                        <h3 className="text-xl font-bold">{topic.title}</h3>
                       </div>
                     </div>
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-600 hover:text-white"
-                      onClick={() => speak(topic.audioText)}
-                    >
-                      <Volume2 size={18} />
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => speak(topic.content.map(c => c.value).join('. '), topic.id)}
+                        className={isPlaying === topic.id ? "text-emerald-600 bg-emerald-50" : ""}
+                      >
+                        {isPlaying === topic.id ? <Volume2 size={18} className="animate-pulse" /> : <Play size={18} />}
+                      </Button>
+                    </div>
                   </div>
-                  
-                  <div className="pl-10">
-                    {topic.content.map((item, i) => (
-                      <div key={i}>
-                        {item.type === "svg_schema" && renderSVG(item.value)}
+
+                  <div className="space-y-4 mt-6">
+                    {topic.content.map((item, idx) => (
+                      <div key={idx}>
+                        {item.type === "subtitle" && <h4 className="font-bold text-gray-900 dark:text-white mt-4">{item.value}</h4>}
+                        {item.type === "text" && <p className="text-sm text-gray-600 dark:text-gray-400">{item.value}</p>}
+                        {item.type === "svg_schema" && renderSVG(String(item.value))}
                       </div>
                     ))}
                   </div>
@@ -275,35 +278,42 @@ export default function FichesPerso() {
             </div>
           </div>
 
-          <div>
-            <Card className="p-8 border-none shadow-2xl bg-white dark:bg-gray-800 rounded-3xl sticky top-24">
-              <h2 className="text-2xl font-bold mb-6">Mon Livret</h2>
-              {selectedTopics.length === 0 ? (
-                <p className="text-gray-400 italic text-center py-8">Sélectionnez des thèmes pour générer votre livret</p>
-              ) : (
-                <div className="space-y-4 mb-8">
-                  <p className="text-sm text-emerald-600 font-medium">{selectedTopics.length} thème(s) sélectionné(s)</p>
-                  {selectedTopics.map(id => {
-                    const topic = topics.find(t => t.id === id);
-                    return (
-                      <div key={id} className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                        <span className="text-sm font-medium">{topic?.title}</span>
-                        <button onClick={() => toggleTopic(id)} className="text-red-400 hover:text-red-600">
-                          <Trash2 size={16} />
-                        </button>
-                      </div>
-                    );
-                  })}
+          <div className="space-y-6">
+            <Card className="p-8 border-none shadow-2xl bg-emerald-600 text-white rounded-[2.5rem] sticky top-24">
+              <h3 className="text-2xl font-bold mb-4">Votre Livret</h3>
+              <p className="text-emerald-100 text-sm mb-8">Sélectionnez les thèmes à inclure dans votre document de révision personnalisé.</p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex justify-between text-sm font-medium">
+                  <span>Thèmes sélectionnés</span>
+                  <span>{selectedTopics.length}</span>
                 </div>
-              )}
+                <div className="w-full bg-emerald-700 h-2 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-white h-full transition-all duration-500" 
+                    style={{ width: `${(selectedTopics.length / topics.length) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+
               <Button 
-                onClick={handleGeneratePDF}
+                onClick={generatePDF}
                 disabled={selectedTopics.length === 0 || isGenerating}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 py-6 rounded-xl font-bold shadow-lg"
+                className="w-full bg-white text-emerald-600 hover:bg-emerald-50 py-8 rounded-2xl font-bold text-lg shadow-lg disabled:opacity-50"
               >
-                <Download className="mr-2" /> {isGenerating ? "Génération..." : "Générer mon Livret PDF"}
+                {isGenerating ? "Génération..." : "Générer mon PDF"}
+                <Download className="ml-2" size={20} />
               </Button>
             </Card>
+
+            <div className="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-3xl border-2 border-amber-100 dark:border-amber-800">
+              <h4 className="font-bold text-amber-800 dark:text-amber-400 flex items-center gap-2 mb-2">
+                <Info size={18} /> Astuce Révision
+              </h4>
+              <p className="text-sm text-amber-700 dark:text-amber-300 italic">
+                Écoutez le cours avant de lire la fiche pour une meilleure mémorisation auditive.
+              </p>
+            </div>
           </div>
         </div>
       </main>

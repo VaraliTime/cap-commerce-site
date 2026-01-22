@@ -2,12 +2,11 @@ import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Timer, AlertCircle, CheckCircle2, XCircle, ArrowRight, RefreshCw } from "lucide-react";
+import { Timer, CheckCircle2, XCircle, ArrowRight, RefreshCw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Base de données de questions (échantillon représentatif des 100 questions pour l'implémentation)
+// Base de données de questions
 const allQuestions = [
-  // BLOC 1 : RÉCEPTION ET SUIVI
   { id: 1, bloc: "Bloc 1", title: "Contrôle de livraison", context: "Vous recevez une palette. Le bon de livraison indique 10 cartons, mais vous n'en comptez que 9.", options: [
     { text: "Accepter la livraison et appeler le fournisseur plus tard.", correct: false, feedback: "Erreur. Il faut signaler l'anomalie immédiatement sur le bon de transport." },
     { text: "Émarger le bon avec des réserves précises (manquant).", correct: true, feedback: "Bravo ! Les réserves précises sont indispensables pour tout litige." },
@@ -23,7 +22,6 @@ const allQuestions = [
     { text: "À prévoir les ventes et éviter les ruptures de stock.", correct: true, feedback: "Exactement. C'est l'outil de pilotage des commandes." },
     { text: "À faire le plan de masse du magasin.", correct: false, feedback: "C'est le rôle du planogramme." }
   ]},
-  // BLOC 2 : MISE EN VALEUR
   { id: 4, bloc: "Bloc 2", title: "Niveaux de vente", context: "Quel est le niveau de la gondole le plus vendeur ?", options: [
     { text: "Niveau des pieds", correct: false, feedback: "C'est le moins vendeur." },
     { text: "Niveau des yeux", correct: true, feedback: "Oui ! C'est là que le client regarde en premier." },
@@ -39,7 +37,6 @@ const allQuestions = [
     { text: "La différence entre stock théorique et stock réel.", correct: true, feedback: "Parfait. (Vols, casse, erreurs)." },
     { text: "Les produits qui ne se vendent pas.", correct: false, feedback: "Ce sont les 'pousse-au-crime' ou rossignols." }
   ]},
-  // BLOC 3 : VENTE ET CLIENT
   { id: 7, bloc: "Bloc 3", title: "Accueil Client", context: "Un client entre dans le magasin alors que vous rangez un rayon.", options: [
     { text: "Finir votre carton avant de le regarder.", correct: false, feedback: "Le client est prioritaire sur les tâches administratives." },
     { text: "Appliquer le SBAM immédiatement.", correct: true, feedback: "La base ! Sourire, Bonjour, Au revoir, Merci." },
@@ -55,13 +52,11 @@ const allQuestions = [
     { text: "Cher par rapport à quoi ? (Isoler l'objection)", correct: true, feedback: "Très bien. Il faut comprendre la comparaison du client." },
     { text: "Je vous fais 50% de remise tout de suite.", correct: false, feedback: "Vous tuez votre marge sans argumenter." }
   ]},
-  // BLOC 4 : PSE
   { id: 10, bloc: "Bloc 4", title: "Risque professionnel", context: "Vous devez porter une charge lourde. Quelle est la bonne posture ?", options: [
     { text: "Plier les genoux et garder le dos droit.", correct: true, feedback: "Essentiel pour protéger vos vertèbres." },
     { text: "Garder les jambes tendues et courber le dos.", correct: false, feedback: "Danger immédiat pour le dos !" },
     { text: "Porter la charge à bout de bras.", correct: false, feedback: "Trop fatigant et risqué." }
   ]}
-  // Note: Dans une version réelle, on ajouterait ici les 90 autres questions sur le même modèle.
 ];
 
 export default function SimulateurExamen() {
@@ -70,10 +65,9 @@ export default function SimulateurExamen() {
   const [score, setScore] = useState(0);
   const [showFeedback, setShowFeedback] = useState<number | null>(null);
   const [isFinished, setIsFinished] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes pour 10 questions aléatoires
+  const [timeLeft, setTimeLeft] = useState(600);
   const [gameStarted, setGameStarted] = useState(false);
 
-  // Initialisation : Tirage aléatoire de 10 questions parmi les 100
   const startNewGame = () => {
     const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
     setQuestions(shuffled.slice(0, 10));
@@ -107,7 +101,6 @@ export default function SimulateurExamen() {
         const currentXP = parseInt(localStorage.getItem("user_xp") || "0");
         localStorage.setItem("user_xp", (currentXP + score * 150).toString());
         
-        // Sauvegarde dans l'historique
         const history = JSON.parse(localStorage.getItem("quiz_history") || "[]");
         history.push({ date: new Date().toISOString(), score: (score / questions.length) * 100 });
         localStorage.setItem("quiz_history", JSON.stringify(history));
@@ -142,6 +135,8 @@ export default function SimulateurExamen() {
     );
   }
 
+  const currentQuestion = questions[currentStep];
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navigation />
@@ -157,7 +152,7 @@ export default function SimulateurExamen() {
             </div>
           </div>
 
-          {!isFinished ? (
+          {!isFinished && currentQuestion ? (
             <AnimatePresence mode="wait">
               <motion.div 
                 key={currentStep}
@@ -169,19 +164,19 @@ export default function SimulateurExamen() {
                   <div className="mb-6 flex justify-between items-start">
                     <div>
                       <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-full">
-                        {questions[currentStep].bloc}
+                        {currentQuestion.bloc}
                       </span>
-                      <h2 className="text-2xl font-bold mt-3">{questions[currentStep].title}</h2>
+                      <h2 className="text-2xl font-bold mt-3">{currentQuestion.title}</h2>
                     </div>
                     <span className="text-sm font-bold text-gray-400">Q{currentStep + 1}/10</span>
                   </div>
                   
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl mb-8 border-l-4 border-blue-500">
-                    <p className="text-gray-700 dark:text-gray-300 italic">"{questions[currentStep].context}"</p>
+                    <p className="text-gray-700 dark:text-gray-300 italic">"{currentQuestion.context}"</p>
                   </div>
 
                   <div className="space-y-4">
-                    {questions[currentStep].options.map((option: any, index: number) => (
+                    {currentQuestion.options.map((option: any, index: number) => (
                       <button
                         key={index}
                         disabled={showFeedback !== null}
@@ -202,7 +197,7 @@ export default function SimulateurExamen() {
 
                   {showFeedback !== null && (
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-700 text-sm italic text-gray-600 dark:text-gray-300">
-                      {questions[currentStep].options[showFeedback].feedback}
+                      {currentQuestion.options[showFeedback].feedback}
                     </motion.div>
                   )}
                 </Card>
