@@ -113,7 +113,8 @@ export const useBloc = (blocId: string) => {
     const loadBloc = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/content.json");
+        // Ajout d'un timestamp pour forcer le rafraîchissement du cache (v5.2)
+        const response = await fetch(`/content.json?v=${new Date().getTime()}`);
         if (!response.ok) {
           throw new Error("Failed to load content");
         }
