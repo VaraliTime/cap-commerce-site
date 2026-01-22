@@ -24,7 +24,8 @@ import SimulateurOral from "./pages/SimulateurOral";
 import DossierPro from "./pages/DossierPro";
 import FichesPerso from "./pages/FichesPerso";
 import Dashboard from "./pages/Dashboard";
-
+import Calculatrice from "./pages/Calculatrice";
+import SimulateurExamen from "./pages/SimulateurExamen";
 
 function Router() {
   return (
@@ -42,9 +43,11 @@ function Router() {
       <Route path={"/mini-jeux"} component={MiniJeux} />
       <Route path={"/glossaire"} component={Glossaire} />
       <Route path={"/simulateur-oral"} component={SimulateurOral} />
+      <Route path={"/simulateur-examen"} component={SimulateurExamen} />
       <Route path={"/dossier-pro"} component={DossierPro} />
       <Route path={"/fiches-perso"} component={FichesPerso} />
       <Route path={"/dashboard"} component={Dashboard} />
+      <Route path={"/calculatrice"} component={Calculatrice} />
       <Route path={"/quiz"} component={QuizPage} />
       <Route path={"/quiz/:blocId"} component={QuizPage} />
       <Route path={"/schemas"} component={SchemasPage} />
@@ -61,6 +64,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
+        switchable={true}
       >
         <TooltipProvider>
           <Toaster />
