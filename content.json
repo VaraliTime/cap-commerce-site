@@ -22,6 +22,7 @@
             "Elle garantit la conformité quantitative et qualitative",
             "Elle permet de déclencher le paiement des fournisseurs"
           ],
+          "schema_svg": "flux_logistique",
           "synthese_approfondie": {
             "titre": "Expertise : Enjeux juridiques et financiers de la réception",
             "contenu": "Au-delà du simple déchargement, la réception est un acte juridique. En signant le bon de transport sans réserves, vous transférez la responsabilité des dommages du transporteur vers le magasin. Financièrement, une erreur de réception non détectée fausse le calcul de la marge et peut entraîner des ruptures de stock coûteuses ou des surstocks inutiles. Il est crucial de maîtriser l'EDI (Échange de Données Informatisé) qui permet une intégration automatique des bons de livraison dans le système de gestion.",
@@ -127,6 +128,7 @@
               "exemple": "Produits indispensables"
             }
           ],
+          "schema_svg": "niveaux_vente",
           "synthese_approfondie": {
             "titre": "Expertise : Optimisation du Linéaire Développé",
             "contenu": "Le calcul de la rentabilité au mètre linéaire est la clé de la gestion d'un rayon. On analyse le CA au mètre linéaire et la marge au mètre linéaire. Si un produit occupe trop de place par rapport à ce qu'il rapporte, on réduit son 'facing'. À l'inverse, un produit en rupture fréquente doit voir son linéaire augmenter.",
@@ -168,6 +170,7 @@
               "description": "Une salutation claire et polie."
             }
           ],
+          "schema_svg": "entonnoir_vente",
           "synthese_approfondie": {
             "titre": "Expertise : La Communication Non-Verbale",
             "contenu": "Dans l'accueil, 93% du message passe par le non-verbal (gestes, posture, regard) et le para-verbal (ton de la voix). Un conseiller qui croise les bras ou évite le regard envoie un signal négatif, même s'il dit 'Bonjour'. La synchronisation (adopter discrètement la même posture que le client) permet de créer un climat de sympathie immédiat.",

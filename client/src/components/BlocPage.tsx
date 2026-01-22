@@ -3,6 +3,7 @@ import { useBloc } from "../hooks/useBloc";
 import Navigation from "./Navigation";
 import ProgressBar from "./ProgressBar";
 import { Card } from "./ui/card";
+import EducationalSchemas from "./EducationalSchemas";
 
 interface BlocPageProps {
   blocId: string;
@@ -145,6 +146,11 @@ const BlocPage = ({ blocId }: BlocPageProps) => {
                         {expertMode[section.id] ? "Revenir à la fiche simplifiée" : "Développer la synthèse approfondie (Mode Expert)"}
                       </button>
                     </div>
+                  )}
+
+                  {/* Schema Integration */}
+                  {section.schema_svg && (
+                    <EducationalSchemas type={section.schema_svg} />
                   )}
 
                   {/* Synthese Approfondie Content */}

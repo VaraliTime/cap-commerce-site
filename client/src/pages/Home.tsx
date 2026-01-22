@@ -208,7 +208,7 @@ export default function Home() {
         </section>
         {/* Testimonials Section */}
         <section className="mb-24">
-          <div className="bg-emerald-50 rounded-[3rem] p-12 border border-emerald-100">
+          <div className="glass-card rounded-[3rem] p-12 border border-white">
             <h2 className="font-poppins text-3xl font-bold text-gray-900 mb-12 text-center">Ce que disent nos étudiants</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
@@ -233,7 +233,7 @@ export default function Home() {
             <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">Prêt à décrocher votre diplôme ?</h2>
             <p className="text-xl text-emerald-50 mb-10 opacity-90">Accédez à toutes nos ressources gratuitement et commencez vos révisions dès maintenant.</p>
             <Link href="/bloc1">
-              <Button className="bg-white text-emerald-600 hover:bg-emerald-50 px-12 py-8 text-xl font-bold rounded-2xl transition-all hover:scale-105 shadow-lg">
+              <Button className="btn-premium bg-white text-emerald-600 hover:bg-emerald-50 px-12 py-8 text-xl font-bold rounded-2xl">
                 Commencer les révisions
               </Button>
             </Link>
