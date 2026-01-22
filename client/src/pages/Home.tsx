@@ -1,205 +1,192 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
-import { TrafficChart } from "@/components/TrafficChart";
-import { Calculator, GraduationCap, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, Trophy, Target, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Link } from "wouter";
+import { motion } from "framer-motion";
+import { GraduationCap, Calculator, BookOpen, Brain, CreditCard, Store, Mic, FileText, ArrowRight, Star, Zap, ShieldCheck } from "lucide-react";
+
+const features = [
+  {
+    title: "Simulateur d'Examen",
+    desc: "100 questions aléatoires pour s'entraîner en conditions réelles.",
+    icon: <GraduationCap className="text-emerald-600" />,
+    href: "/simulateur-examen",
+    color: "bg-emerald-50"
+  },
+  {
+    title: "Coach IA Oral",
+    desc: "Préparez l'épreuve EP3 avec notre simulateur de dialogue intelligent.",
+    icon: <Mic className="text-blue-600" />,
+    href: "/coach-ia",
+    color: "bg-blue-50"
+  },
+  {
+    title: "Flashcards Mémoire",
+    desc: "Mémorisez les définitions clés avec la répétition espacée.",
+    icon: <Brain className="text-purple-600" />,
+    href: "/flashcards",
+    color: "bg-purple-50"
+  },
+  {
+    title: "Simulateur de Caisse",
+    desc: "Maîtrisez l'encaissement et la relation client en magasin.",
+    icon: <CreditCard className="text-amber-600" />,
+    href: "/simulateur-caisse",
+    color: "bg-amber-50"
+  },
+  {
+    title: "Plan de Masse",
+    desc: "Concevez l'implantation de votre point de vente en 2D.",
+    icon: <Store className="text-cyan-600" />,
+    href: "/plan-interactif",
+    color: "bg-cyan-50"
+  },
+  {
+    title: "Calculatrice Pro",
+    desc: "Prix, marges, TVA : tous les calculs commerciaux en un clic.",
+    icon: <Calculator className="text-rose-600" />,
+    href: "/calculatrice",
+    color: "bg-rose-50"
+  }
+];
 
 export default function Home() {
-  const blocs = [
-    {
-      id: "bloc1",
-      titre: "Recevoir et suivre les commandes",
-      description: "Maîtrisez les étapes essentielles de la réception des marchandises et du suivi des commandes",
-      icone: "📦",
-      couleur: "#10B981",
-      lien: "/bloc1"
-    },
-    {
-      id: "bloc2",
-      titre: "Mettre en valeur et approvisionner",
-      description: "Apprenez à présenter les produits de manière attrayante et à gérer efficacement l'approvisionnement des rayons",
-      icone: "🛍️",
-      couleur: "#059669",
-      lien: "/bloc2"
-    },
-    {
-      id: "bloc3",
-      titre: "Conseil et accompagnement du client",
-      description: "Maîtrisez les techniques de vente et d'accueil pour offrir un excellent service client",
-      icone: "👥",
-      couleur: "#047857",
-      lien: "/bloc3"
-    },
-    {
-      id: "bloc4",
-      titre: "Prévention-Santé-Environnement",
-      description: "Devenez acteur de votre prévention, de votre santé et de votre environnement professionnel",
-      icone: "🛡️",
-      couleur: "#065f46",
-      lien: "/bloc4"
-    }
-  ];
-
-  const newTools = [
-    {
-      title: "Simulateur d'Examen",
-      desc: "Entraînez-vous avec des scénarios réels et un chronomètre.",
-      icon: <GraduationCap className="text-white" size={32} />,
-      color: "bg-emerald-600",
-      link: "/simulateur-examen",
-      badge: "Nouveau"
-    },
-    {
-      title: "Calculatrice Pro",
-      desc: "Calculez vos marges, prix TTC et TVA instantanément.",
-      icon: <Calculator className="text-white" size={32} />,
-      color: "bg-blue-600",
-      link: "/calculatrice",
-      badge: "Indispensable"
-    },
-    {
-      title: "Glossaire Audio",
-      desc: "Maîtrisez le vocabulaire technique avec la synthèse vocale.",
-      icon: <PlayCircle className="text-white" size={32} />,
-      color: "bg-purple-600",
-      link: "/glossaire",
-      badge: "Audio"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-12">
-        {/* Hero Section */}
-        <section className="mb-20 text-center relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-emerald-50/50 dark:bg-emerald-900/10 -z-10 blur-3xl rounded-full max-w-4xl"></div>
-          
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-sm font-bold mb-6 animate-bounce">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-600"></span>
-            Plateforme n°1 pour le CAP EPC
-          </div>
-
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-            Réussir son <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">CAP Commerce</span>
-          </h1>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            La plateforme d'apprentissage complète pour le CAP Équipier Polyvalent du Commerce. 
-            Cours interactifs, simulateurs d'examen et outils professionnels pour garantir votre réussite.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link href="/simulateur-examen">
-              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-6 text-lg rounded-2xl shadow-xl shadow-emerald-200 dark:shadow-none transition-all hover:scale-105 active:scale-95">
-                Lancer le Simulateur
-              </Button>
-            </Link>
-            <Link href="/dashboard">
-              <Button variant="outline" className="border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 px-10 py-6 text-lg rounded-2xl transition-all hover:scale-105 active:scale-95">
-                Mon Tableau de Bord
-              </Button>
-            </Link>
-          </div>
-
-          {/* New Tools Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20">
-            {newTools.map((tool, i) => (
-              <Link key={i} href={tool.link}>
-                <div className="group bg-white dark:bg-gray-800 p-6 rounded-[2rem] border border-gray-100 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all cursor-pointer text-left relative overflow-hidden">
-                  <div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-[10px] font-bold uppercase text-white ${tool.color}`}>
-                    {tool.badge}
-                  </div>
-                  <div className={`${tool.color} w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    {tool.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 dark:text-white">{tool.title}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{tool.desc}</p>
-                </div>
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-8"
+            >
+              <Star size={16} fill="currentColor" />
+              Plateforme N°1 pour la réussite au CAP EPC
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-6xl md:text-7xl font-bold font-playfair mb-8 leading-tight dark:text-white"
+            >
+              Réussissez votre <span className="text-emerald-600">CAP Commerce</span> avec brio.
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed"
+            >
+              La plateforme d'apprentissage la plus complète : simulateurs IA, outils métiers, 
+              quiz interactifs et fiches de révision personnalisées.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link href="/simulateur-examen">
+                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-8 rounded-2xl text-lg font-bold shadow-xl shadow-emerald-200 dark:shadow-none transition-transform hover:scale-105">
+                  Lancer le Simulateur <Zap className="ml-2" size={20} />
+                </Button>
               </Link>
+              <Link href="/bloc1">
+                <Button variant="outline" className="border-2 border-gray-200 dark:border-gray-700 px-10 py-8 rounded-2xl text-lg font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                  Explorer les cours
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+        
+        {/* Background Elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-0 opacity-10 pointer-events-none">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-800/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 dark:text-white">Vos outils de réussite</h2>
+            <p className="text-gray-500 dark:text-gray-400">Tout ce dont vous avez besoin pour maîtriser les 4 blocs du CAP EPC.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((f, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link href={f.href}>
+                  <Card className="p-8 border-none shadow-lg hover:shadow-2xl transition-all cursor-pointer group bg-white dark:bg-gray-800 rounded-[2.5rem] h-full flex flex-col">
+                    <div className={`w-16 h-16 ${f.color} dark:bg-opacity-20 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform`}>
+                      {f.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3 dark:text-white">{f.title}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-8 flex-1">{f.desc}</p>
+                    <div className="flex items-center text-emerald-600 font-bold text-sm group-hover:gap-2 transition-all">
+                      Accéder à l'outil <ArrowRight size={16} className="ml-1" />
+                    </div>
+                  </Card>
+                </Link>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Traffic Chart Integration */}
-          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-2xl">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <span className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg text-emerald-600">📈</span>
-                Activité de la communauté
-              </h3>
-              <div className="text-sm text-gray-500">Mise à jour en temps réel</div>
+      {/* Stats Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="bg-emerald-600 rounded-[3rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="max-w-md">
+              <h2 className="text-4xl font-bold mb-6">Prêt à décrocher votre diplôme ?</h2>
+              <p className="text-emerald-100 mb-8">Rejoignez des milliers d'étudiants qui utilisent déjà nos outils pour préparer leur avenir dans le commerce.</p>
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  {[1,2,3,4].map(i => (
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-emerald-600 bg-emerald-200"></div>
+                  ))}
+                </div>
+                <span className="text-sm font-medium">+5000 étudiants actifs</span>
+              </div>
             </div>
-            <TrafficChart />
+            <div className="grid grid-cols-2 gap-6 w-full md:w-auto">
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl text-center">
+                <p className="text-4xl font-bold mb-1">100%</p>
+                <p className="text-xs uppercase tracking-widest opacity-70">Gratuit</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl text-center">
+                <p className="text-4xl font-bold mb-1">24/7</p>
+                <p className="text-xs uppercase tracking-widest opacity-70">Accessible</p>
+              </div>
+            </div>
           </div>
-        </section>
-
-        {/* Blocs Section */}
-        <section className="mb-24">
-          <div className="flex flex-col items-center mb-12">
-            <h2 className="font-poppins text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Parcours de Formation
-            </h2>
-            <div className="h-1.5 w-24 bg-emerald-600 rounded-full"></div>
-            <p className="mt-4 text-gray-500 dark:text-gray-400 text-center max-w-xl">
-              Explorez les 4 piliers fondamentaux du CAP Équipier Polyvalent du Commerce à travers nos modules interactifs.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {blocs.map((bloc, index) => (
-              <Link key={bloc.id} href={bloc.lien}>
-                <div className="group bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-8 hover:shadow-2xl hover:shadow-emerald-100 dark:hover:shadow-none transition-all duration-500 cursor-pointer h-full relative overflow-hidden flex flex-col">
-                  <div 
-                    className="absolute top-0 right-0 w-32 h-32 -mr-16 -mt-16 rounded-full opacity-10 group-hover:scale-150 transition-transform duration-700"
-                    style={{ backgroundColor: bloc.couleur }}
-                  ></div>
-                  
-                  <div className="text-6xl mb-6 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500">{bloc.icone}</div>
-                  
-                  <h3 className="font-poppins text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-emerald-600 transition-colors">
-                    {bloc.titre}
-                  </h3>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed flex-1">
-                    {bloc.description}
-                  </p>
-                  
-                  <div className="flex items-center justify-between mt-auto">
-                    <div 
-                      className="h-1.5 w-16 rounded-full"
-                      style={{ backgroundColor: bloc.couleur }}
-                    ></div>
-                    <span className="text-emerald-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
-                      Explorer →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="mb-24 text-center">
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-emerald-600 to-teal-600 p-16 rounded-[3rem] text-white shadow-2xl shadow-emerald-200 dark:shadow-none">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">Prêt à décrocher votre diplôme ?</h2>
-            <p className="text-xl text-emerald-50 mb-10 opacity-90">Accédez à toutes nos ressources gratuitement et commencez vos révisions dès maintenant.</p>
-            <Link href="/simulateur-examen">
-              <Button className="bg-white text-emerald-600 hover:bg-emerald-50 px-12 py-8 text-xl font-bold rounded-2xl transition-transform hover:scale-105">
-                Lancer l'Examen Blanc
-              </Button>
-            </Link>
-          </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-16">
+      <footer className="py-12 border-t border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400">
-            © 2026 Réussir son CAP Commerce. Plateforme d'Excellence EPC.
-          </p>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="bg-emerald-100 p-2 rounded-lg dark:bg-emerald-900/30">📚</div>
+            <span className="font-playfair font-bold text-xl dark:text-white">CAP Commerce</span>
+          </div>
+          <p className="text-gray-400 text-sm">© 2026 Plateforme de Réussite CAP EPC. Tous droits réservés.</p>
         </div>
       </footer>
     </div>
