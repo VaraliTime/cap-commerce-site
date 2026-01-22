@@ -28,6 +28,7 @@ import Calculatrice from "./pages/Calculatrice";
 import SimulateurExamen from "./pages/SimulateurExamen";
 import Flashcards from "./pages/Flashcards";
 import SimulateurCaisse from "./pages/SimulateurCaisse";
+import PlanMasseInteractif from "./pages/PlanMasseInteractif";
 
 function Router() {
   return (
@@ -40,6 +41,7 @@ function Router() {
       <Route path={"/ressources"} component={Ressources} />
       <Route path={"/cadencier"} component={Cadencier} />
       <Route path={"/plans-masse"} component={PlansMasse} />
+      <Route path={"/plan-interactif"} component={PlanMasseInteractif} />
       <Route path={"/videos"} component={Videos} />
       <Route path={"/podcasts"} component={Podcasts} />
       <Route path={"/mini-jeux"} component={MiniJeux} />
