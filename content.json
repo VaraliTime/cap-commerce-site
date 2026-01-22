@@ -21,7 +21,16 @@
             "La réception est la première étape du processus de mise en stock",
             "Elle garantit la conformité quantitative et qualitative",
             "Elle permet de déclencher le paiement des fournisseurs"
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : Enjeux juridiques et financiers de la réception",
+            "contenu": "Au-delà du simple déchargement, la réception est un acte juridique. En signant le bon de transport sans réserves, vous transférez la responsabilité des dommages du transporteur vers le magasin. Financièrement, une erreur de réception non détectée fausse le calcul de la marge et peut entraîner des ruptures de stock coûteuses ou des surstocks inutiles. Il est crucial de maîtriser l'EDI (Échange de Données Informatisé) qui permet une intégration automatique des bons de livraison dans le système de gestion.",
+            "conseils_pro": [
+              "Toujours dater et heure la signature",
+              "Utiliser un tampon 'Sous réserve de contrôle' n'a aucune valeur légale, soyez précis",
+              "Vérifier scrupuleusement la chaîne du froid pour les produits frais (température à cœur)"
+            ]
+          }
         },
         {
           "id": "bloc1-sec2",
@@ -49,7 +58,16 @@
               "titre": "Contrôle quantitatif",
               "description": "Comptez les unités (colis, palettes, articles)."
             }
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : Gestion des litiges fournisseurs",
+            "contenu": "En cas de non-conformité majeure, le processus de litige doit être déclenché. Cela implique la rédaction d'un bon de litige, la prise de photos comme preuves, et l'information immédiate du service achat. La gestion rigoureuse des avoirs est essentielle pour ne pas perdre d'argent sur les produits non reçus ou endommagés.",
+            "points_techniques": [
+              "Différence entre vice apparent et vice caché",
+              "Délais légaux de réclamation (généralement 3 jours par lettre recommandée)",
+              "Procédure de retour de marchandise (Reverse Logistics)"
+            ]
+          }
         }
       ]
     },
@@ -74,7 +92,16 @@
             "Transformer le visiteur en acheteur",
             "Augmenter le panier moyen",
             "Faciliter le parcours client"
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : Merchandising de Séduction et Neuro-marketing",
+            "contenu": "Le merchandising moderne utilise les sens pour influencer le comportement d'achat. Le marketing sensoriel (odeurs de pain chaud, musique d'ambiance, éclairage chaud pour les fruits et légumes) joue un rôle crucial. L'analyse du parcours client via des 'heatmaps' permet d'identifier les zones froides (peu fréquentées) et d'y placer des produits d'appel pour forcer le passage.",
+            "concepts_avances": [
+              "Le coefficient d'occupation des sols (COS)",
+              "L'indice de passage et l'indice d'achat",
+              "La règle du 'regard à droite' en entrée de magasin"
+            ]
+          }
         },
         {
           "id": "bloc2-sec3",
@@ -99,7 +126,16 @@
               "caracteristiques": "Niveau de confort. Idéal pour les produits de consommation courante.",
               "exemple": "Produits indispensables"
             }
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : Optimisation du Linéaire Développé",
+            "contenu": "Le calcul de la rentabilité au mètre linéaire est la clé de la gestion d'un rayon. On analyse le CA au mètre linéaire et la marge au mètre linéaire. Si un produit occupe trop de place par rapport à ce qu'il rapporte, on réduit son 'facing'. À l'inverse, un produit en rupture fréquente doit voir son linéaire augmenter.",
+            "formules_cles": [
+              "Linéaire au sol vs Linéaire développé",
+              "Calcul du rendement du linéaire : CA / Linéaire développé",
+              "Part de linéaire vs Part de marché (Indice de sensibilité)"
+            ]
+          }
         }
       ]
     },
@@ -131,7 +167,16 @@
               "mot": "Bonjour",
               "description": "Une salutation claire et polie."
             }
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : La Communication Non-Verbale",
+            "contenu": "Dans l'accueil, 93% du message passe par le non-verbal (gestes, posture, regard) et le para-verbal (ton de la voix). Un conseiller qui croise les bras ou évite le regard envoie un signal négatif, même s'il dit 'Bonjour'. La synchronisation (adopter discrètement la même posture que le client) permet de créer un climat de sympathie immédiat.",
+            "regles_d_or": [
+              "La règle des 4x20 (20 premières secondes, 20 premiers pas, 20 premiers mots, 20 cm du visage)",
+              "L'écoute active et la reformulation",
+              "La gestion de la distance sociale (proxémie)"
+            ]
+          }
         },
         {
           "id": "bloc3-sec3",
@@ -154,7 +199,16 @@
               "mot": "Avantage",
               "description": "Ce que la caractéristique apporte."
             }
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : Le Traitement des Objections Complexes",
+            "contenu": "Une objection n'est pas un refus, c'est un signe d'intérêt qui demande plus d'informations. Il faut distinguer l'objection réelle de l'objection prétexte. La méthode CRAC (Creuser, Reformuler, Argumenter, Confirmer) est la plus efficace. Pour l'objection prix, on utilise la technique de l'addition (somme des avantages) ou de la division (coût par jour d'utilisation).",
+            "techniques_avancees": [
+              "L'objection 'Boomerang' : transformer l'objection en argument",
+              "L'objection 'Écran' : noter l'objection et y revenir plus tard",
+              "La méthode du 'Oui... mais' (ou 'Oui... et')"
+            ]
+          }
         }
       ]
     },
@@ -184,7 +238,16 @@
               "titre": "Signalisation de Sécurité",
               "description": "Connaître les pictogrammes (Danger, Obligation)."
             }
-          ]
+          ],
+          "synthese_approfondie": {
+            "titre": "Expertise : Analyse de l'Accident du Travail (Arbre des Causes)",
+            "contenu": "Lorsqu'un accident survient, l'entreprise doit analyser les causes pour éviter la récidive. On utilise la méthode de l'Arbre des Causes en partant du fait ultime (l'accident) et en remontant par des questions 'Qu'a-t-il fallu pour que cela arrive ?'. On distingue les causes liées à l'individu, à la tâche, au matériel et à l'organisation du travail.",
+            "notions_cles": [
+              "Le Document Unique d'Évaluation des Risques (DUER)",
+              "La différence entre Danger (source) et Risque (exposition)",
+              "Les principes généraux de prévention (L4121-2 du Code du Travail)"
+            ]
+          }
         }
       ]
     }

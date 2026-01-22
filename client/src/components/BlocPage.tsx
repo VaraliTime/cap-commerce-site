@@ -12,6 +12,14 @@ const BlocPage = ({ blocId }: BlocPageProps) => {
   const { bloc, loading, error } = useBloc(blocId);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [completedSections, setCompletedSections] = useState<Set<string>>(new Set());
+  const [expertMode, setExpertMode] = useState<Record<string, boolean>>({});
+
+  const toggleExpertMode = (sectionId: string) => {
+    setExpertMode(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
 
   // Load progress from localStorage
   useEffect(() => {
@@ -124,6 +132,69 @@ const BlocPage = ({ blocId }: BlocPageProps) => {
                     <p className="text-gray-700 mb-8 text-lg leading-relaxed">
                       {section.contenu}
                     </p>
+                  )}
+
+                  {/* Expert Mode Toggle */}
+                  {section.synthese_approfondie && (
+                    <div className="mb-8">
+                      <button
+                        onClick={() => toggleExpertMode(section.id)}
+                        className={`w-full p-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all border-2 ${expertMode[section.id] ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-100' : 'bg-white text-indigo-600 border-indigo-100 hover:border-indigo-600'}`}
+                      >
+                        <span className="text-xl">{expertMode[section.id] ? "📖" : "🚀"}</span>
+                        {expertMode[section.id] ? "Revenir à la fiche simplifiée" : "Développer la synthèse approfondie (Mode Expert)"}
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Synthese Approfondie Content */}
+                  {section.synthese_approfondie && expertMode[section.id] && (
+                    <div className="mb-10 animate-in zoom-in-95 duration-300">
+                      <div className="bg-indigo-900 text-white p-10 rounded-[3rem] shadow-2xl shadow-indigo-200 relative overflow-hidden border-4 border-indigo-500/30">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+                        <div className="relative z-10">
+                          <div className="flex items-center gap-4 mb-6">
+                            <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-2xl">🎓</div>
+                            <h4 className="font-playfair text-3xl font-bold">{section.synthese_approfondie.titre}</h4>
+                          </div>
+                          
+                          <p className="text-indigo-100 text-lg leading-relaxed mb-8 italic border-l-4 border-indigo-400 pl-6">
+                            {section.synthese_approfondie.contenu}
+                          </p>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* Render dynamic lists based on available fields */}
+                            {Object.entries(section.synthese_approfondie).map(([key, value]) => {
+                              if (Array.isArray(value)) {
+                                const labels: Record<string, string> = {
+                                  conseils_pro: "Conseils de Pro",
+                                  points_techniques: "Points Techniques",
+                                  concepts_avances: "Concepts Avancés",
+                                  formules_cles: "Formules Clés",
+                                  regles_d_or: "Règles d'Or",
+                                  techniques_avancees: "Techniques Avancées",
+                                  notions_cles: "Notions Clés"
+                                };
+                                return (
+                                  <div key={key} className="bg-white/10 p-6 rounded-3xl border border-white/10">
+                                    <h5 className="font-bold text-indigo-300 mb-4 uppercase tracking-widest text-sm">{labels[key] || key}</h5>
+                                    <ul className="space-y-3">
+                                      {value.map((item: string, i: number) => (
+                                        <li key={i} className="flex items-start gap-3">
+                                          <span className="text-indigo-400 mt-1">✦</span>
+                                          <span className="text-sm font-medium">{item}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                );
+                              }
+                              return null;
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   )}
 
                   {/* Video Integration */}

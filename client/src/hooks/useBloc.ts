@@ -19,6 +19,17 @@ export interface Section {
     texte: string;
     icone?: string;
   };
+  synthese_approfondie?: {
+    titre: string;
+    contenu: string;
+    conseils_pro?: string[];
+    points_techniques?: string[];
+    concepts_avances?: string[];
+    formules_cles?: string[];
+    regles_d_or?: string[];
+    techniques_avancees?: string[];
+    notions_cles?: string[];
+  };
   points_cles?: string[];
   etapes?: Etape[];
   documents?: Document[];
