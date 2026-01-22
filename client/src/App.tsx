@@ -21,6 +21,7 @@ import Podcasts from "./pages/Podcasts";
 import MiniJeux from "./pages/MiniJeux";
 import Glossaire from "./pages/Glossaire";
 import SimulateurOral from "./pages/SimulateurOral";
+import CoachIAOral from "./pages/CoachIAOral";
 import DossierPro from "./pages/DossierPro";
 import FichesPerso from "./pages/FichesPerso";
 import Dashboard from "./pages/Dashboard";
@@ -47,9 +48,7 @@ function Router() {
       <Route path={"/mini-jeux"} component={MiniJeux} />
       <Route path={"/glossaire"} component={Glossaire} />
       <Route path={"/simulateur-oral"} component={SimulateurOral} />
-      <Route path={"/simulateur-examen"} component={SimulateurExamen} />
-      <Route path={"/simulateur-caisse"} component={SimulateurCaisse} />
-      <Route path={"/flashcards"} component={Flashcards} />
+      <Route path={"/coach-ia"} component={CoachIAOral} />
       <Route path={"/dossier-pro"} component={DossierPro} />
       <Route path={"/fiches-perso"} component={FichesPerso} />
       <Route path={"/dashboard"} component={Dashboard} />

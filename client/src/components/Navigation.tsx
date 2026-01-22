@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Calculator, GraduationCap, Brain, Store, CreditCard, Map } from "lucide-react";
+import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Calculator, GraduationCap, Brain, Store, CreditCard, Map, Mic, FileText } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
@@ -31,11 +31,11 @@ export default function Navigation() {
       label: "Interactif",
       icon: <Gamepad2 size={16} />,
       items: [
+        { label: "Coach IA Oral (EP3)", href: "/coach-ia" },
         { label: "Simulateur d'Examen", href: "/simulateur-examen" },
         { label: "Simulateur de Caisse", href: "/simulateur-caisse" },
         { label: "Flashcards Mémoire", href: "/flashcards" },
         { label: "Quiz & Tests", href: "/quiz" },
-        { label: "Mini-Jeux CAP", href: "/mini-jeux" },
         { label: "Glossaire Audio", href: "/glossaire" },
       ]
     },
@@ -43,11 +43,11 @@ export default function Navigation() {
       label: "Outils Métiers",
       icon: <LayoutDashboard size={16} />,
       items: [
+        { label: "Générateur de Dossier", href: "/dossier-pro" },
         { label: "Plan de Masse Interactif", href: "/plan-interactif" },
         { label: "Calculatrice Pro", href: "/calculatrice" },
         { label: "Générateur de Fiches", href: "/fiches-perso" },
         { label: "Cadencier", href: "/cadencier" },
-        { label: "Plans de masse (Statique)", href: "/plans-masse" },
       ]
     },
     {
@@ -65,9 +65,9 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 px-4 text-center text-sm font-medium shadow-lg animate-in fade-in slide-in-from-top duration-500">
-        📐 NOUVEAU : Éditeur de Plan de Masse interactif disponible ! 
-        <Link href="/plan-interactif">
-          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Dessiner mon plan →</a>
+        🎙️ NOUVEAU : Entraînez-vous à l'oral avec notre Coach IA ! 
+        <Link href="/coach-ia">
+          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Essayer le coach →</a>
         </Link>
       </div>
 
