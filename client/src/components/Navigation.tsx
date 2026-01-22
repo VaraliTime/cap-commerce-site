@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Calculator, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Calculator, GraduationCap, Brain, Store, CreditCard } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
@@ -32,19 +32,19 @@ export default function Navigation() {
       icon: <Gamepad2 size={16} />,
       items: [
         { label: "Simulateur d'Examen", href: "/simulateur-examen" },
+        { label: "Simulateur de Caisse", href: "/simulateur-caisse" },
+        { label: "Flashcards Mémoire", href: "/flashcards" },
         { label: "Quiz & Tests", href: "/quiz" },
         { label: "Mini-Jeux CAP", href: "/mini-jeux" },
-        { label: "Simulateur Oral EP3", href: "/simulateur-oral" },
         { label: "Glossaire Audio", href: "/glossaire" },
       ]
     },
     {
-      label: "Outils & Fiches",
+      label: "Outils Métiers",
       icon: <LayoutDashboard size={16} />,
       items: [
         { label: "Calculatrice Pro", href: "/calculatrice" },
         { label: "Générateur de Fiches", href: "/fiches-perso" },
-        { label: "Schémas Pédago", href: "/schemas" },
         { label: "Cadencier", href: "/cadencier" },
         { label: "Plans de masse", href: "/plans-masse" },
       ]
@@ -64,9 +64,9 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 px-4 text-center text-sm font-medium shadow-lg animate-in fade-in slide-in-from-top duration-500">
-        🚀 NOUVEAU : Simulateur d'Examen et Calculatrice Commerciale disponibles ! 
-        <Link href="/simulateur-examen">
-          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Tester maintenant →</a>
+        ✨ NOUVEAU : Simulateur de Caisse et Flashcards disponibles ! 
+        <Link href="/simulateur-caisse">
+          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Tester la caisse →</a>
         </Link>
       </div>
 

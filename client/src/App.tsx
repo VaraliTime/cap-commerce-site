@@ -26,6 +26,8 @@ import FichesPerso from "./pages/FichesPerso";
 import Dashboard from "./pages/Dashboard";
 import Calculatrice from "./pages/Calculatrice";
 import SimulateurExamen from "./pages/SimulateurExamen";
+import Flashcards from "./pages/Flashcards";
+import SimulateurCaisse from "./pages/SimulateurCaisse";
 
 function Router() {
   return (
@@ -44,6 +46,8 @@ function Router() {
       <Route path={"/glossaire"} component={Glossaire} />
       <Route path={"/simulateur-oral"} component={SimulateurOral} />
       <Route path={"/simulateur-examen"} component={SimulateurExamen} />
+      <Route path={"/simulateur-caisse"} component={SimulateurCaisse} />
+      <Route path={"/flashcards"} component={Flashcards} />
       <Route path={"/dossier-pro"} component={DossierPro} />
       <Route path={"/fiches-perso"} component={FichesPerso} />
       <Route path={"/dashboard"} component={Dashboard} />
