@@ -113,124 +113,184 @@ export default function FichesPerso() {
     try {
       const doc = new jsPDF();
       const margin = 20;
+      const pageWidth = 210;
+      const pageHeight = 297;
       let yOffset = 20;
 
-      // Page de garde
+      // --- PAGE DE GARDE ---
       doc.setFillColor(16, 185, 129); // Emerald 500
-      doc.rect(0, 0, 210, 40, 'F');
+      doc.rect(0, 0, pageWidth, 60, 'F');
       
-      doc.setFontSize(26);
+      doc.setFontSize(28);
       doc.setTextColor(255, 255, 255);
-      doc.text("LIVRET DE RÉVISION CAP EPC", 105, 25, { align: "center" });
+      doc.text("LIVRET DE RÉVISION", pageWidth / 2, 30, { align: "center" });
+      doc.setFontSize(20);
+      doc.text("CAP Équipier Polyvalent du Commerce", pageWidth / 2, 45, { align: "center" });
 
-      yOffset = 60;
+      yOffset = 80;
       doc.setFontSize(14);
-      doc.setTextColor(100, 116, 139);
-      doc.text("Ce document contient vos fiches de révision personnalisées", margin, yOffset);
+      doc.setTextColor(71, 85, 105); // Slate 600
+      doc.text("Document de synthèse personnalisé", margin, yOffset);
       yOffset += 10;
+      doc.setFontSize(11);
       doc.text(`Généré le ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}`, margin, yOffset);
       
+      // --- SOMMAIRE AMÉLIORÉ ---
       yOffset += 30;
+      doc.setDrawColor(16, 185, 129);
+      doc.setLineWidth(0.8);
+      doc.line(margin, yOffset, margin + 40, yOffset);
+      yOffset += 10;
+      
       doc.setFontSize(18);
       doc.setTextColor(31, 41, 55);
-      doc.text("Sommaire :", margin, yOffset);
+      doc.text("SOMMAIRE", margin, yOffset);
       yOffset += 15;
       
+      const topicPageMap: { [key: string]: number } = {};
+      let currentPage = 2; // Le contenu commence à la page 2
+
       selectedTopics.forEach((id, index) => {
         const topic = topics.find(t => t.id === id);
-        doc.setFontSize(12);
-        doc.text(`${index + 1}. ${topic?.title} (${topic?.bloc})`, margin + 5, yOffset);
-        yOffset += 8;
+        if (topic) {
+          doc.setFontSize(12);
+          doc.setTextColor(55, 65, 81);
+          
+          // Ligne du sommaire avec pointillés
+          const title = `${index + 1}. ${topic.title}`;
+          doc.text(title, margin + 5, yOffset);
+          
+          const pageNumStr = "Page " + currentPage;
+          const textWidth = doc.getTextWidth(title);
+          const pageNumWidth = doc.getTextWidth(pageNumStr);
+          
+          // Dessiner les pointillés
+          const dotStart = margin + 10 + textWidth;
+          const dotEnd = pageWidth - margin - pageNumWidth - 5;
+          if (dotEnd > dotStart) {
+            let dotPos = dotStart;
+            while (dotPos < dotEnd) {
+              doc.text(".", dotPos, yOffset);
+              dotPos += 3;
+            }
+          }
+          
+          doc.text(pageNumStr, pageWidth - margin, yOffset, { align: "right" });
+          
+          // Estimation simplifiée de l'espace consommé pour le prochain numéro de page
+          // Chaque thème prend environ 0.5 à 0.8 page avec le nouveau contenu
+          yOffset += 10;
+          currentPage++; 
+        }
       });
 
-      // Nouvelle page pour le contenu
-      doc.addPage();
-      yOffset = 20;
-
+      // --- CONTENU DES FICHES ---
       selectedTopics.forEach((id) => {
+        doc.addPage();
+        yOffset = 25;
+
         const topic = topics.find(t => t.id === id);
         if (topic) {
-          // Vérifier l'espace restant
-          if (yOffset > 220) {
-            doc.addPage();
-            yOffset = 20;
-          }
+          // En-tête de page de contenu
+          doc.setFillColor(248, 250, 252); // Slate 50
+          doc.rect(0, 0, pageWidth, 40, 'F');
+          doc.setDrawColor(226, 232, 240); // Slate 200
+          doc.line(0, 40, pageWidth, 40);
 
-          // Titre du thème
-          doc.setFillColor(243, 244, 246); // Gray 100
-          doc.rect(margin - 5, yOffset - 5, 180, 12, 'F');
           doc.setFontSize(10);
           doc.setTextColor(16, 185, 129);
-          doc.text(topic.bloc.toUpperCase(), margin, yOffset + 2);
-          doc.setFontSize(16);
-          doc.setTextColor(31, 41, 55);
-          doc.text(topic.title, margin + 25, yOffset + 2);
-          yOffset += 15;
+          doc.text(topic.bloc.toUpperCase(), margin, 20);
+          
+          doc.setFontSize(20);
+          doc.setTextColor(15, 23, 42); // Slate 900
+          doc.text(topic.title, margin, 32);
+          
+          yOffset = 55;
 
-          // Contenu structuré
           topic.content.forEach((item) => {
-            if (yOffset > 270) {
+            // Vérification de sécurité pour le saut de page
+            if (yOffset > 260) {
               doc.addPage();
-              yOffset = 20;
+              yOffset = 25;
             }
 
             switch (item.type) {
               case "subtitle":
-                doc.setFontSize(13);
-                doc.setTextColor(5, 150, 105); // Emerald 600
+                yOffset += 5;
+                doc.setFontSize(14);
+                doc.setTextColor(16, 185, 129);
                 doc.text(item.value, margin, yOffset);
-                yOffset += 7;
+                doc.setLineWidth(0.3);
+                doc.line(margin, yOffset + 2, margin + 30, yOffset + 2);
+                yOffset += 12;
                 break;
               case "text":
                 doc.setFontSize(11);
-                doc.setTextColor(55, 65, 81);
+                doc.setTextColor(51, 65, 85); // Slate 700
                 const splitText = doc.splitTextToSize(item.value, 170);
                 doc.text(splitText, margin, yOffset);
-                yOffset += (splitText.length * 6) + 5;
+                yOffset += (splitText.length * 7) + 5;
                 break;
               case "list":
                 doc.setFontSize(11);
-                doc.setTextColor(55, 65, 81);
+                doc.setTextColor(51, 65, 85);
                 item.value.forEach((li: string) => {
-                  doc.text("• " + li, margin + 5, yOffset);
-                  yOffset += 6;
+                  if (yOffset > 275) { doc.addPage(); yOffset = 25; }
+                  doc.setFillColor(16, 185, 129);
+                  doc.circle(margin + 2, yOffset - 1, 0.8, 'F');
+                  doc.text(li, margin + 7, yOffset);
+                  yOffset += 7;
                 });
-                yOffset += 4;
+                yOffset += 3;
                 break;
               case "example":
-                doc.setFillColor(236, 253, 245); // Emerald 50
-                const exText = doc.splitTextToSize("💡 " + item.value, 160);
-                doc.rect(margin - 2, yOffset - 4, 174, (exText.length * 6) + 6, 'F');
+                yOffset += 5;
+                const exText = doc.splitTextToSize(item.value, 160);
+                const boxHeight = (exText.length * 6) + 12;
+                
+                if (yOffset + boxHeight > 280) { doc.addPage(); yOffset = 25; }
+                
+                doc.setFillColor(240, 253, 244); // Green 50
+                doc.setDrawColor(187, 247, 208); // Green 200
+                doc.roundedRect(margin - 2, yOffset - 5, 174, boxHeight, 2, 2, 'FD');
+                
+                doc.setFontSize(9);
+                doc.setTextColor(21, 128, 61); // Green 700
+                doc.text("EXEMPLE CONCRET", margin + 2, yOffset);
+                yOffset += 6;
+                
                 doc.setFontSize(10);
-                doc.setTextColor(6, 95, 70); // Emerald 800
-                doc.text(exText, margin, yOffset);
+                doc.setTextColor(22, 101, 52); // Green 800
+                doc.text(exText, margin + 2, yOffset);
                 yOffset += (exText.length * 6) + 10;
                 break;
               case "schema":
+                yOffset += 5;
+                if (yOffset > 260) { doc.addPage(); yOffset = 25; }
                 doc.setDrawColor(16, 185, 129);
                 doc.setLineWidth(0.5);
-                doc.rect(margin, yOffset - 4, 170, 12);
-                doc.setFontSize(11);
+                doc.setFillColor(255, 255, 255);
+                doc.rect(margin, yOffset, 170, 15, 'FD');
+                doc.setFontSize(12);
                 doc.setTextColor(16, 185, 129);
-                doc.text(item.value, 105, yOffset + 3, { align: "center" });
-                yOffset += 20;
+                doc.text(item.value, 105, yOffset + 9, { align: "center" });
+                yOffset += 25;
                 break;
             }
           });
-          yOffset += 10; // Espace entre les thèmes
         }
       });
 
-      // Pied de page
-      const pageCount = doc.getNumberOfPages();
-      for (let i = 1; i <= pageCount; i++) {
+      // --- PIED DE PAGE GLOBAL ---
+      const totalPages = doc.getNumberOfPages();
+      for (let i = 1; i <= totalPages; i++) {
         doc.setPage(i);
         doc.setFontSize(9);
-        doc.setTextColor(156, 163, 175);
-        doc.text(`Document de révision CAP EPC - Page ${i} sur ${pageCount}`, 105, 285, { align: "center" });
+        doc.setTextColor(148, 163, 184); // Slate 400
+        doc.text(`Réussite CAP Commerce - Page ${i} / ${totalPages}`, pageWidth / 2, pageHeight - 10, { align: "center" });
       }
 
-      doc.save("Livret_Revision_CAP_EPC.pdf");
+      doc.save("Livret_Revision_CAP_EPC_Premium.pdf");
     } catch (error) {
       console.error("Erreur lors de la génération du PDF:", error);
     } finally {
@@ -244,7 +304,7 @@ export default function FichesPerso() {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 font-playfair">Générateur de Fiches</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">Créez votre livret de révision complet. Sélectionnez plusieurs thèmes pour générer un document de plusieurs pages.</p>
+          <p className="text-gray-600 max-w-2xl mx-auto">Créez votre livret de révision complet. Sélectionnez plusieurs thèmes pour générer un document structuré de plusieurs pages.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -300,7 +360,7 @@ export default function FichesPerso() {
                 <Download className="mr-2" /> {isGenerating ? "Génération..." : "Générer mon Livret PDF"}
               </Button>
               <p className="text-[10px] text-gray-400 mt-4 text-center">
-                Astuce : Sélectionnez tous les thèmes pour un livret complet de 3 pages.
+                Version Premium : Sommaire structuré et mise en page optimisée.
               </p>
             </Card>
           </div>
