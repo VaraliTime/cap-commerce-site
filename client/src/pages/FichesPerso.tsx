@@ -17,11 +17,13 @@ export default function FichesPerso() {
       bloc: "Bloc 1", 
       content: [
         { type: "text", value: "La gestion des stocks est l'ensemble des activités visant à maintenir un niveau de stock optimal pour répondre à la demande tout en minimisant les coûts." },
-        { type: "subtitle", value: "Les Enjeux" },
+        { type: "subtitle", value: "Les Enjeux Stratégiques" },
         { type: "list", value: ["Éviter la rupture (perte de CA, mécontentement client)", "Éviter le surstock (immobilisation financière, risque de casse/périme)", "Optimiser l'espace de stockage"] },
-        { type: "subtitle", value: "Indicateurs Clés" },
-        { type: "text", value: "• Stock de sécurité : Niveau minimum pour pallier les retards de livraison.\n• Stock d'alerte : Seuil déclenchant la commande (Stock de sécurité + Stock de roulement).\n• Rotation des stocks : Nombre de fois où le stock est renouvelé sur une période." },
-        { type: "example", value: "Cas pratique : Un magasin vend 10 packs d'eau par jour. Le délai de livraison est de 3 jours. Le stock de sécurité est fixé à 20 packs. Le stock d'alerte sera donc : (10 x 3) + 20 = 50 packs." }
+        { type: "graph_schema", value: "FLUX DE STOCK", steps: ["Livraison", "Mise en rayon", "Vente", "Réappro"] },
+        { type: "subtitle", value: "Indicateurs de Performance" },
+        { type: "text", value: "• Stock de sécurité : Niveau minimum pour pallier les retards de livraison.\n• Stock d'alerte : Seuil déclenchant la commande.\n• Rotation des stocks : Nombre de fois où le stock est renouvelé." },
+        { type: "expert", value: "CONSEIL EXPERT : Utilisez la méthode 20/80 (Pareto). 20% de vos références représentent souvent 80% de votre chiffre d'affaires. Surveillez ces produits en priorité !" },
+        { type: "summary", value: "La maîtrise des stocks garantit la rentabilité du point de vente et la satisfaction client." }
       ]
     },
     { 
@@ -30,11 +32,13 @@ export default function FichesPerso() {
       bloc: "Bloc 1", 
       content: [
         { type: "text", value: "L'inventaire consiste à compter physiquement les marchandises présentes dans le point de vente et la réserve." },
-        { type: "subtitle", value: "Les 3 types d'inventaire" },
-        { type: "text", value: "1. Inventaire Annuel : Obligation légale une fois par an. Fermeture du magasin souvent nécessaire.\n2. Inventaire Tournant : Comptage régulier de certaines familles de produits tout au long de l'année.\n3. Inventaire Permanent : Mise à jour en temps réel via le système informatique (entrées/sorties)." },
-        { type: "subtitle", value: "La Démarque Inconnue (DI)" },
-        { type: "text", value: "C'est la différence entre le stock théorique (informatique) et le stock réel (physique).\nCauses : Vol (client/personnel), erreurs de livraison, casse non enregistrée, erreurs de caisse." },
-        { type: "schema", value: "[ STOCK THÉORIQUE ] - [ STOCK RÉEL ] = DÉMARQUE INCONNUE" }
+        { type: "subtitle", value: "Les Méthodes de Comptage" },
+        { type: "text", value: "1. Inventaire Annuel : Obligation légale une fois par an.\n2. Inventaire Tournant : Comptage régulier par familles.\n3. Inventaire Permanent : Suivi informatique en temps réel." },
+        { type: "graph_schema", value: "PROCESSUS INVENTAIRE", steps: ["Préparation", "Comptage", "Saisie", "Écarts"] },
+        { type: "subtitle", value: "Analyse des Écarts" },
+        { type: "text", value: "La Démarque Inconnue (DI) est le fléau du commerçant. Elle se calcule par la différence entre le stock théorique et le stock réel." },
+        { type: "expert", value: "POINT DE VIGILANCE : Un écart d'inventaire trop important peut signaler un problème de vol interne ou une mauvaise gestion des bons de livraison." },
+        { type: "summary", value: "L'inventaire est l'outil de contrôle indispensable pour valider la fiabilité de votre gestion." }
       ]
     },
     { 
@@ -42,12 +46,14 @@ export default function FichesPerso() {
       title: "Règles du Merchandising", 
       bloc: "Bloc 2", 
       content: [
-        { type: "text", value: "Le merchandising est l'ensemble des techniques pour présenter le produit dans les meilleures conditions matérielles et psychologiques." },
+        { type: "text", value: "Le merchandising regroupe les techniques de présentation des produits pour optimiser les ventes." },
         { type: "subtitle", value: "La Règle des 5B (Kepner)" },
-        { type: "list", value: ["Le Bon Produit (assortiment)", "Au Bon Endroit (emplacement)", "Au Bon Moment (saisonnalité)", "Au Bon Prix (étiquetage)", "En Bonne Quantité (linéaire)"] },
-        { type: "subtitle", value: "Les Niveaux de Vente" },
-        { type: "text", value: "• Niveau des Yeux (1,40m - 1,70m) : Niveau le plus vendeur, produits à forte marge.\n• Niveau des Mains (0,80m - 1,40m) : Niveau de confort, produits indispensables.\n• Niveau des Pieds (< 0,80m) : Produits lourds, volumineux ou bas prix.\n• Niveau du Chapeau (> 1,70m) : Stockage ou signalétique." },
-        { type: "example", value: "Exemple : Les céréales pour enfants sont placées au niveau des yeux... des enfants, donc plus bas que les céréales 'santé' pour adultes." }
+        { type: "list", value: ["Le Bon Produit", "Au Bon Endroit", "Au Bon Moment", "Au Bon Prix", "En Bonne Quantité"] },
+        { type: "graph_schema", value: "NIVEAUX DE GONDOLE", steps: ["Chapeau", "Yeux", "Mains", "Pieds"] },
+        { type: "subtitle", value: "Zones de Chalandise" },
+        { type: "text", value: "• Zone Chaude : Circulation naturelle, forte impulsion.\n• Zone Froide : Fond de magasin, nécessite des produits d'appel." },
+        { type: "expert", value: "ASTUCE PRO : Placez les produits à forte marge au niveau des yeux (1m50) pour maximiser la rentabilité du linéaire." },
+        { type: "summary", value: "Un bon merchandising transforme un simple visiteur en acheteur actif." }
       ]
     },
     { 
@@ -55,12 +61,12 @@ export default function FichesPerso() {
       title: "Méthode SBAM", 
       bloc: "Bloc 3", 
       content: [
-        { type: "text", value: "La méthode SBAM est le socle de la relation client en magasin. Elle permet de créer un climat de confiance dès les premières secondes." },
-        { type: "subtitle", value: "Détail de la méthode" },
-        { type: "text", value: "S - SOURIRE : Il s'entend même au téléphone. Il doit être sincère.\nB - BONJOUR : Salutation systématique dès l'entrée du client.\nA - AU REVOIR : On raccompagne le client (même s'il n'a rien acheté).\nM - MERCI : Remerciement pour la visite ou l'achat." },
-        { type: "subtitle", value: "La Règle des 4 x 20" },
-        { type: "list", value: ["Les 20 premières secondes", "Les 20 premiers pas", "Les 20 premiers mots", "Les 20 premiers centimètres (visage/sourire)"] },
-        { type: "example", value: "Conseil Pro : Si vous êtes occupé avec un client, un simple regard et un signe de tête vers le nouveau client qui entre valent un 'Bonjour' et le font patienter." }
+        { type: "text", value: "La méthode SBAM est le socle de la relation client en magasin." },
+        { type: "subtitle", value: "Les 4 Piliers de l'Accueil" },
+        { type: "text", value: "S - SOURIRE : La base de l'accueil.\nB - BONJOUR : La reconnaissance du client.\nA - AU REVOIR : La dernière impression.\nM - MERCI : La gratitude pour la visite." },
+        { type: "graph_schema", value: "CYCLE ACCUEIL", steps: ["Entrée", "Contact", "Échange", "Sortie"] },
+        { type: "expert", value: "RÈGLE D'OR : Les 20 premières secondes et les 20 premiers mots déterminent 80% de l'opinion du client sur votre magasin." },
+        { type: "summary", value: "L'accueil est le premier acte de vente. Ne le négligez jamais." }
       ]
     },
     { 
@@ -68,36 +74,12 @@ export default function FichesPerso() {
       title: "Méthode SONCAS", 
       bloc: "Bloc 3", 
       content: [
-        { type: "text", value: "Le SONCAS est une méthode d'analyse des motivations d'achat. Elle permet d'adapter son argumentation au profil psychologique du client." },
-        { type: "subtitle", value: "Les 6 Leviers" },
-        { type: "text", value: "• SÉCURITÉ : Besoin d'être rassuré (garantie, solidité).\n• ORGUEIL : Besoin de se valoriser (prestige, marque).\n• NOUVEAUTÉ : Besoin de changement (innovation, mode).\n• CONFORT : Besoin de facilité (praticité, gain de temps).\n• ARGENT : Besoin d'économie (promotion, rentabilité).\n• SYMPATHIE : Besoin de relationnel (accueil, cadeau)." },
-        { type: "example", value: "Argumentation : Pour un client 'SÉCURITÉ', dites : 'Ce modèle est garanti 5 ans'. Pour un client 'ARGENT', dites : 'C'est le meilleur rapport qualité/prix du marché'." }
-      ]
-    },
-    { 
-      id: "prap", 
-      title: "Gestes et Postures (PRAP)", 
-      bloc: "Bloc 4", 
-      content: [
-        { type: "text", value: "La PRAP (Prévention des Risques liés à l'Activité Physique) vise à réduire les accidents du travail et les maladies professionnelles (TMS)." },
-        { type: "subtitle", value: "Les Principes de Sécurité" },
-        { type: "list", value: ["Toujours plier les genoux pour ramasser un objet", "Garder le dos droit (alignement vertébral)", "Porter la charge le plus près possible du corps", "Assurer ses appuis (pieds écartés)", "Utiliser les aides à la manutention (transpalette, chariot)"] },
-        { type: "subtitle", value: "Les TMS (Troubles Musculo-Squelettiques)" },
-        { type: "text", value: "Ce sont des affections des tissus mous (tendons, muscles). Ils représentent 80% des maladies professionnelles dans le commerce." },
-        { type: "schema", value: "[ MAUVAIS GESTE ] + [ RÉPÉTITION ] = RISQUE DE TMS" }
-      ]
-    },
-    { 
-      id: "dechets", 
-      title: "Tri des Déchets", 
-      bloc: "Bloc 4", 
-      content: [
-        { type: "text", value: "Le tri des déchets en magasin est une obligation réglementaire qui s'inscrit dans une démarche de développement durable." },
-        { type: "subtitle", value: "Les 5 Flux Obligatoires" },
-        { type: "text", value: "1. Papier / Carton (emballages de livraison)\n2. Métal (boîtes de conserve abîmées)\n3. Plastique (films d'entourage de palettes)\n4. Verre (bouteilles cassées)\n5. Bois (palettes cassées)" },
-        { type: "subtitle", value: "Gestion des Invendus" },
-        { type: "text", value: "• Loi AGEC : Interdiction de jeter les produits non alimentaires.\n• Casse : Produits non vendables mais consommables (dons aux associations).\n• Déchets Organiques : Compostage ou méthanisation." },
-        { type: "example", value: "Astuce : Compacter les cartons permet de réduire le volume des déchets et donc le coût de l'enlèvement par les prestataires." }
+        { type: "text", value: "Le SONCAS permet d'analyser les motivations d'achat psychologiques du client." },
+        { type: "subtitle", value: "Les Motivations" },
+        { type: "text", value: "• SÉCURITÉ : Besoin de garanties.\n• ORGUEIL : Besoin de prestige.\n• NOUVEAUTÉ : Besoin d'innovation.\n• CONFORT : Besoin de simplicité.\n• ARGENT : Besoin d'économie.\n• SYMPATHIE : Besoin de relationnel." },
+        { type: "graph_schema", value: "VENTE CAP/SONCAS", steps: ["Écoute", "Profilage", "Argument", "Vente"] },
+        { type: "expert", value: "TECHNIQUE : Couplez le SONCAS avec la méthode CAP (Caractéristiques, Avantages, Preuves) pour une argumentation imparable." },
+        { type: "summary", value: "Comprendre le 'Pourquoi' du client permet de lui vendre le 'Comment'." }
       ]
     }
   ];
@@ -114,105 +96,58 @@ export default function FichesPerso() {
       const doc = new jsPDF();
       const margin = 20;
       const pageWidth = 210;
-      const pageHeight = 297;
       let yOffset = 20;
 
       // --- PAGE DE GARDE ---
-      doc.setFillColor(16, 185, 129); // Emerald 500
+      doc.setFillColor(16, 185, 129);
       doc.rect(0, 0, pageWidth, 60, 'F');
-      
       doc.setFontSize(28);
       doc.setTextColor(255, 255, 255);
-      doc.text("LIVRET DE RÉVISION", pageWidth / 2, 30, { align: "center" });
-      doc.setFontSize(20);
+      doc.text("LIVRET D'EXPERTISE", pageWidth / 2, 30, { align: "center" });
+      doc.setFontSize(18);
       doc.text("CAP Équipier Polyvalent du Commerce", pageWidth / 2, 45, { align: "center" });
 
       yOffset = 80;
       doc.setFontSize(14);
-      doc.setTextColor(71, 85, 105); // Slate 600
-      doc.text("Document de synthèse personnalisé", margin, yOffset);
-      yOffset += 10;
-      doc.setFontSize(11);
-      doc.text(`Généré le ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}`, margin, yOffset);
-      
-      // --- SOMMAIRE AMÉLIORÉ ---
-      yOffset += 30;
-      doc.setDrawColor(16, 185, 129);
-      doc.setLineWidth(0.8);
-      doc.line(margin, yOffset, margin + 40, yOffset);
-      yOffset += 10;
-      
-      doc.setFontSize(18);
+      doc.setTextColor(71, 85, 105);
+      doc.text("Synthèses, Schémas et Points d'Expertise", margin, yOffset);
+      yOffset += 20;
+
+      doc.setFontSize(16);
       doc.setTextColor(31, 41, 55);
       doc.text("SOMMAIRE", margin, yOffset);
       yOffset += 15;
-      
-      const topicPageMap: { [key: string]: number } = {};
-      let currentPage = 2; // Le contenu commence à la page 2
 
       selectedTopics.forEach((id, index) => {
         const topic = topics.find(t => t.id === id);
         if (topic) {
           doc.setFontSize(12);
           doc.setTextColor(55, 65, 81);
-          
-          // Ligne du sommaire avec pointillés
-          const title = `${index + 1}. ${topic.title}`;
-          doc.text(title, margin + 5, yOffset);
-          
-          const pageNumStr = "Page " + currentPage;
-          const textWidth = doc.getTextWidth(title);
-          const pageNumWidth = doc.getTextWidth(pageNumStr);
-          
-          // Dessiner les pointillés
-          const dotStart = margin + 10 + textWidth;
-          const dotEnd = pageWidth - margin - pageNumWidth - 5;
-          if (dotEnd > dotStart) {
-            let dotPos = dotStart;
-            while (dotPos < dotEnd) {
-              doc.text(".", dotPos, yOffset);
-              dotPos += 3;
-            }
-          }
-          
-          doc.text(pageNumStr, pageWidth - margin, yOffset, { align: "right" });
-          
-          // Estimation simplifiée de l'espace consommé pour le prochain numéro de page
-          // Chaque thème prend environ 0.5 à 0.8 page avec le nouveau contenu
+          doc.text(`${index + 1}. ${topic.title}`, margin + 5, yOffset);
+          doc.text(`Page ${index + 2}`, pageWidth - margin, yOffset, { align: "right" });
           yOffset += 10;
-          currentPage++; 
         }
       });
 
-      // --- CONTENU DES FICHES ---
+      // --- CONTENU ---
       selectedTopics.forEach((id) => {
         doc.addPage();
         yOffset = 25;
-
         const topic = topics.find(t => t.id === id);
         if (topic) {
-          // En-tête de page de contenu
-          doc.setFillColor(248, 250, 252); // Slate 50
+          // Header
+          doc.setFillColor(248, 250, 252);
           doc.rect(0, 0, pageWidth, 40, 'F');
-          doc.setDrawColor(226, 232, 240); // Slate 200
-          doc.line(0, 40, pageWidth, 40);
-
           doc.setFontSize(10);
           doc.setTextColor(16, 185, 129);
           doc.text(topic.bloc.toUpperCase(), margin, 20);
-          
-          doc.setFontSize(20);
-          doc.setTextColor(15, 23, 42); // Slate 900
+          doc.setFontSize(22);
+          doc.setTextColor(15, 23, 42);
           doc.text(topic.title, margin, 32);
-          
           yOffset = 55;
 
           topic.content.forEach((item) => {
-            // Vérification de sécurité pour le saut de page
-            if (yOffset > 260) {
-              doc.addPage();
-              yOffset = 25;
-            }
+            if (yOffset > 260) { doc.addPage(); yOffset = 25; }
 
             switch (item.type) {
               case "subtitle":
@@ -220,13 +155,11 @@ export default function FichesPerso() {
                 doc.setFontSize(14);
                 doc.setTextColor(16, 185, 129);
                 doc.text(item.value, margin, yOffset);
-                doc.setLineWidth(0.3);
-                doc.line(margin, yOffset + 2, margin + 30, yOffset + 2);
-                yOffset += 12;
+                yOffset += 10;
                 break;
               case "text":
                 doc.setFontSize(11);
-                doc.setTextColor(51, 65, 85); // Slate 700
+                doc.setTextColor(51, 65, 85);
                 const splitText = doc.splitTextToSize(item.value, 170);
                 doc.text(splitText, margin, yOffset);
                 yOffset += (splitText.length * 7) + 5;
@@ -235,7 +168,6 @@ export default function FichesPerso() {
                 doc.setFontSize(11);
                 doc.setTextColor(51, 65, 85);
                 item.value.forEach((li: string) => {
-                  if (yOffset > 275) { doc.addPage(); yOffset = 25; }
                   doc.setFillColor(16, 185, 129);
                   doc.circle(margin + 2, yOffset - 1, 0.8, 'F');
                   doc.text(li, margin + 7, yOffset);
@@ -243,37 +175,45 @@ export default function FichesPerso() {
                 });
                 yOffset += 3;
                 break;
-              case "example":
+              case "graph_schema":
                 yOffset += 5;
-                const exText = doc.splitTextToSize(item.value, 160);
-                const boxHeight = (exText.length * 6) + 12;
-                
-                if (yOffset + boxHeight > 280) { doc.addPage(); yOffset = 25; }
-                
-                doc.setFillColor(240, 253, 244); // Green 50
-                doc.setDrawColor(187, 247, 208); // Green 200
-                doc.roundedRect(margin - 2, yOffset - 5, 174, boxHeight, 2, 2, 'FD');
-                
-                doc.setFontSize(9);
-                doc.setTextColor(21, 128, 61); // Green 700
-                doc.text("EXEMPLE CONCRET", margin + 2, yOffset);
-                yOffset += 6;
-                
-                doc.setFontSize(10);
-                doc.setTextColor(22, 101, 52); // Green 800
-                doc.text(exText, margin + 2, yOffset);
-                yOffset += (exText.length * 6) + 10;
-                break;
-              case "schema":
-                yOffset += 5;
-                if (yOffset > 260) { doc.addPage(); yOffset = 25; }
                 doc.setDrawColor(16, 185, 129);
                 doc.setLineWidth(0.5);
-                doc.setFillColor(255, 255, 255);
-                doc.rect(margin, yOffset, 170, 15, 'FD');
-                doc.setFontSize(12);
-                doc.setTextColor(16, 185, 129);
-                doc.text(item.value, 105, yOffset + 9, { align: "center" });
+                const stepWidth = 40;
+                item.steps?.forEach((step: string, i: number) => {
+                  const x = margin + (i * stepWidth);
+                  doc.roundedRect(x, yOffset, 35, 12, 2, 2, 'D');
+                  doc.setFontSize(8);
+                  doc.text(step, x + 17.5, yOffset + 7.5, { align: "center" });
+                  if (i < (item.steps?.length || 0) - 1) {
+                    doc.line(x + 35, yOffset + 6, x + 40, yOffset + 6);
+                  }
+                });
+                yOffset += 25;
+                break;
+              case "expert":
+                yOffset += 5;
+                const expText = doc.splitTextToSize(item.value, 160);
+                doc.setFillColor(254, 242, 242); // Red 50
+                doc.setDrawColor(252, 165, 165); // Red 300
+                doc.roundedRect(margin - 2, yOffset - 5, 174, (expText.length * 6) + 12, 2, 2, 'FD');
+                doc.setFontSize(9);
+                doc.setTextColor(185, 28, 28); // Red 700
+                doc.text("POINT D'EXPERTISE", margin + 2, yOffset);
+                doc.setFontSize(10);
+                doc.setTextColor(153, 27, 27);
+                doc.text(expText, margin + 2, yOffset + 7);
+                yOffset += (expText.length * 6) + 20;
+                break;
+              case "summary":
+                yOffset += 5;
+                doc.setFillColor(240, 253, 244); // Green 50
+                doc.rect(margin, yOffset, 170, 15, 'F');
+                doc.setFontSize(11);
+                doc.setTextColor(21, 128, 61);
+                doc.setFont("helvetica", "bold");
+                doc.text("SYNTHÈSE : " + item.value, margin + 5, yOffset + 9);
+                doc.setFont("helvetica", "normal");
                 yOffset += 25;
                 break;
             }
@@ -281,18 +221,17 @@ export default function FichesPerso() {
         }
       });
 
-      // --- PIED DE PAGE GLOBAL ---
       const totalPages = doc.getNumberOfPages();
       for (let i = 1; i <= totalPages; i++) {
         doc.setPage(i);
         doc.setFontSize(9);
-        doc.setTextColor(148, 163, 184); // Slate 400
-        doc.text(`Réussite CAP Commerce - Page ${i} / ${totalPages}`, pageWidth / 2, pageHeight - 10, { align: "center" });
+        doc.setTextColor(148, 163, 184);
+        doc.text(`Expertise CAP Commerce - Page ${i} / ${totalPages}`, 105, 287, { align: "center" });
       }
 
-      doc.save("Livret_Revision_CAP_EPC_Premium.pdf");
+      doc.save("Livret_Expertise_CAP_Commerce.pdf");
     } catch (error) {
-      console.error("Erreur lors de la génération du PDF:", error);
+      console.error("Erreur PDF:", error);
     } finally {
       setIsGenerating(false);
     }
@@ -304,7 +243,7 @@ export default function FichesPerso() {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 font-playfair">Générateur de Fiches</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">Créez votre livret de révision complet. Sélectionnez plusieurs thèmes pour générer un document structuré de plusieurs pages.</p>
+          <p className="text-gray-600 max-w-2xl mx-auto">Créez votre livret d'expertise. Contenu enrichi avec schémas, synthèses et conseils pro.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -335,7 +274,7 @@ export default function FichesPerso() {
             <Card className="p-8 border-none shadow-2xl bg-white dark:bg-gray-800 rounded-3xl sticky top-24">
               <h2 className="text-2xl font-bold mb-6">Mon Livret</h2>
               {selectedTopics.length === 0 ? (
-                <p className="text-gray-400 italic text-center py-8">Sélectionnez des thèmes pour générer votre livret</p>
+                <p className="text-gray-400 italic text-center py-8">Sélectionnez des thèmes pour générer votre livret d'expertise</p>
               ) : (
                 <div className="space-y-4 mb-8">
                   <p className="text-sm text-emerald-600 font-medium">{selectedTopics.length} thème(s) sélectionné(s)</p>
@@ -357,10 +296,10 @@ export default function FichesPerso() {
                 disabled={selectedTopics.length === 0 || isGenerating}
                 className="w-full bg-emerald-600 hover:bg-emerald-700 py-6 rounded-xl font-bold shadow-lg shadow-emerald-100 dark:shadow-none"
               >
-                <Download className="mr-2" /> {isGenerating ? "Génération..." : "Générer mon Livret PDF"}
+                <Download className="mr-2" /> {isGenerating ? "Génération..." : "Générer mon Livret d'Expertise"}
               </Button>
               <p className="text-[10px] text-gray-400 mt-4 text-center">
-                Version Premium : Sommaire structuré et mise en page optimisée.
+                Inclus : Schémas de flux, Synthèses et Points d'Expertise.
               </p>
             </Card>
           </div>
