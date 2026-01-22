@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle } from "lucide-react";
+import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Calculator, GraduationCap } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
@@ -31,6 +31,7 @@ export default function Navigation() {
       label: "Interactif",
       icon: <Gamepad2 size={16} />,
       items: [
+        { label: "Simulateur d'Examen", href: "/simulateur-examen" },
         { label: "Quiz & Tests", href: "/quiz" },
         { label: "Mini-Jeux CAP", href: "/mini-jeux" },
         { label: "Simulateur Oral EP3", href: "/simulateur-oral" },
@@ -41,6 +42,7 @@ export default function Navigation() {
       label: "Outils & Fiches",
       icon: <LayoutDashboard size={16} />,
       items: [
+        { label: "Calculatrice Pro", href: "/calculatrice" },
         { label: "Générateur de Fiches", href: "/fiches-perso" },
         { label: "Schémas Pédago", href: "/schemas" },
         { label: "Cadencier", href: "/cadencier" },
@@ -62,24 +64,24 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 px-4 text-center text-sm font-medium shadow-lg animate-in fade-in slide-in-from-top duration-500">
-        ✨ MISE À JOUR v5.2 : Schémas interactifs, Mode Expert et design Premium ! 
-        <Link href="/bloc1">
-          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Découvrir les nouveautés →</a>
+        🚀 NOUVEAU : Simulateur d'Examen et Calculatrice Commerciale disponibles ! 
+        <Link href="/simulateur-examen">
+          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Tester maintenant →</a>
         </Link>
       </div>
 
-      <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+      <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm dark:bg-gray-900/95 dark:border-gray-800">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center gap-4">
               <Link href="/">
                 <div className="flex items-center gap-2 cursor-pointer group">
-                  <div className="bg-emerald-100 p-2 rounded-xl group-hover:bg-emerald-200 transition-colors">
+                  <div className="bg-emerald-100 p-2 rounded-xl group-hover:bg-emerald-200 transition-colors dark:bg-emerald-900/30">
                     <div className="text-2xl transform group-hover:rotate-12 transition-transform">📚</div>
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-playfair text-xl font-bold text-gray-900 hidden sm:inline group-hover:text-emerald-600 transition-colors leading-none">
+                    <span className="font-playfair text-xl font-bold text-gray-900 dark:text-white hidden sm:inline group-hover:text-emerald-600 transition-colors leading-none">
                       CAP Commerce
                     </span>
                     <span className="text-[10px] font-bold text-emerald-600 tracking-widest uppercase hidden sm:inline">
@@ -96,7 +98,7 @@ export default function Navigation() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
               <Link href="/">
-                <a className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${isActive("/") ? "bg-emerald-50 text-emerald-600" : "text-gray-600 hover:bg-gray-50 hover:text-emerald-600"}`}>
+                <a className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${isActive("/") ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20" : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 hover:text-emerald-600 dark:hover:bg-gray-800"}`}>
                   Accueil
                 </a>
               </Link>
@@ -108,17 +110,17 @@ export default function Navigation() {
                   onMouseEnter={() => setActiveDropdown(group.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-emerald-600 transition-all">
+                  <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 hover:text-emerald-600 dark:hover:bg-gray-800 transition-all">
                     {group.icon}
                     {group.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === group.label ? 'rotate-180' : ''}`} />
                   </button>
 
                   {/* Dropdown Menu */}
-                  <div className={`absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl rounded-xl py-2 mt-1 transition-all duration-200 origin-top-left ${activeDropdown === group.label ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
+                  <div className={`absolute top-full left-0 w-56 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-xl rounded-xl py-2 mt-1 transition-all duration-200 origin-top-left ${activeDropdown === group.label ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
                     {group.items.map((item) => (
                       <Link key={item.href} href={item.href}>
-                        <a className={`block px-4 py-2 text-sm transition-colors ${isActive(item.href) ? "text-emerald-600 bg-emerald-50 font-bold" : "text-gray-600 hover:bg-gray-50 hover:text-emerald-600"}`}>
+                        <a className={`block px-4 py-2 text-sm transition-colors ${isActive(item.href) ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 font-bold" : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-emerald-600"}`}>
                           {item.label}
                         </a>
                       </Link>
@@ -131,7 +133,7 @@ export default function Navigation() {
             {/* Right Tools */}
             <div className="flex items-center gap-2">
               <Link href="/dashboard">
-                <a className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-bold transition-all ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600 hover:bg-emerald-100"}`}>
+                <a className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-bold transition-all ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 hover:bg-emerald-100 dark:hover:bg-emerald-900/50"}`}>
                   <UserCircle size={20} />
                   <span className="hidden sm:inline">Mon Profil</span>
                 </a>
@@ -146,7 +148,7 @@ export default function Navigation() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="lg:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -155,16 +157,16 @@ export default function Navigation() {
 
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="lg:hidden pb-6 border-t border-gray-100 animate-in slide-in-from-top duration-300">
+            <div className="lg:hidden pb-6 border-t border-gray-100 dark:border-gray-800 animate-in slide-in-from-top duration-300">
               <div className="mt-4 px-2">
                 <Link href="/dashboard">
-                  <a onClick={() => setIsOpen(false)} className={`flex items-center gap-3 py-4 px-4 rounded-xl font-bold mb-4 ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600"}`}>
+                  <a onClick={() => setIsOpen(false)} className={`flex items-center gap-3 py-4 px-4 rounded-xl font-bold mb-4 ${isActive("/dashboard") ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30"}`}>
                     <UserCircle size={24} /> Mon Tableau de Bord
                   </a>
                 </Link>
                 
                 <Link href="/">
-                  <a onClick={() => setIsOpen(false)} className={`block py-3 px-4 rounded-xl font-medium mb-2 ${isActive("/") ? "bg-gray-100 text-gray-900" : "text-gray-700 hover:bg-gray-100"}`}>
+                  <a onClick={() => setIsOpen(false)} className={`block py-3 px-4 rounded-xl font-medium mb-2 ${isActive("/") ? "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white" : "text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"}`}>
                     Accueil
                   </a>
                 </Link>
@@ -180,7 +182,7 @@ export default function Navigation() {
                         <Link key={item.href} href={item.href}>
                           <a
                             onClick={() => setIsOpen(false)}
-                            className={`block py-2 px-8 rounded-lg text-sm transition-colors ${isActive(item.href) ? "text-emerald-600 bg-emerald-50 font-bold" : "text-gray-600 hover:bg-gray-50"}`}
+                            className={`block py-2 px-8 rounded-lg text-sm transition-colors ${isActive(item.href) ? "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 font-bold" : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
                           >
                             {item.label}
                           </a>
