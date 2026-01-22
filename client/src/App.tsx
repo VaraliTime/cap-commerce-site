@@ -49,6 +49,9 @@ function Router() {
       <Route path={"/glossaire"} component={Glossaire} />
       <Route path={"/simulateur-oral"} component={SimulateurOral} />
       <Route path={"/coach-ia"} component={CoachIAOral} />
+      <Route path={"/simulateur-examen"} component={SimulateurExamen} />
+      <Route path={"/simulateur-caisse"} component={SimulateurCaisse} />
+      <Route path={"/flashcards"} component={Flashcards} />
       <Route path={"/dossier-pro"} component={DossierPro} />
       <Route path={"/fiches-perso"} component={FichesPerso} />
       <Route path={"/dashboard"} component={Dashboard} />
