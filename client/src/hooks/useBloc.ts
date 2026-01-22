@@ -14,6 +14,7 @@ export interface Section {
   titre: string;
   contenu?: string;
   video_url?: string;
+  schema_svg?: string;
   exemple?: {
     titre: string;
     texte: string;

@@ -150,7 +150,13 @@ const BlocPage = ({ blocId }: BlocPageProps) => {
 
                   {/* Schema Integration */}
                   {section.schema_svg && (
-                    <EducationalSchemas type={section.schema_svg} />
+                    <div className="mb-12">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl shadow-sm">📊</div>
+                        <h4 className="font-poppins font-bold text-gray-900 text-xl">Schéma Pédagogique</h4>
+                      </div>
+                      <EducationalSchemas type={section.schema_svg} />
+                    </div>
                   )}
 
                   {/* Synthese Approfondie Content */}
