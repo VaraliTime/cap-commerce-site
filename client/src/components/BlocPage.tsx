@@ -135,6 +135,17 @@ const BlocPage = ({ blocId }: BlocPageProps) => {
                     </p>
                   )}
 
+                  {/* Schema Integration */}
+                  {section.schema_svg && (
+                    <div className="mb-12">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl shadow-sm">📊</div>
+                        <h4 className="font-poppins font-bold text-gray-900 text-xl">Schéma Pédagogique</h4>
+                      </div>
+                      <EducationalSchemas type={section.schema_svg} />
+                    </div>
+                  )}
+
                   {/* Expert Mode Toggle */}
                   {section.synthese_approfondie && (
                     <div className="mb-8">
@@ -145,17 +156,6 @@ const BlocPage = ({ blocId }: BlocPageProps) => {
                         <span className="text-xl">{expertMode[section.id] ? "📖" : "🚀"}</span>
                         {expertMode[section.id] ? "Revenir à la fiche simplifiée" : "Développer la synthèse approfondie (Mode Expert)"}
                       </button>
-                    </div>
-                  )}
-
-                  {/* Schema Integration */}
-                  {section.schema_svg && (
-                    <div className="mb-12">
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl shadow-sm">📊</div>
-                        <h4 className="font-poppins font-bold text-gray-900 text-xl">Schéma Pédagogique</h4>
-                      </div>
-                      <EducationalSchemas type={section.schema_svg} />
                     </div>
                   )}
 
