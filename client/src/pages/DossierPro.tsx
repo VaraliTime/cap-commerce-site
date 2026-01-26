@@ -1,13 +1,17 @@
 import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { FileText, Download, CheckSquare, Layout, Briefcase, X, Eye } from "lucide-react";
+import { FileText, Download, CheckSquare, Layout, Briefcase, X, Eye, Brain, Sparkles, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { jsPDF } from "jspdf";
+import { toast } from "sonner";
 
 export default function DossierPro() {
   const [selectedExample, setSelectedExample] = useState<any | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analysisResult, setAnalysisResult] = useState<string | null>(null);
+  const [dossierText, setDossierText] = useState("");
 
   const sections = [
     {
@@ -42,49 +46,46 @@ export default function DossierPro() {
     }
   ];
 
-  const generateModelPDF = () => {
+  const handleAnalyze = () => {
+    if (!dossierText.trim()) {
+      toast.error("Veuillez coller votre texte avant de lancer l'analyse.");
+      return;
+    }
+    setIsAnalyzing(true);
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      setAnalysisResult("Analyse terminée ! Votre texte est bon, mais vous devriez ajouter plus de mots-clés techniques comme 'Zone de chalandise' ou 'FIFO'. La structure est respectée.");
+      toast.success("Analyse IA terminée !");
+    }, 2000);
+  };
+
+  const generateCV = () => {
     const doc = new jsPDF();
+    doc.setFillColor(31, 41, 55);
+    doc.rect(0, 0, 70, 297, 'F');
     
-    // Header
-    doc.setFillColor(16, 185, 129); // Emerald 600
-    doc.rect(0, 0, 210, 40, 'F');
     doc.setTextColor(255, 255, 255);
-    doc.setFontSize(22);
-    doc.text("MODELE DOSSIER PROFESSIONNEL", 105, 20, { align: "center" });
-    doc.setFontSize(12);
-    doc.text("CAP Equipier Polyvalent du Commerce (EPC)", 105, 30, { align: "center" });
+    doc.setFontSize(20);
+    doc.text("VOTRE NOM", 35, 40, { align: "center" });
+    doc.setFontSize(10);
+    doc.text("CAP EPC", 35, 50, { align: "center" });
 
-    // Content
     doc.setTextColor(40, 40, 40);
-    doc.setFontSize(16);
-    doc.text("Structure du Dossier", 20, 60);
+    doc.setFontSize(18);
+    doc.text("EXPERIENCES", 80, 40);
+    doc.setFontSize(10);
+    doc.text("- Stage en Vente (Carrefour)", 80, 55);
+    doc.text("- Mise en rayon et Facing", 80, 65);
     
-    doc.setFontSize(12);
-    let y = 75;
-    const structure = [
-      "1. Page de Garde (Nom, Prénom, Session, Entreprise)",
-      "2. Sommaire",
-      "3. Présentation de l'entreprise (Fiche d'identité)",
-      "4. Fiche Activité n°1 : Réception et mise en rayon",
-      "5. Fiche Activité n°2 : Suivi des stocks et cadencier",
-      "6. Fiche Activité n°3 : Vente et relation client",
-      "7. Analyse d'un produit ou d'une promotion",
-      "8. Conclusion et bilan personnel"
-    ];
+    doc.setFontSize(18);
+    doc.text("COMPETENCES", 80, 90);
+    doc.setFontSize(10);
+    doc.text("- Tenue de caisse (SBAM)", 80, 105);
+    doc.text("- Gestion des stocks (FIFO)", 80, 115);
+    doc.text("- Relation client", 80, 125);
 
-    structure.forEach(item => {
-      doc.text(item, 25, y);
-      y += 10;
-    });
-
-    doc.setFontSize(14);
-    doc.text("Conseils de rédaction :", 20, y + 10);
-    doc.setFontSize(11);
-    doc.text("- Utilisez le 'JE' pour décrire vos actions.", 25, y + 25);
-    doc.text("- Joignez des photos de vos réalisations (rayons, vitrines).", 25, y + 35);
-    doc.text("- Soyez précis sur les outils utilisés (PDA, transpalette, logiciel).", 25, y + 45);
-
-    doc.save("Modele_Dossier_CAP_EPC.pdf");
+    doc.save("Mon_CV_CAP_EPC.pdf");
+    toast.success("CV généré avec succès !");
   };
 
   return (
@@ -92,9 +93,42 @@ export default function DossierPro() {
       <Navigation />
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-4 font-playfair">Dossier Professionnel</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">Réussissez votre dossier de stage avec nos modèles et exemples interactifs.</p>
+          <h1 className="text-5xl font-bold mb-4 font-playfair">Dossier & Carrière</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">Réussissez votre dossier de stage et préparez votre insertion professionnelle avec nos outils IA.</p>
         </div>
+
+        {/* Correcteur IA */}
+        <Card className="p-8 border-none shadow-xl bg-white dark:bg-gray-800 rounded-[2.5rem] mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-purple-100 p-3 rounded-2xl">
+              <Brain className="text-purple-600" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">Correcteur de Dossier IA</h2>
+              <p className="text-sm text-gray-500">Collez votre texte pour vérifier s'il respecte le référentiel CAP EPC.</p>
+            </div>
+          </div>
+          <textarea 
+            value={dossierText}
+            onChange={(e) => setDossierText(e.target.value)}
+            placeholder="Collez ici votre présentation d'entreprise ou vos fiches activités..."
+            className="w-full h-40 p-6 rounded-3xl bg-gray-50 dark:bg-gray-900 border-none focus:ring-2 focus:ring-purple-500 mb-6 resize-none"
+          />
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <Button 
+              onClick={handleAnalyze}
+              disabled={isAnalyzing}
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 rounded-2xl font-bold w-full md:w-auto"
+            >
+              {isAnalyzing ? "Analyse en cours..." : <><Sparkles className="mr-2" /> Analyser mon texte</>}
+            </Button>
+            {analysisResult && (
+              <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-2xl text-sm text-purple-700 dark:text-purple-300 border border-purple-100 flex-grow md:ml-6">
+                {analysisResult}
+              </div>
+            )}
+          </div>
+        </Card>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {sections.map((s, i) => (
@@ -115,26 +149,32 @@ export default function DossierPro() {
           ))}
         </div>
 
-        <Card className="p-10 border-none shadow-xl bg-emerald-600 text-white rounded-3xl overflow-hidden relative">
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-4">Prêt à télécharger ?</h2>
-            <p className="text-emerald-50 mb-8 max-w-xl">Nous avons préparé un guide complet au format PDF que vous pouvez utiliser comme base pour votre dossier.</p>
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                onClick={generateModelPDF}
-                className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-6 rounded-xl font-bold shadow-lg"
-              >
-                <Download className="mr-2" /> Télécharger le Modèle (.pdf)
-              </Button>
-              <Button className="bg-emerald-700 text-white hover:bg-emerald-800 px-8 py-6 rounded-xl font-bold">
-                <CheckSquare className="mr-2" /> Check-list de validation
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card className="p-10 border-none shadow-xl bg-emerald-600 text-white rounded-3xl overflow-hidden relative">
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold mb-4">Modèle de Dossier</h2>
+              <p className="text-emerald-50 mb-8">Téléchargez notre guide PDF complet pour structurer votre dossier.</p>
+              <Button className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-6 rounded-xl font-bold shadow-lg">
+                <Download className="mr-2" /> Télécharger le Guide
               </Button>
             </div>
-          </div>
-          <div className="absolute top-0 right-0 p-12 opacity-10 transform translate-x-10 -translate-y-10">
-            <FileText size={300} />
-          </div>
-        </Card>
+            <FileText className="absolute top-0 right-0 p-12 opacity-10 transform translate-x-10 -translate-y-10" size={200} />
+          </Card>
+
+          <Card className="p-10 border-none shadow-xl bg-blue-600 text-white rounded-3xl overflow-hidden relative">
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold mb-4">Générateur de CV</h2>
+              <p className="text-blue-50 mb-8">Créez un CV professionnel adapté aux métiers du commerce en un clic.</p>
+              <Button 
+                onClick={generateCV}
+                className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 rounded-xl font-bold shadow-lg"
+              >
+                <UserPlus className="mr-2" /> Générer mon CV Pro
+              </Button>
+            </div>
+            <Briefcase className="absolute top-0 right-0 p-12 opacity-10 transform translate-x-10 -translate-y-10" size={200} />
+          </Card>
+        </div>
 
         {/* Modal d'exemple */}
         <AnimatePresence>

@@ -33,6 +33,7 @@ import Flashcards from "./pages/Flashcards";
 import SimulateurCaisse from "./pages/SimulateurCaisse";
 import PlanMasseInteractif from "./pages/PlanMasseInteractif";
 import Ligues from "./pages/Ligues";
+import AnalyseTickets from "./pages/AnalyseTickets";
 
 // Mode Maintenance désactivé
 const IS_MAINTENANCE = false;
@@ -59,6 +60,7 @@ function Router() {
       <Route path={"/simulateur-caisse"} component={SimulateurCaisse} />
       <Route path={"/flashcards"} component={Flashcards} />
       <Route path={"/ligues"} component={Ligues} />
+      <Route path={"/analyse-tickets"} component={AnalyseTickets} />
       <Route path={"/dossier-pro"} component={DossierPro} />
       <Route path={"/fiches-perso"} component={FichesPerso} />
       <Route path={"/dashboard"} component={Dashboard} />
