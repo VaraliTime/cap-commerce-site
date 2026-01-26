@@ -32,8 +32,9 @@ import SimulateurExamen from "./pages/SimulateurExamen";
 import Flashcards from "./pages/Flashcards";
 import SimulateurCaisse from "./pages/SimulateurCaisse";
 import PlanMasseInteractif from "./pages/PlanMasseInteractif";
+import Ligues from "./pages/Ligues";
 
-// Mode Maintenance désactivé pour le déploiement final
+// Mode Maintenance désactivé
 const IS_MAINTENANCE = false;
 
 function Router() {
@@ -57,6 +58,7 @@ function Router() {
       <Route path={"/simulateur-examen"} component={SimulateurExamen} />
       <Route path={"/simulateur-caisse"} component={SimulateurCaisse} />
       <Route path={"/flashcards"} component={Flashcards} />
+      <Route path={"/ligues"} component={Ligues} />
       <Route path={"/dossier-pro"} component={DossierPro} />
       <Route path={"/fiches-perso"} component={FichesPerso} />
       <Route path={"/dashboard"} component={Dashboard} />
