@@ -34,6 +34,7 @@ import SimulateurCaisse from "./pages/SimulateurCaisse";
 import PlanMasseInteractif from "./pages/PlanMasseInteractif";
 import Ligues from "./pages/Ligues";
 import AnalyseTickets from "./pages/AnalyseTickets";
+import AdvancedFeatures from "./pages/AdvancedFeatures";
 
 // Mode Maintenance désactivé
 const IS_MAINTENANCE = false;
@@ -69,6 +70,7 @@ function Router() {
       <Route path={"/quiz/:blocId"} component={QuizPage} />
       <Route path={"/schemas"} component={SchemasPage} />
       <Route path={"/referentiel"} component={ReferentielPage} />
+      <Route path={"/advanced-features"} component={AdvancedFeatures} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
