@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Trophy, Brain, Briefcase, Calculator, GraduationCap, Store, CreditCard, Map, Mic, FileText, Receipt } from "lucide-react";
+import { Menu, X, ChevronDown, BookOpen, Gamepad2, LayoutDashboard, PlayCircle, UserCircle, Trophy, Brain, Briefcase, Calculator, GraduationCap, Store, CreditCard, Map, Mic, FileText, Receipt, Layout } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { LiveVisitors } from "./LiveVisitors";
@@ -32,9 +32,9 @@ export default function Navigation() {
       items: [
         { label: "Simulateur d'Examen", href: "/simulateur-examen" },
         { label: "Simulateur de Caisse", href: "/simulateur-caisse" },
+        { label: "Simulateur Linéaire", href: "/simulateur-lineaire" },
         { label: "Flashcards Mémoire", href: "/flashcards" },
         { label: "Analyse de Tickets", href: "/analyse-tickets" },
-        { label: "Plan de Masse Interactif", href: "/plan-interactif" },
       ]
     },
     {
@@ -72,9 +72,9 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Bandeau de notification */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 px-4 text-center text-sm font-medium shadow-lg animate-in fade-in slide-in-from-top duration-500">
-        🚀 NOUVEAU : Analysez vos tickets de caisse et trouvez un stage ! 
-        <Link href="/annuaire-enseignes">
-          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Voir l'annuaire →</a>
+        🎓 NOUVEAU : Découvrez le Simulateur de Linéaire et optimisez vos rayons ! 
+        <Link href="/simulateur-lineaire">
+          <a className="underline ml-2 hover:text-emerald-100 transition-colors font-bold">Essayer →</a>
         </Link>
       </div>
 
