@@ -7,7 +7,7 @@ export default function UpdateModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasSeenUpdate = localStorage.getItem("hasSeenUpdateV3");
+    const hasSeenUpdate = localStorage.getItem("hasSeenUpdateV3_Forced");
     if (!hasSeenUpdate) {
       const timer = setTimeout(() => setIsOpen(true), 1500);
       return () => clearTimeout(timer);
@@ -16,7 +16,7 @@ export default function UpdateModal() {
 
   const closeModal = () => {
     setIsOpen(false);
-    localStorage.setItem("hasSeenUpdateV3", "true");
+    localStorage.setItem("hasSeenUpdateV3_Forced", "true");
   };
 
   const features = [
